@@ -2,84 +2,23 @@ package main
 
 import (
 	"fmt"
-	"os"
 	"os/exec"
-	"os/user"
-	"strings"
 	"time"
 
-    p "cli-tutor/src/printer"
+	"cli-tutor/src/printer"
+	"cli-tutor/src/prompt"
+	"cli-tutor/src/input"
+
 	"github.com/chzyer/readline"
 	"github.com/muesli/termenv"
 )
 
 
 
-func promptStyler(s string, string_style string) string {
-	const (
-		colorReset   = "\033[0m"
-		colorRed     = "\033[31m"
-		colorGreen   = "\033[32m"
-		colorYellow  = "\033[33m"
-		colorBlue    = "\033[34m"
-		colorMagenta = "\033[35m"
-		colorCyan    = "\033[36m"
-		colorWhite   = "\033[37m"
-	)
-	switch string_style {
-
-	case "magenta":
-		return colorMagenta + s + colorReset
-
-	case "red":
-		return colorRed + s + colorReset
-
-	case "yellow":
-		return colorYellow + s + colorReset
-
-	case "blue":
-		return colorBlue + s + colorReset
-
-	default:
-		return colorGreen + s + colorReset
-	}
-}
-// TODO: Make a more generic styling function like the printer
-
-
-func buildPrompt() string {
-	user, _ := user.Current()
-	username := promptStyler(user.Username, "blue")
-
-	host, _ := os.Hostname()
-	hostname := promptStyler(host, "magenta")
-
-	cwd, _ := os.Getwd()
-	styled_cwd := promptStyler(cwd, "green")
-
-	return username + " @ " + hostname + " in " + styled_cwd
-}
-
-func contains(s string, arr []string) bool {
-	for _, val := range arr {
-		if s == val {
-			return true
-		}
-	}
-	return false
-}
-
-func inputFilter(s string) []string {
-	vocabulary := []string{"pwd", "ls", "cd", "whoami", "uname", "echo", "curl"}
-	split := strings.Fields(s)
-	if contains(split[0], vocabulary) {
-		return split
-	}
-	return []string{}
-}
 
 func main() {
-	rl, err := readline.New(buildPrompt() + " > ")
+	rl, err := readline.New(prompt.BuildPrompt() + " > ")
+
 	if err != nil {
 		panic(err)
 	}
@@ -87,12 +26,12 @@ func main() {
 
 	termenv.ClearScreen()
 
-	p.Printer("Welcome to Chistole", "welcome")
+	printer.Print("Welcome to Chistole", "welcome")
 
 	time.Sleep(1 * time.Second)
 
-	p.Printer("This lesson will be about", "")
-	p.Printer(`Lorem ipsum dolor sit amet, officia excepteur ex fugiat
+	printer.Print("This lesson will be about", "")
+	printer.Print(`Lorem ipsum dolor sit amet, officia excepteur ex fugiat
     reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse
     exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit
     nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor
@@ -106,13 +45,13 @@ func main() {
 
 	// time.Sleep(4 * time.Second)
 
-	p.Printer("\n\nWhen you are ready press any key to begin", "note")
+	printer.Print("\n\nWhen you are ready press any key to begin", "note")
 	fmt.Scanln() // Any key
 
 	termenv.ClearScreen()
 
-	p.Printer("Welcome to the shell", "")
-	p.Printer(`Try out some commands or type "exit"/"quit" to quit the shell`, "note")
+	printer.Print("Welcome to the shell", "")
+	printer.Print(`Try out some commands or type "exit"/"quit" to quit the shell`, "note")
 
 	// Readline loop
 	for {
@@ -121,7 +60,6 @@ func main() {
 			break
 		}
 		if line == "" {
-        p.Printer("spam", "")
 			continue
 		}
 
@@ -129,8 +67,8 @@ func main() {
             break
         }
 
-        p.Printer("spam", "")
-		command := inputFilter(line)
+        printer.Print("spam", "")
+		command := input.InputFilter(line)
 
 		var cmd *exec.Cmd
 
@@ -144,7 +82,7 @@ func main() {
 			output, _ := cmd.Output()
 			fmt.Print(string(output))
 		} else {
-			p.Printer("Let's stick to the basics", "error")
+			printer.Print("Let's stick to the basics", "error")
 		}
 
 	}
