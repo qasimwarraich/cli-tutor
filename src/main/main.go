@@ -8,27 +8,12 @@ import (
 	"strings"
 	"time"
 
+    p "cli-tutor/src/printer"
 	"github.com/chzyer/readline"
 	"github.com/muesli/termenv"
 )
 
-func printer(s string, string_type string) {
-	p := termenv.ColorProfile()
-	styled := termenv.String(s)
-	switch string_type {
-	case "welcome":
-		fmt.Println(styled.Foreground(p.Color("#FF2FF2")))
 
-	case "error":
-		fmt.Println(styled.Foreground(p.Color("#FF0000")))
-
-	case "note":
-		fmt.Println(styled.Foreground(p.Color("#FFFF00")))
-
-	default:
-		fmt.Println(styled.Foreground(p.Color("#00FF00")))
-	}
-}
 
 func promptStyler(s string, string_style string) string {
 	const (
@@ -85,7 +70,7 @@ func contains(s string, arr []string) bool {
 }
 
 func inputFilter(s string) []string {
-	vocabulary := []string{"pwd", "ls", "cd", "whoami", "uname", "echo"}
+	vocabulary := []string{"pwd", "ls", "cd", "whoami", "uname", "echo", "curl"}
 	split := strings.Fields(s)
 	if contains(split[0], vocabulary) {
 		return split
@@ -102,12 +87,12 @@ func main() {
 
 	termenv.ClearScreen()
 
-	printer("Welcome to Chistole", "welcome")
+	p.Printer("Welcome to Chistole", "welcome")
 
 	time.Sleep(1 * time.Second)
 
-	printer("This lesson will be about", "")
-	printer(`Lorem ipsum dolor sit amet, officia excepteur ex fugiat
+	p.Printer("This lesson will be about", "")
+	p.Printer(`Lorem ipsum dolor sit amet, officia excepteur ex fugiat
     reprehenderit enim labore culpa sint ad nisi Lorem pariatur mollit ex esse
     exercitation amet. Nisi anim cupidatat excepteur officia. Reprehenderit
     nostrud nostrud ipsum Lorem est aliquip amet voluptate voluptate dolor
@@ -121,13 +106,13 @@ func main() {
 
 	// time.Sleep(4 * time.Second)
 
-	printer("\n\nWhen you are ready press any key to begin", "note")
+	p.Printer("\n\nWhen you are ready press any key to begin", "note")
 	fmt.Scanln() // Any key
 
 	termenv.ClearScreen()
 
-	printer("Welcome to the shell", "")
-	printer(`Try out some commands or type "exit"/"quit" to quit the shell`, "note")
+	p.Printer("Welcome to the shell", "")
+	p.Printer(`Try out some commands or type "exit"/"quit" to quit the shell`, "note")
 
 	// Readline loop
 	for {
@@ -136,6 +121,7 @@ func main() {
 			break
 		}
 		if line == "" {
+        p.Printer("spam", "")
 			continue
 		}
 
@@ -143,6 +129,7 @@ func main() {
             break
         }
 
+        p.Printer("spam", "")
 		command := inputFilter(line)
 
 		var cmd *exec.Cmd
@@ -157,7 +144,7 @@ func main() {
 			output, _ := cmd.Output()
 			fmt.Print(string(output))
 		} else {
-			printer("Let's stick to the basics", "error")
+			p.Printer("Let's stick to the basics", "error")
 		}
 
 	}
