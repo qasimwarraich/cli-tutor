@@ -2,8 +2,7 @@ package input
 
 import "strings"
 
-func InputFilter(s string) []string {
-	vocabulary := []string{"pwd", "ls", "cd", "whoami", "uname", "echo", "curl"}
+func InputFilter(s string, vocabulary []string) []string {
 	split := strings.Fields(s)
 	if contains(split[0], vocabulary) {
 		return split
