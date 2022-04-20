@@ -48,8 +48,16 @@ func main() {
 		panic(err)
 	}
 	defer rl.Close()
+
 	// Readline loop
 	for {
+		currentTask := 0
+		printer.Print("\n\n"+lesson1.Tasks[currentTask].Description, "")
+
+		if currentTask > len(lesson1.Tasks) {
+			break
+		}
+
 		line, err := rl.Readline()
 		if err != nil { // io.EOF
 			break
