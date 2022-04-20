@@ -35,7 +35,7 @@ func main() {
 	printer.Print(lesson1.Name, "")
 	printer.Print("\n\n"+lesson1.Description, "")
 
-	printer.Print("\n\nWhen you are ready press any key to begin", "note")
+	printer.Print("\n\nWhen you are ready press the enter key to begin", "note")
 	fmt.Scanln() // Any key
 
 	termenv.ClearScreen()
