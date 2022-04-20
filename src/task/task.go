@@ -1,5 +1,5 @@
 package task
 
 type Task struct {
-    description string
+    Description string
 }

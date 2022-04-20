@@ -4,8 +4,8 @@ import "cli-tutor/src/task"
 
 
 type Lesson struct {
-    name string
-    vocabulary []string
-    description string
-    tasks []task.Task
+    Name string
+    Vocabulary []string
+    Description string
+    Tasks []task.Task
 }
