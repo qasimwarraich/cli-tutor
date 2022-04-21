@@ -23,8 +23,6 @@ func main() {
 	time.Sleep(1 * time.Second)
 
 	printer.Print("This lesson is titled:", "")
-	printer.Print(lesson1.Name, "")
-	printer.Print("\n\n"+lesson1.Description, "")
 	printer.Print(currentLesson.Name, "")
 	printer.Print("\n\n"+currentLesson.Description, "")
 
@@ -43,19 +41,39 @@ func main() {
 	defer rl.Close()
 
 	// Readline loop
+    currentTask := 0
 	for {
-		currentTask := 0
-		printer.Print("\n\n"+lesson1.Tasks[currentTask].Description, "")
 
-		if currentTask > len(lesson1.Tasks) {
+        if currentTask < 0 {
+            currentTask = 0
+        }
+
+		if currentTask >= len(currentLesson.Tasks) {
+            printer.Print("All Task Completed!, Exiting tutor!", "note")
 			break
 		}
+
+        tracker := fmt.Sprintf("\n\nCurrent Task [%d/%d]:", currentTask, len(currentLesson.Tasks) - 1)
+        printer.Print(tracker, "note")
+
+        printer.Print(currentLesson.Tasks[currentTask].Description, "")
 
 		line, err := rl.Readline()
 		if err != nil { // io.EOF
 			break
 		}
+
 		if line == "" {
+			continue
+		}
+
+		if line == "next" || line == "n" {
+            currentTask++
+			continue
+		}
+        
+		if line == "prev" || line == "p" {
+            currentTask--
 			continue
 		}
 
@@ -79,6 +97,5 @@ func main() {
 		} else {
 			printer.Print("Let's stick to the basics", "error")
 		}
-
 	}
 }
