@@ -78,6 +78,7 @@ func main() {
 		}
 
 		if line == "quit" || line == "exit" {
+            printer.Print("Exiting tutor, Good bye!", "note")
 			break
 		}
 
