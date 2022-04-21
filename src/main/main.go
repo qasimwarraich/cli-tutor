@@ -91,7 +91,7 @@ func main() {
 				args := command[1:]
 				cmd = exec.Command(command[0], args...)
 			} else {
-				cmd = exec.Command(line)
+				cmd = exec.Command(command[0])
 			}
 			output, _ := cmd.Output()
 			fmt.Print(string(output))
