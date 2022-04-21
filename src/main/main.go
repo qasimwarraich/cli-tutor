@@ -93,7 +93,7 @@ func main() {
 			} else {
 				cmd = exec.Command(command[0])
 			}
-			output, _ := cmd.Output()
+			output, _ := cmd.CombinedOutput()
 			fmt.Print(string(output))
 		} else {
 			printer.Print("Let's stick to the basics", "error")
