@@ -6,26 +6,17 @@ import (
 	"time"
 
 	"cli-tutor/src/input"
-	"cli-tutor/src/lesson"
+	"cli-tutor/src/lessons"
 	"cli-tutor/src/printer"
 	"cli-tutor/src/prompt"
-	"cli-tutor/src/task"
 
 	"github.com/chzyer/readline"
 	"github.com/muesli/termenv"
 )
 
 func main() {
-	lesson1 := new(lesson.Lesson)
 
-	lesson1.Name = "What is textual interaction"
-	lesson1.Vocabulary = []string{"pwd", "ls", "cd", "whoami", "uname", "echo", "curl"}
-	lesson1.Description = "This lesson will teach you about the basics of command line interaction"
-	lesson1.Tasks = []task.Task{
-		{
-			Description: "Some spam that will eventually be a task description.",
-		},
-	}
+    currentLesson := lesson1.GetLesson()
 
 	termenv.ClearScreen()
 	printer.Print("Welcome to Chistole", "welcome")
@@ -34,6 +25,8 @@ func main() {
 	printer.Print("This lesson is titled:", "")
 	printer.Print(lesson1.Name, "")
 	printer.Print("\n\n"+lesson1.Description, "")
+	printer.Print(currentLesson.Name, "")
+	printer.Print("\n\n"+currentLesson.Description, "")
 
 	printer.Print("\n\nWhen you are ready press the enter key to begin", "note")
 	fmt.Scanln() // Any key
@@ -70,7 +63,7 @@ func main() {
 			break
 		}
 
-		command := input.InputFilter(line, lesson1.Vocabulary)
+		command := input.InputFilter(line, currentLesson.Vocabulary)
 
 		var cmd *exec.Cmd
 
