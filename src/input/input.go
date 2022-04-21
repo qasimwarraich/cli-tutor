@@ -4,7 +4,7 @@ import "strings"
 
 func InputFilter(s string, vocabulary []string) []string {
 	split := strings.Fields(s)
-	if contains(split[0], vocabulary) {
+    if len(split) > 0 && contains(split[0], vocabulary) {
 		return split
 	}
 	return []string{}
