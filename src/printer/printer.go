@@ -18,6 +18,9 @@ func Print(s string, string_type string) {
 	case "note":
 		fmt.Println(styled.Foreground(p.Color("#FFFF00")))
 
+	case "tip":
+		fmt.Println(styled.Foreground(p.Color("#00FFF0")))
+
 	default:
 		fmt.Println(styled.Foreground(p.Color("#00FF00")))
 	}
