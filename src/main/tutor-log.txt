@@ -1,0 +1,58 @@
+2022/04/21 18:11:26 ls
+2022/04/21 18:11:28 ls
+2022/04/21 18:11:29 dd
+2022/04/21 18:11:32 n
+2022/04/21 18:11:32 n
+2022/04/21 18:11:33 n
+2022/04/21 18:11:33 n
+2022/04/21 18:13:08 [38;2;255;47;242mWelcome to Chistole[0m
+2022/04/21 18:13:09 [38;2;0;255;0mThis lesson is titled:[0m
+2022/04/21 18:13:09 [38;2;0;255;0mWhat is textual interaction?[0m
+2022/04/21 18:13:09 [38;2;0;255;0m
+
+This lesson will teach you about the basics of command line interaction[0m
+2022/04/21 18:13:09 [38;2;255;255;0m
+
+When you are ready press the enter key to begin[0m
+2022/04/21 18:13:09 [38;2;0;255;0mWelcome to the shell[0m
+2022/04/21 18:13:09 [38;2;255;255;0mTry out some commands or type 'exit'/'quit' to quit the shell[0m
+2022/04/21 18:13:09 [38;2;255;255;0m
+
+Current Task [0/3]:[0m
+2022/04/21 18:13:09 [38;2;0;255;0mWelcome to the command line, this may look intimidating 
+            but this tutorial will introduce you to the conceptd you need to be 
+            familiar with to thrive at the command line. 
+
+            This funny looking line below you is called the "prompt".
+            [0m
+2022/04/21 18:13:10 
+2022/04/21 18:13:10 [38;2;255;255;0m
+
+Current Task [0/3]:[0m
+2022/04/21 18:13:10 [38;2;0;255;0mWelcome to the command line, this may look intimidating 
+            but this tutorial will introduce you to the conceptd you need to be 
+            familiar with to thrive at the command line. 
+
+            This funny looking line below you is called the "prompt".
+            [0m
+2022/04/21 18:13:11 
+2022/04/21 18:13:11 [38;2;255;255;0m
+
+Current Task [0/3]:[0m
+2022/04/21 18:13:11 [38;2;0;255;0mWelcome to the command line, this may look intimidating 
+            but this tutorial will introduce you to the conceptd you need to be 
+            familiar with to thrive at the command line. 
+
+            This funny looking line below you is called the "prompt".
+            [0m
+2022/04/21 18:13:12 
+2022/04/21 18:13:12 [38;2;255;255;0m
+
+Current Task [0/3]:[0m
+2022/04/21 18:13:12 [38;2;0;255;0mWelcome to the command line, this may look intimidating 
+            but this tutorial will introduce you to the conceptd you need to be 
+            familiar with to thrive at the command line. 
+
+            This funny looking line below you is called the "prompt".
+            [0m
+2022/04/21 18:13:16 
