@@ -52,7 +52,7 @@ func main() {
 	// Readline loop
     currentTask := 0
 	for {
-
+        log.Print(rl.Config.Prompt)
         if currentTask < 0 {
             currentTask = 0
         }
