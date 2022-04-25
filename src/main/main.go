@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os/exec"
 	"time"
 
@@ -15,6 +16,13 @@ import (
 )
 
 func main() {
+
+    // NOTE: This seems unix only needs to be tested
+    logFile, err := os.OpenFile("tutor-log.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+    if err != nil {
+        log.Fatal(err)
+    }
+    log.SetOutput(logFile)
 
     currentLesson := lesson1.GetLesson()
 
@@ -59,6 +67,7 @@ func main() {
         printer.Print(currentLesson.Tasks[currentTask].Description, "")
 
 		line, err := rl.Readline()
+        printer.Print(line, "")
 		if err != nil { // io.EOF
 			break
 		}
@@ -94,7 +103,7 @@ func main() {
 				cmd = exec.Command(command[0])
 			}
 			output, _ := cmd.CombinedOutput()
-			fmt.Print(string(output))
+			printer.Print(string(output), "")
 		} else {
 			printer.Print("Let's stick to the basics", "error")
 		}
