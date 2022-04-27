@@ -8,7 +8,7 @@ import (
 	"time"
 
 	"cli-tutor/src/input"
-	lesson1 "cli-tutor/src/lessons"
+	"cli-tutor/src/lessons"
 	"cli-tutor/src/printer"
 	"cli-tutor/src/prompt"
 
@@ -17,15 +17,14 @@ import (
 )
 
 func main() {
+	// NOTE: This seems unix only needs to be tested
+	logFile, err := os.OpenFile("tutor-log.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+	if err != nil {
+		log.Fatal(err)
+	}
+	log.SetOutput(logFile)
 
-    // NOTE: This seems unix only needs to be tested
-    logFile, err := os.OpenFile("tutor-log.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
-    if err != nil {
-        log.Fatal(err)
-    }
-    log.SetOutput(logFile)
-
-    currentLesson := lesson1.GetLesson()
+	currentLesson := lesson1.GetLesson()
 
 	termenv.ClearScreen()
 	printer.Print("Welcome to Chistole", "welcome")
@@ -50,25 +49,25 @@ func main() {
 	defer rl.Close()
 
 	// Readline loop
-    currentTask := 0
+	currentTask := 0
 	for {
-        log.Print(rl.Config.Prompt)
-        if currentTask < 0 {
-            currentTask = 0
-        }
+		log.Print(rl.Config.Prompt)
+		if currentTask < 0 {
+			currentTask = 0
+		}
 
 		if currentTask >= len(currentLesson.Tasks) {
-            printer.Print("All Task Completed!, Exiting tutor!", "note")
+			printer.Print("All Task Completed!, Exiting tutor!", "note")
 			break
 		}
 
-        tracker := fmt.Sprintf("\n\nCurrent Task [%d/%d]:", currentTask, len(currentLesson.Tasks) - 1)
-        printer.Print(tracker, "note")
+		tracker := fmt.Sprintf("\n\nCurrent Task [%d/%d]:", currentTask, len(currentLesson.Tasks)-1)
+		printer.Print(tracker, "note")
 
-        printer.Print(currentLesson.Tasks[currentTask].Description, "")
+		printer.Print(currentLesson.Tasks[currentTask].Description, "")
 
 		line, err := rl.Readline()
-        printer.Print(line, "")
+		printer.Print(line, "")
 		if err != nil { // io.EOF
 			break
 		}
@@ -78,17 +77,17 @@ func main() {
 		}
 
 		if line == "next" || line == "n" {
-            currentTask++
+			currentTask++
 			continue
 		}
-        
+
 		if line == "prev" || line == "p" {
-            currentTask--
+			currentTask--
 			continue
 		}
 
 		if line == "quit" || line == "exit" {
-            printer.Print("Exiting tutor, Good bye!", "note")
+			printer.Print("Exiting tutor, Good bye!", "note")
 			break
 		}
 
