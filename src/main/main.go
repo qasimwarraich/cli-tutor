@@ -30,7 +30,8 @@ func main() {
 	printer.Print("Welcome to Chistole", "welcome")
 	time.Sleep(1 * time.Second)
 
-	printer.Print("\n\nThis lesson is titled:", "tip")
+	termenv.ClearScreen()
+	printer.Print("This lesson is titled:", "tip")
 	printer.Print(currentLesson.Name, "guide")
 	printer.Print("\n\n"+currentLesson.Description, "guide")
 
@@ -41,6 +42,7 @@ func main() {
 
 	printer.Print("Welcome to the shell", "tip")
 	printer.Print("Try out some commands or type 'exit'/'quit' to quit the shell", "note")
+	time.Sleep(1 * time.Second)
 
 	rl, err := readline.New(prompt.BuildPrompt() + " > ")
 	if err != nil {
@@ -61,7 +63,7 @@ func main() {
 			break
 		}
 
-		tracker := fmt.Sprintf("\n\nCurrent Task [%d/%d]:", currentTask, len(currentLesson.Tasks)-1)
+        tracker := fmt.Sprintf("\n\n%s : Current Task [%d/%d]:", currentLesson.Name, currentTask, len(currentLesson.Tasks)-1)
 		printer.Print(tracker, "note")
 
 		printer.Print(currentLesson.Tasks[currentTask].Description, "")
