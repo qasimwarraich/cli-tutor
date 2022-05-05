@@ -5,7 +5,6 @@ go 1.17
 require (
 	github.com/chzyer/readline v1.5.0
 	github.com/muesli/termenv v0.11.0
-	golang.org/x/term v0.0.0-20220411215600-e5f449aeb171
 )
 
 require (
