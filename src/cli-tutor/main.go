@@ -17,6 +17,7 @@ import (
 	"github.com/muesli/termenv"
 )
 
+
 func main() {
 	// NOTE: This seems unix only needs to be tested
 	logFile, err := os.OpenFile("tutor-log.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
@@ -35,20 +36,18 @@ func main() {
 	content, _ := os.ReadFile("expanded.md")
 
     currentLesson := lesson.ParseLesson(content)
+
+
 	termenv.ClearScreen()
 	printer.Print("Welcome to Chistole", "welcome")
 	time.Sleep(1 * time.Second)
-
 	termenv.ClearScreen()
 	printer.Print("This lesson is titled:", "tip")
 	printer.Print(currentLesson.Name, "guide")
 	printer.Print("\n\n"+currentLesson.Description, "guide")
-
 	printer.Print("\n\nWhen you are ready press the enter key to begin", "note")
 	fmt.Scanln() // Any key
-
 	termenv.ClearScreen()
-
 	printer.Print("Welcome to the shell", "tip")
 	printer.Print("Try out some commands or type 'exit'/'quit' to quit the shell", "note")
 	time.Sleep(1 * time.Second)
@@ -120,3 +119,4 @@ func main() {
 		}
 	}
 }
+
