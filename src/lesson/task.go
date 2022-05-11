@@ -1,4 +1,4 @@
-package task
+package lesson
 
 type Task struct {
     Description string
