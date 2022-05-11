@@ -1,15 +1,17 @@
-# Lesson 1
+# Basics of Textual Interaction
+
+This lesson will introduce you to the very basics of command line interaction.
 
 ## Step Help
 
-Welcome to the command line, this may look intimidating but, this
-tutorial will introduce you to the concepts you need to be familiar
-with to thrive at the command line.
+Welcome to the command line, this may look intimidating but, this  
+tutorial will introduce you to the concepts you need to be familiar  
+with to thrive at the command line. When you are ready type 'n' or 
+'next' and hit enter to continue. 
 
 ## Step Prompt
 
 This funny looking line below you is called the "prompt".
-
 It displays information about the:
 
 current user = {{GetUser}} ← You!
@@ -18,5 +20,5 @@ the current directory you are in = {{GetWd}} ← Where on you are on your machin
 
 ## Step CMD
 
-   Try it out for yourself!
-   Type the command %s, hit Enter and look at the result.
+Try it out for yourself!
+Type the command `whoami`, hit Enter and look at the result.
