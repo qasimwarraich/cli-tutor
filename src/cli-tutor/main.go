@@ -6,11 +6,12 @@ import (
 	"os"
 	"os/exec"
 	"time"
+	"text/template"
 
 	"cli-tutor/src/input"
-	"cli-tutor/src/lessons"
 	"cli-tutor/src/printer"
 	"cli-tutor/src/prompt"
+	"cli-tutor/src/lesson"
 
 	"github.com/chzyer/readline"
 	"github.com/muesli/termenv"
@@ -24,7 +25,14 @@ func main() {
 	}
 	log.SetOutput(logFile)
 
-	currentLesson := lesson1.GetLesson()
+    temp := template.Must(template.New("lesson1.md").Funcs(lesson.FuncMap).ParseFiles("./lessons/lesson1.md"))
+	f, _ := os.Create("expanded.md")
+	defer os.Remove(f.Name())
+	err = temp.Execute(f, "")
+    if err != nil{
+        log.Panic(err)
+    }
+	content, _ := os.ReadFile("expanded.md")
 
 	termenv.ClearScreen()
 	printer.Print("Welcome to Chistole", "welcome")
