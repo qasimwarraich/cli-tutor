@@ -34,6 +34,7 @@ func main() {
     }
 	content, _ := os.ReadFile("expanded.md")
 
+    currentLesson := lesson.ParseLesson(content)
 	termenv.ClearScreen()
 	printer.Print("Welcome to Chistole", "welcome")
 	time.Sleep(1 * time.Second)
