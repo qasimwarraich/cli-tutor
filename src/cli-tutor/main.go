@@ -13,6 +13,7 @@ import (
 	"cli-tutor/src/prompt"
 	"cli-tutor/src/lesson"
 
+	"github.com/charmbracelet/glamour"
 	"github.com/chzyer/readline"
 	"github.com/muesli/termenv"
 )
@@ -58,6 +59,13 @@ func main() {
 	}
 	defer rl.Close()
 
+	// Markdown renderer
+	r, _ := glamour.NewTermRenderer(
+		glamour.WithPreservedNewLines(),
+		glamour.WithStandardStyle("dark"),
+		glamour.WithWordWrap(130),
+	)
+
 	// Readline loop
 	currentTask := 0
 	for {
@@ -75,6 +83,8 @@ func main() {
 		printer.Print(tracker, "note")
 
 		printer.Print(currentLesson.Tasks[currentTask].Description, "")
+		out, _ := r.Render(currentLesson.Tasks[currentTask].Description)
+		printer.Print(out, "")
 
 		line, err := rl.Readline()
 		printer.Print(line, "")
