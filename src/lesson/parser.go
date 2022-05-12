@@ -55,11 +55,11 @@ func ParseLesson(content []byte) Lesson {
 					currentTask.Description = taskString
 					Lesson.Tasks = append(Lesson.Tasks, *currentTask)
 				}
-                if parentHeading.Level == 3 {
-                    vocabularyString := n.Text(content)
-                    vocabulary := strings.Split(string(vocabularyString), ", ")
-                    Lesson.Vocabulary = vocabulary
-                }
+				if parentHeading.Level == 3 {
+					vocabularyString := n.Text(content)
+					vocabulary := strings.Split(string(vocabularyString), ", ")
+					Lesson.Vocabulary = vocabulary
+				}
 			}
 		}
 		return s, err
