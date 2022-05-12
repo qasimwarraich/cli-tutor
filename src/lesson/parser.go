@@ -2,14 +2,11 @@ package lesson
 
 import (
 	"strings"
-	"text/template"
 
 	"github.com/yuin/goldmark"
 	"github.com/yuin/goldmark/ast"
 	"github.com/yuin/goldmark/text"
 )
-
-var temp *template.Template
 
 func assembleLines(n ast.Node, content []byte) string {
 	s := ""
