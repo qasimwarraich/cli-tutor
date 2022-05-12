@@ -25,3 +25,6 @@ the current directory you are in = `{{GetWd}}` ← Where on you are on your mach
 
 Try it out for yourself!
 Type the command `whoami`, hit Enter and look at the result.
+
+### Vocabulary
+pwd, ls, cd, whoami, uname, echo, curl, man, clear, less, vim
