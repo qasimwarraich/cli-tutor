@@ -5,19 +5,18 @@ import (
 	"log"
 	"os"
 	"os/exec"
-	"time"
 	"text/template"
+	"time"
 
 	"cli-tutor/src/input"
+	"cli-tutor/src/lesson"
 	"cli-tutor/src/printer"
 	"cli-tutor/src/prompt"
-	"cli-tutor/src/lesson"
 
 	"github.com/charmbracelet/glamour"
 	"github.com/chzyer/readline"
 	"github.com/muesli/termenv"
 )
-
 
 func main() {
 	// NOTE: This seems unix only needs to be tested
@@ -27,17 +26,17 @@ func main() {
 	}
 	log.SetOutput(logFile)
 
-    temp := template.Must(template.New("lesson1.md").Funcs(lesson.FuncMap).ParseFiles("./lessons/lesson1.md"))
+	temp := template.Must(template.New("lesson1.md").Funcs(lesson.FuncMap).ParseFiles("./lessons/lesson1.md"))
 	f, _ := os.Create("expanded.md")
 	defer os.Remove(f.Name())
+
 	err = temp.Execute(f, "")
-    if err != nil{
-        log.Panic(err)
-    }
+	if err != nil {
+		log.Panic(err)
+	}
+
 	content, _ := os.ReadFile("expanded.md")
-
-    currentLesson := lesson.ParseLesson(content)
-
+	currentLesson := lesson.ParseLesson(content)
 
 	termenv.ClearScreen()
 	printer.Print("Welcome to Chistole", "welcome")
@@ -79,10 +78,9 @@ func main() {
 			break
 		}
 
-        tracker := fmt.Sprintf("\n\n%s : Current Task [%d/%d]:", currentLesson.Name, currentTask, len(currentLesson.Tasks)-1)
+		tracker := fmt.Sprintf("\n\n%s : Current Task [%d/%d]:", currentLesson.Name, currentTask, len(currentLesson.Tasks)-1)
 		printer.Print(tracker, "note")
 
-		printer.Print(currentLesson.Tasks[currentTask].Description, "")
 		out, _ := r.Render(currentLesson.Tasks[currentTask].Description)
 		printer.Print(out, "")
 
@@ -129,4 +127,3 @@ func main() {
 		}
 	}
 }
-
