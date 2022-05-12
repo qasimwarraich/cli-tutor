@@ -1,6 +1,7 @@
 package lesson
 
 import (
+	"strings"
 	"text/template"
 
 	"github.com/yuin/goldmark"
@@ -57,11 +58,14 @@ func ParseLesson(content []byte) Lesson {
 					currentTask.Description = taskString
 					Lesson.Tasks = append(Lesson.Tasks, *currentTask)
 				}
+                if parentHeading.Level == 3 {
+                    vocabularyString := n.Text(content)
+                    vocabulary := strings.Split(string(vocabularyString), ", ")
+                    Lesson.Vocabulary = vocabulary
+                }
 			}
 		}
 		return s, err
 	})
-	// TODO: Extract this into Markdown document
-	Lesson.Vocabulary = []string{"pwd", "ls", "cd", "whoami", "uname", "echo", "curl", "man", "clear", "less", "vim"}
 	return *Lesson
 }
