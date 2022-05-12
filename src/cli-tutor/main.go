@@ -44,8 +44,8 @@ func main() {
 	time.Sleep(1 * time.Second)
 	termenv.ClearScreen()
 	printer.Print("This lesson is titled:", "tip")
-	printer.Print(currentLesson.Name, "guide")
-	printer.Print("\n\n"+currentLesson.Description, "guide")
+	printer.Print(currentLesson.Name, "")
+	printer.Print("\n"+currentLesson.Description, "guide")
 	printer.Print("\n\nWhen you are ready press the enter key to begin", "note")
 	fmt.Scanln() // Any key
 	termenv.ClearScreen()
