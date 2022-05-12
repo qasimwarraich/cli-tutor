@@ -10,6 +10,15 @@ import (
 
 var temp *template.Template
 
+func assembleLines(n ast.Node, content []byte) string {
+	s := ""
+	for i := 0; i < n.Lines().Len(); i++ {
+		line := n.Lines().At(i)
+		s = s + string(line.Value(content))
+	}
+	return s
+}
+
 func ParseLesson(content []byte) Lesson {
 	Lesson := new(Lesson)
 	parsed := goldmark.DefaultParser().Parse(text.NewReader(content))
@@ -32,18 +41,27 @@ func ParseLesson(content []byte) Lesson {
 			if n.PreviousSibling().Kind() == ast.KindHeading {
 				parentHeading := n.PreviousSibling().(*ast.Heading)
 				if parentHeading.Level == 1 {
-					Lesson.Description = string(n.Text(content))
+					lessonString := assembleLines(n, content)
+					Lesson.Description = lessonString
 				}
 				if parentHeading.Level == 2 {
 					currentTask := new(Task)
-					currentTask.Description = string(n.Text(content))
+					taskString := assembleLines(n, content)
+
+					// Handles nested paragraphs
+					if n.NextSibling() != nil && n.NextSibling().Kind() == ast.KindParagraph {
+						for p := n; p.NextSibling().Kind() == ast.KindParagraph; p = p.NextSibling() {
+							taskString = taskString + "\n\n" + assembleLines(p.NextSibling(), content)
+						}
+					}
+					currentTask.Description = taskString
 					Lesson.Tasks = append(Lesson.Tasks, *currentTask)
 				}
 			}
 		}
 		return s, err
 	})
-    //TODO: Extract this into Markdown document
+	// TODO: Extract this into Markdown document
 	Lesson.Vocabulary = []string{"pwd", "ls", "cd", "whoami", "uname", "echo", "curl", "man", "clear", "less", "vim"}
 	return *Lesson
 }
