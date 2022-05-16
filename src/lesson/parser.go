@@ -47,9 +47,13 @@ func ParseLesson(content []byte) Lesson {
 					taskString := assembleLines(n, content)
 
 					// Handles nested paragraphs
-					if n.NextSibling() != nil && n.NextSibling().Kind() == ast.KindParagraph {
-						for p := n; p.NextSibling().Kind() == ast.KindParagraph; p = p.NextSibling() {
-							taskString = taskString + "\n\n" + assembleLines(p.NextSibling(), content)
+					if n.NextSibling() != nil && n.NextSibling().Kind() != ast.KindHeading {
+						for p := n; p.NextSibling().Kind() != ast.KindHeading; p = p.NextSibling() {
+							if p.NextSibling().Kind() == ast.KindFencedCodeBlock {
+								taskString = "```txt\n" + assembleLines(p.NextSibling(), content) + "\n```"
+							} else {
+								taskString = taskString + "\n\n" + assembleLines(p.NextSibling(), content)
+							}
 						}
 					}
 					currentTask.Description = taskString
