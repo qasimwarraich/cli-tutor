@@ -20,7 +20,7 @@ import (
 
 func main() {
 	// NOTE: This seems unix only needs to be tested
-	logFile, err := os.OpenFile("tutor-log.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0666)
+	logFile, err := os.OpenFile("tutor-log.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0o666)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -78,7 +78,7 @@ func main() {
 			break
 		}
 
-		tracker := fmt.Sprintf("\n\n%s : Current Task [%d/%d]:", currentLesson.Name, currentTask, len(currentLesson.Tasks)-1)
+		tracker := fmt.Sprintf("\n\n%s : %s [%d/%d]:", currentLesson.Name, currentLesson.Tasks[currentTask].Title, currentTask, len(currentLesson.Tasks)-1)
 		printer.Print(tracker, "note")
 
 		out, _ := r.Render(currentLesson.Tasks[currentTask].Description)
