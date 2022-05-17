@@ -28,7 +28,7 @@ func ParseLesson(content []byte) Lesson {
 		}
 		var err error
 
-	if n.Kind() == ast.KindHeading {
+		if n.Kind() == ast.KindHeading {
 			currentHeading := n.(*ast.Heading)
 			if currentHeading.Level == 1 {
 				Lesson.Name = string(currentHeading.Text(content))
@@ -36,7 +36,7 @@ func ParseLesson(content []byte) Lesson {
 		}
 
 		if n.Kind() == ast.KindParagraph {
-			if n.PreviousSibling().Kind() == ast.KindHeading {
+			if n.PreviousSibling() != nil && n.PreviousSibling().Kind() == ast.KindHeading {
 				parentHeading := n.PreviousSibling().(*ast.Heading)
 				if parentHeading.Level == 1 {
 					lessonString := assembleLines(n, content)
@@ -44,14 +44,22 @@ func ParseLesson(content []byte) Lesson {
 				}
 				if parentHeading.Level == 2 {
 					currentTask := new(Task)
-                    currentTask.Title = string(parentHeading.Text(content))
+					currentTask.Title = string(parentHeading.Text(content))
 					taskString := assembleLines(n, content)
 
 					// Handles nested paragraphs
 					if n.NextSibling() != nil && n.NextSibling().Kind() != ast.KindHeading {
-						for p := n; p.NextSibling().Kind() != ast.KindHeading; p = p.NextSibling() {
+						for p := n; p.NextSibling() != nil && p.NextSibling().Kind() != ast.KindHeading; p = p.NextSibling() {
+							if p.NextSibling().Kind() == ast.KindCodeBlock {
+								currentTask.Expected = assembleLines(p.NextSibling(), content)
+								continue
+							}
+							if p.NextSibling().Kind() == ast.KindBlockquote {
+								currentTask.Expected = assembleLines(p.NextSibling().FirstChild(), content)
+								continue
+							}
 							if p.NextSibling().Kind() == ast.KindFencedCodeBlock {
-								taskString = taskString +  "\n```txt\n" + assembleLines(p.NextSibling(), content) + "\n```"
+								taskString = taskString + "\n```txt\n" + assembleLines(p.NextSibling(), content) + "\n```"
 							} else {
 								taskString = taskString + "\n\n" + assembleLines(p.NextSibling(), content)
 							}

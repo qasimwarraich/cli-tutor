@@ -120,10 +120,24 @@ func main() {
 			} else {
 				cmd = exec.Command(command[0])
 			}
-			output, _ := cmd.CombinedOutput()
-			printer.Print(string(output), "")
 		} else {
 			printer.Print("Let's stick to the basics", "error")
+			continue
+		}
+		output, _ := cmd.CombinedOutput()
+		printer.Print(string(output), "")
+		if currentLesson.Tasks[currentTask].Expected != "" {
+			if cmd == nil {
+				continue
+			}
+
+			if string(output) == currentLesson.Tasks[currentTask].Expected+"\n" {
+				printer.Print("Yay you did it!, Let's move to the next task.", "guide")
+				time.Sleep(2 * time.Second)
+				currentTask++
+			} else {
+				printer.Print("That isn't quite right", "error")
+			}
 		}
 	}
 }
