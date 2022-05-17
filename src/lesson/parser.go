@@ -28,7 +28,8 @@ func ParseLesson(content []byte) Lesson {
 		}
 		var err error
 
-		if n.Kind() == ast.KindHeading {
+        n.Dump(content, 2)
+	if n.Kind() == ast.KindHeading {
 			currentHeading := n.(*ast.Heading)
 			if currentHeading.Level == 1 {
 				Lesson.Name = string(currentHeading.Text(content))
@@ -50,7 +51,7 @@ func ParseLesson(content []byte) Lesson {
 					if n.NextSibling() != nil && n.NextSibling().Kind() != ast.KindHeading {
 						for p := n; p.NextSibling().Kind() != ast.KindHeading; p = p.NextSibling() {
 							if p.NextSibling().Kind() == ast.KindFencedCodeBlock {
-								taskString = "```txt\n" + assembleLines(p.NextSibling(), content) + "\n```"
+								taskString = taskString +  "\n```txt\n" + assembleLines(p.NextSibling(), content) + "\n```"
 							} else {
 								taskString = taskString + "\n\n" + assembleLines(p.NextSibling(), content)
 							}
