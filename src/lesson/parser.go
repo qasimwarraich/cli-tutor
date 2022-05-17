@@ -44,6 +44,7 @@ func ParseLesson(content []byte) Lesson {
 				}
 				if parentHeading.Level == 2 {
 					currentTask := new(Task)
+                    currentTask.Title = string(parentHeading.Text(content))
 					taskString := assembleLines(n, content)
 
 					// Handles nested paragraphs
