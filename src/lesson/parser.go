@@ -28,7 +28,6 @@ func ParseLesson(content []byte) Lesson {
 		}
 		var err error
 
-        n.Dump(content, 2)
 	if n.Kind() == ast.KindHeading {
 			currentHeading := n.(*ast.Heading)
 			if currentHeading.Level == 1 {
