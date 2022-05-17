@@ -43,13 +43,13 @@ Type `n` or `next` and hit enter to continue.
 
 Commands can generally be supplied to the shell by using the following format:
 
-`command` `-flags` `arguments`
+`command` `--flags` `arguments`
 
 e.g. `wc --lines file.txt `
 
 A `command` is actually a program the shell can run. In the above example the program being called is `wc`, a word counting program.
 
-`-flags` are additional cues that can be provided to the program to alter its behaviour. These can be optional, but almost all command line programs have flags to help produce the output the user wants. In the above example we supply the `--lines` flag to let `wc` know we are only interested in the line count and not the rest of the information the program can produce. 
+`--flags` are additional cues that can be provided to the program to alter its behaviour. These can be optional, but almost all command line programs have flags to help produce the output the user wants. In the above example we supply the `--lines` flag to let `wc` know we are only interested in the line count and not the rest of the information the program can produce.
 
 Finally, we have the `argument` which is the input to the program, in the case of our example, a file named `file.txt`.
 
