@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"os/exec"
 	"text/template"
 	"time"
 
@@ -85,7 +84,7 @@ func main() {
 		printer.Print(out, "")
 
 		line, err := rl.Readline()
-		printer.Print(line, "")
+		// printer.Print(line, "")
 		if err != nil { // io.EOF
 			break
 		}
@@ -109,29 +108,16 @@ func main() {
 			break
 		}
 
-		command := input.InputFilter(line, currentLesson.Vocabulary)
-
-		var cmd *exec.Cmd
-
-		if len(command) > 0 {
-			if len(command) > 1 {
-				args := command[1:]
-				cmd = exec.Command(command[0], args...)
-			} else {
-				cmd = exec.Command(command[0])
-			}
-		} else {
+		filtered_input := input.InputFilter(line, currentLesson.Vocabulary)
+		if len(filtered_input) == 0 {
 			printer.Print("Let's stick to the basics", "error")
 			continue
 		}
-		output, _ := cmd.CombinedOutput()
+		output := input.RunCommand(filtered_input)
 		printer.Print(string(output), "")
-		if currentLesson.Tasks[currentTask].Expected != "" {
-			if cmd == nil {
-				continue
-			}
 
-			if string(output) == currentLesson.Tasks[currentTask].Expected+"\n" {
+		if currentLesson.Tasks[currentTask].Expected != "" {
+			if output == currentLesson.Tasks[currentTask].Expected+"\n" {
 				printer.Print("Yay you did it!, Let's move to the next task.", "guide")
 				time.Sleep(2 * time.Second)
 				currentTask++
