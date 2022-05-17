@@ -61,6 +61,8 @@ Type `n` or `next` and hit enter to continue.
 Try it out for yourself!
 Type the command `whoami`, hit Enter and look at the result.
 
+> {{GetUser}}
+
 ## Prompt
 
 This funny looking line below you is called the `prompt`.
