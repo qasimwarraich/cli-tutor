@@ -49,12 +49,15 @@ e.g. `wc --lines file.txt `
 
 A `command` is actually a program the shell can run. In the above example the program being called is `wc`, a word counting program.
 
-`--flags` are additional cues that can be provided to the program to alter its behaviour. These can be optional, but almost all command line programs have flags to help produce the output the user wants. In the above example we supply the `--lines` flag to let `wc` know we are only interested in the line count and not the rest of the information the program can produce.
+`--flags` are additional cues that can be provided to the program to alter its
+behaviour. These can be optional, but almost all command line programs have
+flags to help produce the output the user wants. In the above example we supply
+the `--lines` flag to let `wc` know we are only interested in the line count
+and not the rest of the information the program can produce.
 
 Finally, we have the `argument` which is the input to the program, in the case of our example, a file named `file.txt`.
 
 Type `n` or `next` and hit enter to continue.
-
 
 ## Try a Command
 
@@ -63,15 +66,17 @@ Type the command `whoami`, hit Enter and look at the result.
 
 > {{GetUser}}
 
-## Prompt
+## A note about getting overwhelmed
 
-This funny looking line below you is called the `prompt`.
+If at any point the amount of text on the screen becomes overwhelming the shell
+has an inbuilt command called `clear` that clears all the text on the screen.
+Helpfully, this tutor program will ensure to re-display the text for the step
+you are currently on. Give it a try!
 
-It displays information about the:
+This is the end of the lesson, feel free to continue playing around with commands we have covered in this lesson:
+`whoami` and `clear`.
 
-current user = `{{GetUser}}`← You!
-host machine = `{{GetHost}}` ← Your machine
-the current directory you are in = `{{GetWd}}` ← Where on you are on your machine.
+When you are done press type `n`, `next` or `quit` to end this lesson.
 
 ### Vocabulary
 
