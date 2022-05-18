@@ -1,29 +1,34 @@
 package lesson
 
 import (
-    "os"
-    "os/user"
+	"os"
+	"os/user"
 	"text/template"
 )
 
+func testFunc() string {
+	return "TEST"
+}
+
 func getUser() string {
-    current_user, _ := user.Current()
-    username := current_user.Username
-    return username
+	current_user, _ := user.Current()
+	username := current_user.Username
+	return username
 }
 
 func getHost() string {
-    hostname, _ := os.Hostname()
-    return hostname
+	hostname, _ := os.Hostname()
+	return hostname
 }
 
 func getWd() string {
-    cwd, _ := os.Getwd()
-    return cwd
+	cwd, _ := os.Getwd()
+	return cwd
 }
 
 var FuncMap = template.FuncMap{
-    "GetUser": getUser,
-    "GetHost": getHost,
-    "GetWd": getWd,
+	"TestFunc": testFunc,
+	"GetUser":  getUser,
+	"GetHost":  getHost,
+	"GetWd":    getWd,
 }
