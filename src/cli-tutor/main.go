@@ -3,6 +3,8 @@ package main
 import (
 	"embed"
 	"fmt"
+	"io/fs"
+	"io/ioutil"
 	"log"
 	"os"
 	"text/template"
@@ -54,6 +56,13 @@ func main() {
 	printer.Print("Welcome to the shell", "tip")
 	printer.Print("Try out some commands or type 'exit'/'quit' to quit the shell", "note")
 	time.Sleep(1 * time.Second)
+
+	testfileContent, err := fs.ReadFile(embeddedFS, "lessons/lesson-workspace/file.txt")
+	if err != nil {
+		log.Fatal(err)
+	}
+	ioutil.WriteFile("file.txt", testfileContent, 0o644)
+	defer os.Remove("file.txt")
 
 	rl, err := readline.New(prompt.BuildPrompt() + " > ")
 	if err != nil {
