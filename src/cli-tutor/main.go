@@ -91,7 +91,7 @@ func main() {
 		}
 
 		tracker := fmt.Sprintf("\n\n%s : %s [%d/%d]:", currentLesson.Name, currentLesson.Tasks[currentTask].Title, currentTask, len(currentLesson.Tasks)-1)
-		printer.Print(tracker, "note")
+		printer.Print(tracker, "guide")
 
 		out, _ := r.Render(currentLesson.Tasks[currentTask].Description)
 		printer.Print(out, "")
