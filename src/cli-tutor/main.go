@@ -7,6 +7,7 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"strings"
 	"text/template"
 	"time"
 
@@ -130,7 +131,7 @@ func main() {
 		printer.Print(string(output), "")
 
 		if currentLesson.Tasks[currentTask].Expected != "" {
-			if output == currentLesson.Tasks[currentTask].Expected+"\n" {
+			if strings.TrimSpace(output) == currentLesson.Tasks[currentTask].Expected {
 				printer.Print("Yay you did it!, Let's move to the next task.", "guide")
 				time.Sleep(2 * time.Second)
 				currentTask++
