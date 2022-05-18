@@ -98,7 +98,7 @@ func main() {
 		printer.Print(out, "")
 
 		line, err := rl.Readline()
-		// printer.Print(line, "")
+		log.Print(line)
 		if err != nil { // io.EOF
 			break
 		}
