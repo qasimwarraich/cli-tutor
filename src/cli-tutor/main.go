@@ -29,7 +29,6 @@ func main() {
 	}
 	log.SetOutput(logFile)
 
-	// temp := template.Must(template.New("lesson1.md").Funcs(lesson.FuncMap).ParseFiles("./lessons/lesson1.md"))
 	temp := template.Must(template.New("lesson1.md").Funcs(lesson.FuncMap).ParseFS(embeddedFS, "lessons/lesson1.md"))
 	f, _ := os.Create("expanded.md")
 	defer os.Remove(f.Name())
