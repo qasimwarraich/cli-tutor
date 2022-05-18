@@ -5,7 +5,6 @@ import (
 	"os/user"
 )
 
- 
 func StylePrompt(s string, string_style string) string {
 	const (
 		colorReset   = "\033[0m"
@@ -21,7 +20,7 @@ func StylePrompt(s string, string_style string) string {
 
 	case "magenta":
 		return colorMagenta + s + colorReset
- 
+
 	case "red":
 		return colorRed + s + colorReset
 
@@ -35,8 +34,6 @@ func StylePrompt(s string, string_style string) string {
 		return colorGreen + s + colorReset
 	}
 }
-// TODO: Make a more generic styling function like the printer
-
 
 func BuildPrompt() string {
 	user, _ := user.Current()
