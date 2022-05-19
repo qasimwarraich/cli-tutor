@@ -7,3 +7,5 @@ all:
 build:
 	${CC} build -o ./bin ${MAIN}
 
+test:
+	gotest -v ./src/...
