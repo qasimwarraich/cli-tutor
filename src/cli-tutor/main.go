@@ -11,10 +11,9 @@ import (
 	"cli-tutor/src/lesson"
 	"cli-tutor/src/printer"
 	"cli-tutor/src/prompt"
+	"cli-tutor/src/tui"
 
-	"github.com/charmbracelet/glamour"
 	"github.com/chzyer/readline"
-	"github.com/muesli/termenv"
 )
 
 
@@ -25,22 +24,6 @@ func main() {
 		log.Fatal(err)
 	}
 	log.SetOutput(logFile)
-
-
-
-	termenv.ClearScreen()
-	printer.Print("Welcome to Chistole", "welcome")
-	time.Sleep(1 * time.Second)
-	termenv.ClearScreen()
-	printer.Print("This lesson is titled:", "tip")
-	printer.Print(currentLesson.Name, "")
-	printer.Print("\n"+currentLesson.Description, "guide")
-	printer.Print("\n\nWhen you are ready press the enter key to begin", "note")
-	fmt.Scanln() // Any key
-	termenv.ClearScreen()
-	printer.Print("Welcome to the shell", "tip")
-	printer.Print("Try out some commands or type 'exit'/'quit' to quit the shell", "note")
-	time.Sleep(1 * time.Second)
 
 	// Load lesson and create example lesson file
 	currentLesson := lesson.LoadLesson()
@@ -53,13 +36,6 @@ func main() {
 		panic(err)
 	}
 	defer rl.Close()
-
-	// Markdown renderer
-	r, _ := glamour.NewTermRenderer(
-		glamour.WithPreservedNewLines(),
-		glamour.WithStandardStyle("dark"),
-		glamour.WithWordWrap(130),
-	)
 
 	// Readline loop
 	currentTask := 0
