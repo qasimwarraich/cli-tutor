@@ -36,5 +36,4 @@ func createExampleFile() {
 		log.Fatal(err)
 	}
 	ioutil.WriteFile("file.txt", testfileContent, 0o644)
-	// defer os.Remove("file.txt")
 }
