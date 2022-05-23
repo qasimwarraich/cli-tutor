@@ -1,83 +1,42 @@
 package main
 
 import (
-	"embed"
 	"fmt"
-	"io/fs"
-	"io/ioutil"
 	"log"
 	"os"
 	"strings"
-	"text/template"
 	"time"
 
 	"cli-tutor/src/input"
 	"cli-tutor/src/lesson"
 	"cli-tutor/src/printer"
 	"cli-tutor/src/prompt"
+	"cli-tutor/src/tui"
 
-	"github.com/charmbracelet/glamour"
 	"github.com/chzyer/readline"
-	"github.com/muesli/termenv"
 )
 
-//go:embed lessons
-var embeddedFS embed.FS
 
 func main() {
-	// NOTE: This seems unix only needs to be tested
+	// Init Logging
 	logFile, err := os.OpenFile("tutor-log.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0o666)
 	if err != nil {
 		log.Fatal(err)
 	}
 	log.SetOutput(logFile)
 
-	temp := template.Must(template.New("lesson1.md").Funcs(lesson.FuncMap).ParseFS(embeddedFS, "lessons/lesson1.md"))
-	// temp := template.Must(template.New("lesson2.md").Funcs(lesson.FuncMap).ParseFS(embeddedFS, "lessons/lesson2.md"))
-	f, _ := os.Create("expanded.md")
-	defer os.Remove(f.Name())
-
-	err = temp.Execute(f, "")
-	if err != nil {
-		log.Panic(err)
-	}
-
-	content, _ := os.ReadFile("expanded.md")
-	currentLesson := lesson.ParseLesson(content)
-
-	termenv.ClearScreen()
-	printer.Print("Welcome to Chistole", "welcome")
-	time.Sleep(1 * time.Second)
-	termenv.ClearScreen()
-	printer.Print("This lesson is titled:", "tip")
-	printer.Print(currentLesson.Name, "")
-	printer.Print("\n"+currentLesson.Description, "guide")
-	printer.Print("\n\nWhen you are ready press the enter key to begin", "note")
-	fmt.Scanln() // Any key
-	termenv.ClearScreen()
-	printer.Print("Welcome to the shell", "tip")
-	printer.Print("Try out some commands or type 'exit'/'quit' to quit the shell", "note")
-	time.Sleep(1 * time.Second)
-
-	testfileContent, err := fs.ReadFile(embeddedFS, "lessons/lesson-workspace/file.txt")
-	if err != nil {
-		log.Fatal(err)
-	}
-	ioutil.WriteFile("file.txt", testfileContent, 0o644)
+	// Load lesson and create example lesson file
+	currentLesson := lesson.LoadLesson()
 	defer os.Remove("file.txt")
+	tui.PrintWelcome(currentLesson)
+	r := tui.GetRenderer()
 
+	// Init Readline
 	rl, err := readline.New(prompt.BuildPrompt() + " > ")
 	if err != nil {
 		panic(err)
 	}
 	defer rl.Close()
-
-	// Markdown renderer
-	r, _ := glamour.NewTermRenderer(
-		glamour.WithPreservedNewLines(),
-		glamour.WithStandardStyle("dark"),
-		glamour.WithWordWrap(130),
-	)
 
 	// Readline loop
 	currentTask := 0
