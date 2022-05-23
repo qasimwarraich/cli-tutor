@@ -18,7 +18,7 @@ import (
 
 
 func main() {
-	// NOTE: This seems unix only needs to be tested
+	// Init Logging
 	logFile, err := os.OpenFile("tutor-log.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0o666)
 	if err != nil {
 		log.Fatal(err)
@@ -31,6 +31,7 @@ func main() {
 	tui.PrintWelcome(currentLesson)
 	r := tui.GetRenderer()
 
+	// Init Readline
 	rl, err := readline.New(prompt.BuildPrompt() + " > ")
 	if err != nil {
 		panic(err)
