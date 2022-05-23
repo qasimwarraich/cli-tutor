@@ -4,8 +4,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"strings"
-	"time"
 
 	"cli-tutor/src/input"
 	"cli-tutor/src/lesson"
@@ -15,7 +13,6 @@ import (
 
 	"github.com/chzyer/readline"
 )
-
 
 func main() {
 	// Init Logging
@@ -87,17 +84,13 @@ func main() {
 			printer.Print("Let's stick to the basics", "error")
 			continue
 		}
+
+		/* As a final step if the command is in our allowed vocabulary we run
+		 * it as a system call, display it's output and validate it against the
+		 * expected value on the lesson if it exists. */
 		output := input.RunCommand(filtered_input)
 		printer.Print(string(output), "")
+		input.ValidateCommand(output, currentLesson, &currentTask)
 
-		if currentLesson.Tasks[currentTask].Expected != "" {
-			if strings.TrimSpace(output) == currentLesson.Tasks[currentTask].Expected {
-				printer.Print("Yay you did it!, Let's move to the next task.", "guide")
-				time.Sleep(2 * time.Second)
-				currentTask++
-			} else {
-				printer.Print("That isn't quite right", "error")
-			}
-		}
 	}
 }
