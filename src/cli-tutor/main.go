@@ -1,14 +1,10 @@
 package main
 
 import (
-	"embed"
 	"fmt"
-	"io/fs"
-	"io/ioutil"
 	"log"
 	"os"
 	"strings"
-	"text/template"
 	"time"
 
 	"cli-tutor/src/input"
@@ -21,8 +17,6 @@ import (
 	"github.com/muesli/termenv"
 )
 
-//go:embed lessons
-var embeddedFS embed.FS
 
 func main() {
 	// NOTE: This seems unix only needs to be tested
@@ -32,18 +26,7 @@ func main() {
 	}
 	log.SetOutput(logFile)
 
-	temp := template.Must(template.New("lesson1.md").Funcs(lesson.FuncMap).ParseFS(embeddedFS, "lessons/lesson1.md"))
-	// temp := template.Must(template.New("lesson2.md").Funcs(lesson.FuncMap).ParseFS(embeddedFS, "lessons/lesson2.md"))
-	f, _ := os.Create("expanded.md")
-	defer os.Remove(f.Name())
 
-	err = temp.Execute(f, "")
-	if err != nil {
-		log.Panic(err)
-	}
-
-	content, _ := os.ReadFile("expanded.md")
-	currentLesson := lesson.ParseLesson(content)
 
 	termenv.ClearScreen()
 	printer.Print("Welcome to Chistole", "welcome")
@@ -59,12 +42,11 @@ func main() {
 	printer.Print("Try out some commands or type 'exit'/'quit' to quit the shell", "note")
 	time.Sleep(1 * time.Second)
 
-	testfileContent, err := fs.ReadFile(embeddedFS, "lessons/lesson-workspace/file.txt")
-	if err != nil {
-		log.Fatal(err)
-	}
-	ioutil.WriteFile("file.txt", testfileContent, 0o644)
+	// Load lesson and create example lesson file
+	currentLesson := lesson.LoadLesson()
 	defer os.Remove("file.txt")
+	tui.PrintWelcome(currentLesson)
+	r := tui.GetRenderer()
 
 	rl, err := readline.New(prompt.BuildPrompt() + " > ")
 	if err != nil {
