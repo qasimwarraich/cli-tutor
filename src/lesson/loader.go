@@ -12,9 +12,9 @@ import (
 //go:embed lessons
 var embeddedFS embed.FS
 
-func LoadLesson() Lesson {
+func LoadLesson(selected string) Lesson {
 	// temp := template.Must(template.New("lesson1.md").Funcs(FuncMap).ParseFS(embeddedFS, "lessons/lesson1.md"))
-	temp := template.Must(template.New("lesson2.md").Funcs(FuncMap).ParseFS(embeddedFS, "lessons/lesson2.md"))
+	temp := template.Must(template.New(selected).Funcs(FuncMap).ParseFS(embeddedFS, "lessons/"+selected))
 	f, _ := os.Create("expanded.md")
 	defer os.Remove(f.Name())
 
