@@ -3,11 +3,14 @@ package tui
 import (
 	"fmt"
 	"os"
+	"time"
 
+	"cli-tutor/src/printer"
 	"cli-tutor/src/tui/lessonui"
 	"cli-tutor/src/tui/menuui"
 
 	tea "github.com/charmbracelet/bubbletea"
+	"github.com/muesli/termenv"
 )
 
 type sessionState int
@@ -26,6 +29,9 @@ type MainModel struct {
 }
 
 func (m MainModel) Init() tea.Cmd {
+	termenv.ClearScreen()
+	printer.Print("Welcome to Chistole", "welcome")
+	time.Sleep(1 * time.Second)
 	return nil
 }
 
