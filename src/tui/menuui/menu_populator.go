@@ -30,7 +30,6 @@ func ParseLesson(name string, content []byte) item {
 	parsed := goldmark.DefaultParser().Parse(text.NewReader(content))
 
 	ast.Walk(parsed, func(n ast.Node, entering bool) (ast.WalkStatus, error) {
-		n.Dump(content, 5)
 		s := ast.WalkStatus(ast.WalkContinue)
 		if !entering || n.Type() == ast.TypeDocument {
 			return ast.WalkContinue, nil
