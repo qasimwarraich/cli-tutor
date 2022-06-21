@@ -48,6 +48,7 @@ func (m MainModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		m.state = lessonView
 		m.lesson = lessonui.New(msg.SelectedLesson)
 
+		termenv.ClearScreen()
 	}
 
 	switch m.state {
