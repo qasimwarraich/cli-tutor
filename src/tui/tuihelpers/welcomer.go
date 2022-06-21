@@ -1,7 +1,7 @@
 package tuihelpers
 
 import (
-	"fmt"
+	"os"
 	"time"
 
 	"cli-tutor/src/lesson"
@@ -11,13 +11,12 @@ import (
 )
 
 func PrintWelcome(currentLesson lesson.Lesson) {
-	termenv.ClearScreen()
 	printer.Print("This lesson is titled:", "tip")
 	printer.Print(currentLesson.Name, "")
 	printer.Print("\n"+currentLesson.Description, "guide")
-	// TODO: Fix any key bug
-	printer.Print("\n\nWhen you are ready press the enter key to begin", "note")
-	fmt.Scanln() // Any key
+	printer.Print("\n\nWhen you are ready press any key to begin", "note")
+	b := make([]byte, 1) // Any Key
+	os.Stdin.Read(b)
 	termenv.ClearScreen()
 	printer.Print("Welcome to the shell", "tip")
 	printer.Print("Try out some commands or type 'exit'/'quit' to quit the shell", "note")
