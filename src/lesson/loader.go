@@ -10,11 +10,10 @@ import (
 )
 
 //go:embed lessons
-var embeddedFS embed.FS
+var EmbeddedFS embed.FS
 
-func LoadLesson() Lesson {
-	// temp := template.Must(template.New("lesson1.md").Funcs(FuncMap).ParseFS(embeddedFS, "lessons/lesson1.md"))
-	temp := template.Must(template.New("lesson2.md").Funcs(FuncMap).ParseFS(embeddedFS, "lessons/lesson2.md"))
+func LoadLesson(selected string) Lesson {
+	temp := template.Must(template.New(selected).Funcs(FuncMap).ParseFS(EmbeddedFS, "lessons/"+selected))
 	f, _ := os.Create("expanded.md")
 	defer os.Remove(f.Name())
 
@@ -31,7 +30,7 @@ func LoadLesson() Lesson {
 }
 
 func createExampleFile() {
-	testfileContent, err := fs.ReadFile(embeddedFS, "lessons/lesson-workspace/file.txt")
+	testfileContent, err := fs.ReadFile(EmbeddedFS, "lessons/lesson-workspace/file.txt")
 	if err != nil {
 		log.Fatal(err)
 	}
