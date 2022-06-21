@@ -1,4 +1,4 @@
-package tui
+package tuihelpers
 
 import (
 	"fmt"
@@ -11,9 +11,6 @@ import (
 )
 
 func PrintWelcome(currentLesson lesson.Lesson) {
-	termenv.ClearScreen()
-	printer.Print("Welcome to Chistole", "welcome")
-	time.Sleep(1 * time.Second)
 	termenv.ClearScreen()
 	printer.Print("This lesson is titled:", "tip")
 	printer.Print(currentLesson.Name, "")
