@@ -43,6 +43,11 @@ func (m MainModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 	case lessonui.BackMsg:
 		m.state = menuView
+
+	case menuui.SelectMessage:
+		m.state = lessonView
+		m.lesson = lessonui.New(msg.SelectedLesson)
+
 	}
 
 	switch m.state {
@@ -56,13 +61,13 @@ func (m MainModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		m.menu = menuModel
 
 	case lessonView:
-		m.lesson.Update(msg)
-		// lesson, _ := m.lesson.Update(msg)
-		// lessonModel, ok := lesson.(lessonui.LessonModel)
-		// if !ok {
-		// 	panic("something went wrong with the lesson ui ")
-		// }
-		// m.menu = lessonModel
+		lesson, cmd := m.lesson.Update(msg)
+		cmds = append(cmds, cmd)
+		lessonModel, ok := lesson.(lessonui.LessonModel)
+		if !ok {
+			panic("something went wrong with the lesson ui ")
+		}
+		m.lesson = lessonModel
 	}
 	return m, tea.Batch(cmds...)
 }

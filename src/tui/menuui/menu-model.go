@@ -23,6 +23,10 @@ type item struct {
 	filename    string
 }
 
+type SelectMessage struct {
+	SelectedLesson string
+}
+
 func (i item) Title() string       { return i.title }
 func (i item) Description() string { return i.description }
 func (i item) FilterValue() string { return i.title }
@@ -35,10 +39,6 @@ type MenuModel struct {
 }
 
 func (m MenuModel) Init() tea.Cmd {
-	// termenv.ClearScreen()
-	// printer.Print("Welcome to Chistole", "welcome")
-	// time.Sleep(1 * time.Second)
-	// termenv.ClearScreen()
 	return nil
 }
 
@@ -64,18 +64,12 @@ func (m MenuModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			i, ok := m.list.SelectedItem().(item)
 			if ok {
 				m.choice = string(i.filename)
+				return m, func() tea.Msg {
+					return SelectMessage{SelectedLesson: m.choice}
+				}
 			}
-			// return m, tea.Quit
 		}
 	}
-	// switch m.state {
-	// case lessonView:
-	// 	lmodel := lessonui.New(m.choice)
-	// 	// lmodel.Init()
-	// 	lmodel.Update(m)
-	// case listView:
-	// 	m.list.Update(m)
-	// }
 
 	var cmd tea.Cmd
 	m.list, cmd = m.list.Update(msg)
