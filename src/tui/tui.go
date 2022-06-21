@@ -36,7 +36,7 @@ func (m MainModel) Init() tea.Cmd {
 }
 
 func (m MainModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
-    var cmds []tea.Cmd
+	var cmds []tea.Cmd
 	switch msg := msg.(type) {
 	case tea.WindowSizeMsg:
 		m.windowsize = msg // pass this along to the entry view so it uses the full window size when it's initialized
@@ -48,12 +48,11 @@ func (m MainModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch m.state {
 	case menuView:
 		menu, cmd := m.menu.Update(msg)
-        cmds = append(cmds, cmd)
+		cmds = append(cmds, cmd)
 		menuModel, ok := menu.(menuui.MenuModel)
 		if !ok {
 			panic("something went wrong with the menu ui ")
 		}
-
 		m.menu = menuModel
 
 	case lessonView:
