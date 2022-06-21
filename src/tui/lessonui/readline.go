@@ -7,9 +7,11 @@ import (
 
 	"cli-tutor/src/input"
 	"cli-tutor/src/printer"
+	"cli-tutor/src/tui/tuihelpers"
 )
 
 func (m *LessonModel) rline() {
+    tuihelpers.PrintWelcome(m.currentLesson)
 	// Readline loop
 	currentTask := 0
 	for {
