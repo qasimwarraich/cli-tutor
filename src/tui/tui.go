@@ -29,7 +29,6 @@ type MainModel struct {
 }
 
 func (m MainModel) Init() tea.Cmd {
-	termenv.ClearScreen()
 	printer.Print("Welcome to Chistole", "welcome")
 	time.Sleep(1 * time.Second)
 	return nil
@@ -97,7 +96,8 @@ func New() MainModel {
 
 func StartUI() {
 	m := New()
-	if err := tea.NewProgram(m).Start(); err != nil {
+	p := tea.NewProgram(m, tea.WithAltScreen())
+	if err := p.Start(); err != nil {
 		fmt.Println("Error running program:", err)
 		os.Exit(1)
 	}
