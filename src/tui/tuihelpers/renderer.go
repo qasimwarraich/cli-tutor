@@ -1,4 +1,4 @@
-package tui
+package tuihelpers
 
 import "github.com/charmbracelet/glamour"
 
