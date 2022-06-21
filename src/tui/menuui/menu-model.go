@@ -3,18 +3,6 @@ package menuui
 import (
 	"github.com/charmbracelet/bubbles/list"
 	tea "github.com/charmbracelet/bubbletea"
-	"github.com/charmbracelet/lipgloss"
-)
-
-const (
-	listHeight   = 50
-	defaultWidth = 20
-)
-
-var (
-	titleStyle      = lipgloss.NewStyle().MarginLeft(0).Foreground(lipgloss.Color("#34e2e2"))
-	paginationStyle = list.DefaultStyles().PaginationStyle.PaddingLeft(4)
-	helpStyle       = list.DefaultStyles().HelpStyle.PaddingLeft(0).PaddingBottom(1)
 )
 
 type item struct {
@@ -80,25 +68,9 @@ func (m MenuModel) View() string {
 	return "\n" + m.list.View()
 }
 
-func styleMenu(l *list.Model) {
-	l.Title = "Which Lesson would you like to start?"
-	// l.SetShowStatusBar(true)
-	l.SetFilteringEnabled(true)
-	l.Styles.Title = titleStyle
-	l.Styles.PaginationStyle = paginationStyle
-	l.Styles.HelpStyle = helpStyle
-}
-
 func New() MenuModel {
-	items := []list.Item{
-		item{title: "Lesson 1", description: "This lesson is about blah blah", filename: "lesson1.md"},
-		item{title: "Lesson 2", description: "This lesson is about spam spam", filename: "lesson2.md"},
-	}
-	l := list.New(items, list.NewDefaultDelegate(), defaultWidth, listHeight)
-	styleMenu(&l)
-
 	m := MenuModel{
-		list:       l,
+		list:       newList(),
 		choice:     "",
 		quitting:   false,
 		windowsize: tea.WindowSizeMsg{},
