@@ -32,7 +32,6 @@ func New(choice string) LessonModel {
 	if err != nil {
 		panic(err)
 	}
-	// defer rl.Close() // Need to look into this, when it is set it loops indefinitely.
 	return LessonModel{
 		currentLesson: lesson.LoadLesson(choice),
 		rl:            rl,
@@ -49,6 +48,8 @@ func (m LessonModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	if !m.quitting {
 		m.rline()
 	} else {
+		m.rl.Close()
+		termenv.ClearScreen()
 		return m, func() tea.Msg {
 			return BackMsg(true)
 		}
