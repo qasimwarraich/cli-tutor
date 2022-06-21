@@ -13,6 +13,8 @@ import (
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/glamour"
 	"github.com/chzyer/readline"
+	"github.com/muesli/termenv"
+	"golang.org/x/term"
 )
 
 type BackMsg bool
@@ -62,7 +64,10 @@ func (m LessonModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		}
 	}
 
-	return m, nil
+	return m, func() tea.Msg {
+		w, h, _ := term.GetSize(0)
+		return tea.Msg(tea.WindowSizeMsg{w, h}) // HACK: forces a redraw when switching back to menu screen.
+	}
 }
 
 func (m LessonModel) View() string {
