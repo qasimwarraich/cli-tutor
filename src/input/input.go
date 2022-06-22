@@ -1,6 +1,7 @@
 package input
 
 import (
+	"os"
 	"os/exec"
 	"strings"
 	"time"
@@ -19,6 +20,17 @@ func InputFilter(s string, vocabulary []string) []string {
 
 func RunCommand(filtered_input []string) string {
 	var cmd *exec.Cmd
+
+	if filtered_input[0] == "cd" {
+		if len(filtered_input) > 1 {
+			err := os.Chdir(filtered_input[1])
+			if err != nil {
+				printer.Print(err.Error(), "note")
+			}
+		} else {
+			os.Chdir(os.Getenv("$HOME"))
+		}
+	}
 
 	if len(filtered_input) > 1 {
 		args := filtered_input[1:]
