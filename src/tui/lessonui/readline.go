@@ -23,6 +23,7 @@ func (m *LessonModel) rline() {
 	// Readline loop
 	currentTask := 0
 	for {
+		m.rl.SetPrompt(prompt.BuildPrompt() + " $ ")
 		log.Print(m.rl.Config.Prompt)
 		if currentTask < 0 {
 			currentTask = 0
