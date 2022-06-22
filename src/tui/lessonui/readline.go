@@ -13,11 +13,13 @@ import (
 	"cli-tutor/src/tui/tuihelpers"
 
 	"github.com/chzyer/readline"
+	"github.com/muesli/termenv"
 )
 
 func (m *LessonModel) rline() {
 	tuihelpers.LessonWelcome(m.currentLesson)
 
+	termenv.ShowCursor()
 	// os.Chdir("TESTSPACE")
 	// unix.Chroot("TESTSPACE")
 
