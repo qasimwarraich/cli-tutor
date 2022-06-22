@@ -17,6 +17,13 @@ func listFiles(path string) func(string) []string {
 	}
 }
 
+// Lists words in the vocabulary of the current lesson.
+func listVocabulary() func(string) []string {
+	return func(line string) []string {
+		return currentLesson.Vocabulary
+	}
+}
+
 var completer = readline.NewPrefixCompleter(
 	readline.PcItem("ls",
 		readline.PcItemDynamic(listFiles("./")),
@@ -24,12 +31,14 @@ var completer = readline.NewPrefixCompleter(
 	readline.PcItem("wc",
 		readline.PcItemDynamic(listFiles("./")),
 	),
-	readline.PcItem("cd", 
+	readline.PcItem("cd",
 		readline.PcItemDynamic(listFiles("./")),
 	),
-	readline.PcItem("cat", 
+	readline.PcItem("cat",
 		readline.PcItemDynamic(listFiles("./")),
 	),
+	readline.PcItemDynamic(listVocabulary()),
+
 	readline.PcItem("next"),
 	readline.PcItem("prev"),
 	readline.PcItem("exit"),
