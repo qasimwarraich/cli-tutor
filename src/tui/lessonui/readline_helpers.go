@@ -37,7 +37,8 @@ var completer = readline.NewPrefixCompleter(
 	readline.PcItem("cat",
 		readline.PcItemDynamic(listFiles("./")),
 	),
-	readline.PcItemDynamic(listVocabulary()),
+	// TODO: This breaks the rest of the completions above
+	// readline.PcItemDynamic(listVocabulary()),
 
 	readline.PcItem("next"),
 	readline.PcItem("prev"),
