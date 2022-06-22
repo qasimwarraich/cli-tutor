@@ -2,7 +2,6 @@ package lessonui
 
 import (
 	"cli-tutor/src/lesson"
-	"cli-tutor/src/prompt"
 	"cli-tutor/src/tui/tuihelpers"
 
 	tea "github.com/charmbracelet/bubbletea"
@@ -25,7 +24,12 @@ func New(choice string) LessonModel {
 	renderer := tuihelpers.GetRenderer()
 
 	// Init Readline
-	rl, err := readline.New(prompt.BuildPrompt() + " > ")
+	rl, err := readline.NewEx(&readline.Config{
+		Prompt:          ">",
+		InterruptPrompt: "^C",
+		AutoComplete:    completer,
+		// FuncFilterInputRune: filterInput,
+	})
 	if err != nil {
 		panic(err)
 	}
@@ -54,8 +58,8 @@ func (m LessonModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 	switch msg := msg.(type) {
 	case tea.KeyMsg:
 		switch msg.String() {
-		case "ctrl+c":
-			return m, tea.Quit
+		// case "ctrl+c":
+		// return m, tea.Quit
 		}
 	}
 
@@ -66,7 +70,5 @@ func (m LessonModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 }
 
 func (m LessonModel) View() string {
-	s := ""
-
-	return s
+	return ""
 }

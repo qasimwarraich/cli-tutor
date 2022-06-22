@@ -2,16 +2,24 @@ package lessonui
 
 import (
 	"fmt"
+	"io"
 	"log"
 	"time"
 
 	"cli-tutor/src/input"
 	"cli-tutor/src/printer"
+	"cli-tutor/src/prompt"
 	"cli-tutor/src/tui/tuihelpers"
+
+	"github.com/chzyer/readline"
 )
 
 func (m *LessonModel) rline() {
-    tuihelpers.LessonWelcome(m.currentLesson)
+	tuihelpers.LessonWelcome(m.currentLesson)
+
+	// os.Chdir("TESTSPACE")
+	// unix.Chroot("TESTSPACE")
+
 	// Readline loop
 	currentTask := 0
 	for {
