@@ -38,8 +38,8 @@ the prompt.
 However, we can also use a shell command to **print** our **working** **directory** to the screen.
 Notice how the command is named by its task:
 `print` `working` `directory`
-`↓       ↓         ↓`       
-`p       w         d`       
+`↓       ↓         ↓`
+`p       w         d`
 
 Try it out for yourself, Type `pwd` and hit enter.
 
@@ -55,6 +55,16 @@ To list to contents of a directory we use the `ls` command to list files in a di
 Try it out for yourself, Type `ls` and hit enter.
 
 > !ls
+
+## Listing files
+
+The `ls` command also takes a number of flags. For example the `-a` flag which
+stands for *all*. This instructs the ls program to show all the files in the
+directory including the hidden ones.
+
+Try it out for yourself, Type `ls -a` and hit enter.
+
+> !ls -a
 
 ## Awesome work!
 
