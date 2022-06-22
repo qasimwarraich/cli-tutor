@@ -43,6 +43,15 @@ func (m *LessonModel) rline() {
 		printer.Print(out, "")
 
 		line, err := m.rl.Readline()
+
+		if err == readline.ErrInterrupt {
+			if len(line) >= 0 {
+				continue
+			}
+		} else if err == io.EOF {
+			break
+		}
+
 		log.Print(line)
 		if err != nil { // io.EOF
 			break
