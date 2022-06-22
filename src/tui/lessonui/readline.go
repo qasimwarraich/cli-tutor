@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io"
 	"log"
+	"strings"
 	"time"
 
 	"cli-tutor/src/input"
@@ -43,6 +44,7 @@ func (m *LessonModel) rline() {
 		printer.Print(out, "")
 
 		line, err := m.rl.Readline()
+        line = strings.TrimSpace(line)
 
 		if err == readline.ErrInterrupt {
 			if len(line) >= 0 {
