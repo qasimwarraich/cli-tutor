@@ -45,6 +45,17 @@ Try it out for yourself, Type `pwd` and hit enter.
 
 > {{GetWd}}
 
+## Listing files
+
+Now that we know where we are a natural follow up question would be, "What else do
+we have here?"
+
+To list to contents of a directory we use the `ls` command to list files in a directory.
+
+Try it out for yourself, Type `ls` and hit enter.
+
+> !ls
+
 ## Awesome work!
 
 This is the end of the lesson, feel free to continue playing around with commands we have covered in this lesson:
