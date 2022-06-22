@@ -7,7 +7,7 @@ require (
 	github.com/charmbracelet/bubbletea v0.21.0
 	github.com/chzyer/readline v1.5.0
 	github.com/muesli/termenv v0.11.1-0.20220212125758-44cd13922739
-	github.com/yuin/goldmark v1.4.4
+	github.com/yuin/goldmark v1.4.12
 )
 
 require (
@@ -25,8 +25,10 @@ require (
 	github.com/olekukonko/tablewriter v0.0.5 // indirect
 	github.com/sahilm/fuzzy v0.1.0 // indirect
 	github.com/yuin/goldmark-emoji v1.0.1 // indirect
-	golang.org/x/net v0.0.0-20210614182718-04defd469f4e // indirect
+	golang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4 // indirect
+	golang.org/x/net v0.0.0-20211015210444-4f30a5c0130f // indirect
 	golang.org/x/term v0.0.0-20210927222741-03fcf44c2211 // indirect
+	golang.org/x/tools v0.1.11 // indirect
 )
 
 require (
