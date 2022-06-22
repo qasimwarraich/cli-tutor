@@ -11,7 +11,7 @@ import (
 )
 
 func (m *LessonModel) rline() {
-    tuihelpers.PrintWelcome(m.currentLesson)
+    tuihelpers.LessonWelcome(m.currentLesson)
 	// Readline loop
 	currentTask := 0
 	for {

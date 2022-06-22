@@ -3,11 +3,10 @@ package tui
 import (
 	"fmt"
 	"os"
-	"time"
 
-	"cli-tutor/src/printer"
 	"cli-tutor/src/tui/lessonui"
 	"cli-tutor/src/tui/menuui"
+	"cli-tutor/src/tui/tuihelpers"
 
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/muesli/termenv"
@@ -29,8 +28,7 @@ type MainModel struct {
 }
 
 func (m MainModel) Init() tea.Cmd {
-	printer.Print("Welcome to Chistole", "welcome")
-	time.Sleep(1 * time.Second)
+	tuihelpers.ProgramWelcome()
 	return nil
 }
 
