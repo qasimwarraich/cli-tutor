@@ -51,7 +51,7 @@ Try it out for yourself, Type `pwd` and hit enter.
 
 What the `pwd` command actually outputted to you is known as the `path` to your
 current working directory. The `path` in this case describes the location of
-the file on the file system or in other words the path one must take from the
+something on the file system or in other words the path one must take from the
 `root` (beginning of the file system) to the location in question (in this case
 our current working directory).
 
@@ -99,13 +99,112 @@ The changing of your directory can be observed by the `pwd` command or by lookin
 
 Type `n` or `next` and hit enter to continue.
 
-## Awesome work!
+## Creating Directories
+
+Now let's practice creating directories.
+To make directories we can use the `mkdir` command.
+
+To create a directory in your current working directory we must supply the
+`mkdir` command with a name like:
+`mkdir NewDirectory`
+
+This will create a new directory named `NewDirectory` at the current working directory.
+
+Use ls to confirm that your new directory is created.
+Type `n` or `next` and hit enter to continue.
+
+## Removing Directories
+
+To remove directories we can use the `rmdir` command.
+
+To remove a directory in your current working directory we must supply the
+`rmdir` command with a name like:
+
+`rmdir NewDirectory`
+
+This will remove a directory named `NewDirectory` at the current working directory.
+
+*Note*: This will only work with empty directories, to delete directories with
+files in side them we must use the file deletion command `rm`. We will discuss
+this in the next section.
+
+
+Use ls to confirm that your directory has been deleted.
+Type `n` or `next` and hit enter to continue.
+
+## Removing Directories II
+
+To remove directories with contents we can use the `rm` command.
+
+To remove a non-empty directory or regular file in your current working directory we must supply the
+`rm` command with a name like:
+
+*Removing a file*
+`rm filename.txt`
+
+*Removing a non-empty directory*
+`rm -r directory/`
+
+The `-r` flag instructs the `rm` command to apply the procedure recursively,
+which is to say it should delete the directory and everything inside it.
+
+*Warning*: The `rm` command can be dangerous, and its deletions are not
+reversible. Be careful to ensure you supply the correct command otherwise you
+may lose data or cause harm to your system.
+
+The command line gives you a lot of power over your computer. However, with
+this great power comes great responsibility.
+
+Type `n` or `next` and hit enter to continue.
+
+## Creating files
+
+Creating empty files can be done simply by using the `touch` command.
+
+To create a file in your current working directory we must supply the
+`touch` command with a file name like:
+`touch NewFile.txt`
+
+This will create a new file named `NewFile.txt` at the current working directory.
+
+You can use `ls` to confirm this.
+
+To remove this file simply use the `rm` command like: `rm NewFile.txt`.
+
+When this makes sense, type `n` or `next` and hit enter to continue.
+
+## All Together Now
+
+Let's put everything we have learnt all together now into a full example:
+
+Follow each step one by one:
+`mkdir NewDirectory`  # Creates a directory
+
+`ls`    # View your created directory
+
+`cd NewDirectory`   # Go into your new directory
+
+`touch NewFile.txt`    # Create a file
+
+`ls`    # View your created file
+
+`cd ..` # Go back to the parent directory
+
+`rmdir NewDirectory` # Try to delete the directory **(This will fail as the directory is not empty)**
+
+`rm -r NewDirectory` # Delete it the right way!
+
+`ls`    # Confirm that the directory has been deleted.
+
+When this all makes sense, type `n` or `next` and hit enter to continue.
+
+## Great work!
 
 This is the end of the lesson, feel free to continue playing around with commands we have covered in this lesson:
-`ls`, `pwd` and `cd`.
+`ls`, `pwd` and `cd`, `rm`, `rmdir` and `touch`.
 
 When you are done press type `n`, `next` or `quit` to end this lesson.
 
 ### Vocabulary
 
-wc, pwd, ls, cd, whoami, uname, echo, curl, man, clear, less, !!, cat, cal
+wc, pwd, ls, cd, whoami, uname, echo, curl, man, clear, less, !!, cat, cal, touch, mkdir, rm, rmdir
