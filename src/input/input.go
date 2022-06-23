@@ -47,6 +47,11 @@ func RunCommand(filtered_input []string) string {
 
 	previousCommand = filtered_input
 
+	if filtered_input[0] == "man" {
+		out, _ := cmd.CombinedOutput()
+		runPager(out)
+		return ""
+	}
 	output, _ := cmd.CombinedOutput()
 	return string(output)
 }
@@ -77,4 +82,17 @@ func contains(s string, arr []string) bool {
 		}
 	}
 	return false
+}
+
+func runPager(input []byte) {
+	inputstring := string(input)
+
+	less := exec.Command("less") // TODO: Fix this is docker container.
+	less.Stdin = strings.NewReader(inputstring)
+	less.Stdout = os.Stdout
+
+	err := less.Run()
+	if err != nil {
+		log.Fatal(err)
+	}
 }
