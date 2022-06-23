@@ -53,7 +53,7 @@ func RunCommand(filtered_input []string) string {
 		cmd = exec.Command(filtered_input[0])
 	}
 
-    // This is needed to handle the !!
+	// This is needed to handle the !!
 	previousCommand = filtered_input
 
 	if filtered_input[0] == "man" {
