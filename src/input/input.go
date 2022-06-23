@@ -1,6 +1,7 @@
 package input
 
 import (
+	"log"
 	"os"
 	"os/exec"
 	"strings"
@@ -12,6 +13,7 @@ import (
 
 var previousCommand []string
 
+// Checks to see if given input string is in the vocabulary of the current lesson.
 func InputFilter(s string, vocabulary []string) []string {
 	split := strings.Fields(s)
 	if len(split) > 0 && contains(split[0], vocabulary) {
@@ -20,9 +22,12 @@ func InputFilter(s string, vocabulary []string) []string {
 	return []string{}
 }
 
+// Takes the now filtered string and runs it as a system call.
 func RunCommand(filtered_input []string) string {
 	var cmd *exec.Cmd
 
+	//  This is required because cd as a subcommand will not effect the cwd of
+	//  the go program.
 	if filtered_input[0] == "cd" {
 		if len(filtered_input) > 1 {
 			err := os.Chdir(filtered_input[1])
@@ -34,10 +39,13 @@ func RunCommand(filtered_input []string) string {
 		}
 	}
 
+	// The double bang needs special treatment as the readline library seems to
+	// ignore it.
 	if filtered_input[0] == "!!" {
 		return RunCommand(previousCommand)
 	}
 
+	// Checks if the command has arguments
 	if len(filtered_input) > 1 {
 		args := filtered_input[1:]
 		cmd = exec.Command(filtered_input[0], args...)
@@ -45,6 +53,7 @@ func RunCommand(filtered_input []string) string {
 		cmd = exec.Command(filtered_input[0])
 	}
 
+    // This is needed to handle the !!
 	previousCommand = filtered_input
 
 	if filtered_input[0] == "man" {
@@ -56,6 +65,8 @@ func RunCommand(filtered_input []string) string {
 	return string(output)
 }
 
+// Checks if the current lesson task has an expected result and compares the
+// result of the user's command to the expected one.
 func ValidateCommand(commandOutput string, currentLesson lesson.Lesson, currentTask *int) {
 	if currentLesson.Tasks[*currentTask].Expected != "" {
 		expected := currentLesson.Tasks[*currentTask].Expected
