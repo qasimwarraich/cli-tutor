@@ -20,9 +20,9 @@ type LessonModel struct {
 	quitting      bool
 }
 
-func (m LessonModel) CurrentLesson() *lesson.Lesson { return &m.currentLesson }
+func (m LessonModel) GetCurrentLesson() *lesson.Lesson { return &m.currentLesson }
 
-var currentLesson *lesson.Lesson
+var CurrentLesson *lesson.Lesson
 
 func New(choice string) LessonModel {
 	renderer := tuihelpers.GetRenderer()
@@ -52,7 +52,7 @@ func (m LessonModel) Init() tea.Cmd {
 }
 
 func (m LessonModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
-	currentLesson = m.CurrentLesson()
+	CurrentLesson = m.GetCurrentLesson()
 	if !m.quitting {
 		m.rline()
 	} else {

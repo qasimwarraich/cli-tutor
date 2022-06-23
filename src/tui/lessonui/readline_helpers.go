@@ -20,7 +20,7 @@ func listFiles(path string) func(string) []string {
 // Lists words in the vocabulary of the current lesson.
 func listVocabulary() func(string) []string {
 	return func(line string) []string {
-		return currentLesson.Vocabulary
+		return CurrentLesson.Vocabulary
 	}
 }
 
