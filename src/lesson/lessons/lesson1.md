@@ -80,4 +80,4 @@ When you are done press type `n`, `next` or `quit` to end this lesson.
 
 ### Vocabulary
 
-pwd, ls, cd, whoami, uname, echo, curl, man, clear, less, vim
+pwd, ls, cd, whoami, uname, echo, curl, man, clear, less
