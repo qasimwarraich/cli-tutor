@@ -17,6 +17,19 @@ func listFiles(path string) func(string) []string {
 	}
 }
 
+func listDirs(path string) func(string) []string {
+	return func(line string) []string {
+		names := make([]string, 0)
+		files, _ := ioutil.ReadDir(path)
+		for _, f := range files {
+			if f.IsDir() {
+				names = append(names, f.Name())
+			}
+		}
+		return names
+	}
+}
+
 // Lists words in the vocabulary of the current lesson.
 func listVocabulary() func(string) []string {
 	return func(line string) []string {
@@ -32,7 +45,7 @@ var completer = readline.NewPrefixCompleter(
 		readline.PcItemDynamic(listFiles("./")),
 	),
 	readline.PcItem("cd",
-		readline.PcItemDynamic(listFiles("./")),
+		readline.PcItemDynamic(listDirs("./")),
 	),
 	readline.PcItem("cat",
 		readline.PcItemDynamic(listFiles("./")),
