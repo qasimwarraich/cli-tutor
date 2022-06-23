@@ -83,6 +83,11 @@ Try it out for yourself, Type `ls -a` and hit enter.
 Notice the two additional results on the top `.` and `..`, these are shorthand
 for **current directory** and **parent directory** (the directory above the current) respectively.
 
+This is not to be confused with when a `.` is the first character of a filename, this indicates a "hidden file".
+**e.g.**: `.hiddenfile.txt`
+
+The `ls -a` command also displays these "dotfiles" because of the `-a` flag.
+
 Type `n` or `next` and hit enter to continue.
 
 ## Changing Directory
