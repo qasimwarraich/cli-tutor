@@ -30,6 +30,8 @@ func New(choice string) LessonModel {
 	// Init Readline
 	rl, err := readline.NewEx(&readline.Config{
 		Prompt:          ">",
+		HistoryFile:     "./.tutor_history",
+		HistoryLimit:    999,
 		InterruptPrompt: "^C",
 		AutoComplete:    completer,
 		// FuncFilterInputRune: filterInput,
