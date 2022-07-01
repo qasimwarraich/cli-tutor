@@ -6,13 +6,13 @@ all:
 
 build:
 	${CC} build -o ./bin ${MAIN}
-	docker build -t cli-tutor-test .
+	docker build -t cli-tutor .
 
 dockerbuild:
-	docker build -t cli-tutor-test .
+	docker build -t cli-tutor .
 
 docker:
-	docker run -it cli-tutor-test
+	docker run -it cli-tutor
 
 test:
 	gotest -v ./src/...
