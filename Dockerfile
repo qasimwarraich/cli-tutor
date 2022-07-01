@@ -1,15 +1,16 @@
-FROM golang:1.18
+FROM ubuntu
 
 WORKDIR /cli-tutor
 
-COPY go.mod go.sum ./
+RUN yes | unminimize
 
-RUN go mod download && go mod verify
+RUN apt -y install less
+RUN apt -y install man
 
 ENV TERM xterm-256color
 
-ADD ./ ./
+RUN useradd -ms /bin/bash cli-pro
+USER cli-pro
+ADD ./bin/cli-tutor ./
 
-RUN go build -v -o ./cli-tutor ./src/cli-tutor/...
-
-CMD ./cli-tutor
+# CMD ./cli-tutor
