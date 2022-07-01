@@ -98,7 +98,7 @@ func contains(s string, arr []string) bool {
 func runPager(input []byte) {
 	inputstring := string(input)
 
-	less := exec.Command("less") // TODO: Fix this is docker container.
+	less := exec.Command("less")
 	less.Stdin = strings.NewReader(inputstring)
 	less.Stdout = os.Stdout
 
