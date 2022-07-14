@@ -77,14 +77,14 @@ func (m *LessonModel) rline() {
 		}
 
 		if line == "quit" || line == "exit" {
-			printer.Print("Exiting tutor, Good bye!", "note")
+			printer.Print(exiting, "note")
 			m.quitting = true
 			break
 		}
 
 		filtered_input := input.InputFilter(line, m.currentLesson.Vocabulary)
 		if len(filtered_input) == 0 {
-			printer.Print("Let's stick to the basics", "error")
+			printer.Print(invalid_command, "error")
 			continue
 		}
 
