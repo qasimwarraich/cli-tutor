@@ -52,4 +52,5 @@ func ProgramWelcome() {
 
 	printer.Print(s, "welcome")
 	time.Sleep(2 * time.Second)
+    termenv.ClearScreen()
 }
