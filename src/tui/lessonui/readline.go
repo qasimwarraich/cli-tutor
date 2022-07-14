@@ -67,7 +67,11 @@ func (m *LessonModel) rline() {
 		}
 
 		if line == "next" || line == "n" {
-			currentTask++
+			if m.currentLesson.Tasks[currentTask].Expected != "" {
+				printer.Print(expected, "error")
+			} else {
+				currentTask++
+			}
 			continue
 		}
 
