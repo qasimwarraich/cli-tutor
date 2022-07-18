@@ -21,7 +21,7 @@ It displays information about the:
 
 current user = `{{GetUser}}`← You!
 host machine = `{{GetHost}}` ← Your machine
-the current directory you are in = `{{GetWd}}` ← Where on you are on your machine.
+the current directory you are in = `{{GetWd}}` ← Where you are on your machine.
 
 The `prompt` is there to give you some additional context about the state of
 your system. Importantly for us, it conveniently tells us where we are on our

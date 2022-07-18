@@ -17,7 +17,7 @@ Textual interaction is a form of interacting with your computer's operating
 system using textual input. You, the user, can issue `commands` and the `shell`
 will interpret them and produce an output.
 
-The `shell` is a program that wraps your operating system and acts an
+The `shell` is a program that wraps your operating system and acts as an
 intermediary between the user and the operating system. It manages the user's
 interaction by accepting input in the form of `commands` and relays output in the
 form of produced output, errors or special shell features like shortcuts.

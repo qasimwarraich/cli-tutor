@@ -9,7 +9,7 @@ You may have the feeling that issuing commands is very tedious, time-consuming
 and hard to get right. This requirement for commands to be stated perfectly is
 one of the biggest obstacles to new command line users. Let's overcome this
 hardship and look into some cool in built shell features designed to
-make you life a little easier.
+make your life a little easier.
 
 Type `n` or `next` and hit enter to continue.
 
