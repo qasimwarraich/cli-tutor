@@ -1,4 +1,3 @@
-)
 {
   "document": {
     "block_prefix": "\n",
@@ -84,9 +83,9 @@
     "format": "Image: {{.text}} →"
   },
   "code": {
-    "prefix": " ",
-    "suffix": " ",
-    "color": "#00FF00",
+    "prefix": "",
+    "suffix": "",
+    "color": "#00FFF0",
     "background_color": ""
   },
   "code_block": {
