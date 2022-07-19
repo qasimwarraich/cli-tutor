@@ -1,12 +1,18 @@
 package tuihelpers
 
-import "github.com/charmbracelet/glamour"
+import (
+	_ "embed"
+
+	"github.com/charmbracelet/glamour"
+)
+
+//go:embed custom_style.json
+var stylesheet []byte
 
 func GetRenderer() *glamour.TermRenderer {
 	r, _ := glamour.NewTermRenderer(
 		glamour.WithPreservedNewLines(),
-        // glamour.WithStylePath("./custom_style.json") TODO: This needs to be embedded into the binary.
-		glamour.WithStandardStyle("dark"),
+		glamour.WithStylesFromJSONBytes(stylesheet),
 		glamour.WithWordWrap(130),
 	)
 	return r
