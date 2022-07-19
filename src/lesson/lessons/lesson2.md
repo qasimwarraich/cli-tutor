@@ -33,9 +33,9 @@ control those actions.
 
 We can still apply the same analogy of a sentence as discussed in the previous
 step, with a slight addition.
-`program` `verb` `--adjective/adverb` `noun`
-`↓          ↓      ↓                    ↓ `
-`go        test   -v                   main_test.go`
+`program` `verb` `--adjective/adverb` `     noun`
+`↓         ↓       ↓                    ↓  `
+`go       test    -v                 main_test.go`
 
 *In English*:
 
@@ -111,16 +111,6 @@ This is the end of the lesson, feel free to continue playing around with command
 `wc` and `clear`.
 
 When you are done press type `n`, `next` or `quit` to end this lesson.
-
-## Prompt
-
-This funny looking line below you is called the `prompt`.
-
-It displays information about the:
-
-current user = `{{GetUser}}`← You!
-host machine = `{{GetHost}}` ← Your machine
-the current directory you are in = `{{GetWd}}` ← Where on you are on your machine.
 
 ### Vocabulary
 
