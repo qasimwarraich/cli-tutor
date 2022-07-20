@@ -1,8 +1,8 @@
 package lessonui
 
 import (
-	"cli-tutor/src/lesson"
-	"cli-tutor/src/tui/tuihelpers"
+	"cli-tutor/pkg/lesson"
+	"cli-tutor/pkg/tui/tuihelpers"
 
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/glamour"
