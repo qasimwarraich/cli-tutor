@@ -1,13 +1,18 @@
 CC = go
-MAIN = ./src/cli-tutor/...
+MAIN = main.go
 
 all:
-	${CC} run ${MAIN}
+	${CC} run ${MAIN} --no-upload-log
+
+log:
+	${CC} run ${MAIN} 
 
 build:
-	${CC} build -o ./bin ${MAIN}
+	${CC} build -o ./bin 
 	docker build -t qasimwarraich/cli-tutor .
 
+install:
+	${CC} install
 docker:
 	docker run -it qasimwarraich/cli-tutor
 
