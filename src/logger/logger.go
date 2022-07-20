@@ -46,7 +46,7 @@ func UploadLog() {
 	io.Copy(part, file)
 	writer.Close()
 
-	r, err := http.NewRequest("POST", "https://localhost:8080/api/upload", body)
+	r, err := http.NewRequest("POST", "https://tutor.chistole.ch/api/upload", body)
 	if err != nil {
 		log.Fatal(err)
 	}

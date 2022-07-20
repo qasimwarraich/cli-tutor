@@ -54,7 +54,7 @@ func (m MenuModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 			i, ok := m.list.SelectedItem().(item)
 			if ok {
 				m.choice = string(i.filename)
-				log.Printf("Selected lesson: %s", m.choice)
+                log.Println("Selected lesson: %s", m.choice)
 				return m, func() tea.Msg {
 					return SelectMessage{SelectedLesson: m.choice}
 				}
