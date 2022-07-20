@@ -7,8 +7,8 @@ import (
 	"strings"
 	"time"
 
-	"cli-tutor/src/lesson"
-	"cli-tutor/src/printer"
+	"cli-tutor/pkg/lesson"
+	"cli-tutor/pkg/printer"
 )
 
 var previousCommand []string

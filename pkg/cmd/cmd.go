@@ -5,8 +5,8 @@ import (
 	"log"
 	"os"
 
-	"cli-tutor/src/logger"
-	"cli-tutor/src/tui"
+	"cli-tutor/pkg/logger"
+	"cli-tutor/pkg/tui"
 
 	"github.com/spf13/cobra"
 )

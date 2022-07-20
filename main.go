@@ -1,7 +1,7 @@
 package main
 
 import (
-	"cli-tutor/src/cmd"
+	"cli-tutor/pkg/cmd"
 )
 
 func main() {

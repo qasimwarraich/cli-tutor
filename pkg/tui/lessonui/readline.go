@@ -7,10 +7,10 @@ import (
 	"strings"
 	"time"
 
-	"cli-tutor/src/input"
-	"cli-tutor/src/printer"
-	"cli-tutor/src/prompt"
-	"cli-tutor/src/tui/tuihelpers"
+	"cli-tutor/pkg/input"
+	"cli-tutor/pkg/printer"
+	"cli-tutor/pkg/prompt"
+	"cli-tutor/pkg/tui/tuihelpers"
 
 	"github.com/chzyer/readline"
 	"github.com/muesli/termenv"

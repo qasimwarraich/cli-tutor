@@ -1,7 +1,7 @@
 package menuui
 
 import (
-	"cli-tutor/src/lesson"
+	"cli-tutor/pkg/lesson"
 
 	"github.com/charmbracelet/bubbles/list"
 	"github.com/yuin/goldmark"

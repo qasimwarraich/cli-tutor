@@ -4,9 +4,9 @@ import (
 	"fmt"
 	"os"
 
-	"cli-tutor/src/tui/lessonui"
-	"cli-tutor/src/tui/menuui"
-	"cli-tutor/src/tui/tuihelpers"
+	"cli-tutor/pkg/tui/lessonui"
+	"cli-tutor/pkg/tui/menuui"
+	"cli-tutor/pkg/tui/tuihelpers"
 
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/muesli/termenv"

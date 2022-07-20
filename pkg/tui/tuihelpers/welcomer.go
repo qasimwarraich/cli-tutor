@@ -4,8 +4,8 @@ import (
 	"os"
 	"time"
 
-	"cli-tutor/src/lesson"
-	"cli-tutor/src/printer"
+	"cli-tutor/pkg/lesson"
+	"cli-tutor/pkg/printer"
 
 	"github.com/muesli/termenv"
 )
