@@ -11,6 +11,8 @@ build:
 	${CC} build -o ./bin 
 	docker build -t qasimwarraich/cli-tutor .
 
+install:
+	${CC} install
 docker:
 	docker run -it qasimwarraich/cli-tutor
 
