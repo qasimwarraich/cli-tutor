@@ -8,8 +8,7 @@ import (
 )
 
 func main() {
-
-    logger.InitLogging()
+	logger.InitLogging()
 
 	tui.StartUI()
 	defer os.Remove("file.txt")
