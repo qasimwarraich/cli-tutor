@@ -1,6 +1,31 @@
 
 # CLI TUTOR
 
+```txt
+        _ _       __        __
+  _____/ (_)     / /___  __/ /_____  _____
+ / ___/ / /_____/ __/ / / / __/ __ \/ ___/
+/ /__/ / /_____/ /_/ /_/ / /_/ /_/ / /
+\___/_/_/      \__/\__,_/\__/\____/_/
+
+A simple command line tutor application that aims to introduce users to the
+    basics of command line interaction.
+    Web version is available at https://tutor.chistole.ch
+
+Usage:
+  cli-tutor [flags]
+  cli-tutor [command]
+
+Available Commands:
+  completion  Generate the autocompletion script for the specified shell
+  help        Help about any command
+  version     Print the version number of cli-tutor
+
+Flags:
+  -h, --help            help for cli-tutor
+  -n, --no-upload-log   Do not send a copy of the log to the developer
+```
+
 ## What is this?
 
 Despite the arguably dated appearance, difficult learning curve and practical
