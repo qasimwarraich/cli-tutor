@@ -34,7 +34,7 @@ func (m *LessonModel) rline() {
 		}
 
 		if currentTask >= len(m.currentLesson.Tasks) {
-			printer.Print("Congratulations! All Task Completed!, Exiting Lesson!", "note")
+			printer.Print(completed, "note")
 			time.Sleep(2 * time.Second)
 			m.quitting = true
 			break
