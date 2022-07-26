@@ -45,7 +45,6 @@ func TestBuildPrompt(t *testing.T) {
 		name string
 		want string
 	}{
-		// TODO: Add test cases.
 		{
 			"Test Prompt Building",
 			username + " @ " + hostname + " in " + styled_cwd,
@@ -53,7 +52,7 @@ func TestBuildPrompt(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := BuildPrompt(); got != tt.want {
+			if got := BuildPrompt(""); got != tt.want {
 				t.Errorf("BuildPrompt() = %v, want %v", got, tt.want)
 			}
 		})
