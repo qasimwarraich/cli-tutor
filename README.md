@@ -108,7 +108,7 @@ Note: You can run the container using:
 
 ---
 
-Option 2: Without make
+Option 2: With make
 
 `make docker`
 
