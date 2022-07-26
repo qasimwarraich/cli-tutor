@@ -32,19 +32,6 @@ func (m *LessonModel) rline() {
 			currentTask = 0
 		}
 
-		if logger.Identify {
-			for logger.Identifier == "" {
-				rl, _ := readline.New("Please enter a name or id to identify your log file > ")
-				line, _ := rl.Readline()
-				line = strings.TrimSpace(line)
-				logger.Identifier = line
-			}
-			output := fmt.Sprintf("You entered %s as your identifier, welcome to the tutor!", logger.Identifier)
-			printer.Print(output, "note")
-			logger.Identify = false
-			continue
-		}
-
 		if currentTask >= len(m.currentLesson.Tasks) {
 			printer.Print(completed, "note")
 			time.Sleep(2 * time.Second)

@@ -13,7 +13,6 @@ import (
 )
 
 var (
-	Identify   bool
 	Identifier string = ""
 	hostName   string
 )

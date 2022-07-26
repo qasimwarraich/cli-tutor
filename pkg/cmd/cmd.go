@@ -4,10 +4,13 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 
 	"cli-tutor/pkg/logger"
+	"cli-tutor/pkg/printer"
 	"cli-tutor/pkg/tui"
 
+	"github.com/chzyer/readline"
 	"github.com/spf13/cobra"
 )
 
@@ -28,12 +31,28 @@ A simple command line tutor application that aims to introduce users to the
 	Run: func(cmd *cobra.Command, args []string) {
 		logger.InitLogging()
 
-		sendlog, err := cmd.Flags().GetBool("no-upload-log")
+		nouploadflag, err := cmd.Flags().GetBool("no-upload-log")
 		if err != nil {
 			log.Panicln(err)
 		}
-		if !sendlog {
-			logger.Identify = true
+		if !nouploadflag {
+
+			printer.Print(`
+You have started the tutor with the option of sending a log of your tutor
+session to the developer. To opt-out of this mode supply the name 'exit', hit
+enter and restart the tool providing the -n or --no-upload-log file. 
+
+For more info type 'cli-tutor info' after exiting.
+            `, "tip")
+			for logger.Identifier == "" {
+				rl, _ := readline.New("Please enter a name or id to identify your log file or enter 'exit' > ")
+				line, _ := rl.Readline()
+				line = strings.TrimSpace(line)
+				if line == "exit" {
+					os.Exit(0)
+				}
+				logger.Identifier = line
+			}
 			defer logger.UploadLog()
 		}
 
