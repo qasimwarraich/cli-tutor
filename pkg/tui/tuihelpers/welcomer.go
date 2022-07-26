@@ -19,7 +19,7 @@ func LessonWelcome(currentLesson lesson.Lesson) {
 	os.Stdin.Read(b)
 	termenv.ClearScreen()
 	printer.Print("Welcome to the shell", "tip")
-	printer.Print("Try out some commands or type 'exit'/'quit' to quit the shell", "note")
+	printer.Print("Type 'commands' to view a list of available commands or type 'exit'/'quit' to quit the shell", "note")
 	time.Sleep(1 * time.Second)
 }
 

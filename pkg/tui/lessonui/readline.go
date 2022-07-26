@@ -80,6 +80,12 @@ func (m *LessonModel) rline() {
 			continue
 		}
 
+		if line == "commands" {
+			vocabulary := fmt.Sprintln(m.currentLesson.Vocabulary)
+			printer.Print("Available commands: "+vocabulary, "")
+			continue
+		}
+
 		if line == "quit" || line == "exit" {
 			printer.Print(exiting, "note")
 			m.quitting = true
