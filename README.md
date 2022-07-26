@@ -157,7 +157,7 @@ Option 3: Actually install the binary:
 Note: In order to uninstall this from your system use the `sudo make uninstall` command.
 
 
-####  Method 1: Using golang tooling
+####  Method 3: Using golang tooling
 
 Prerequisites:
 
