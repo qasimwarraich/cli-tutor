@@ -70,9 +70,49 @@ var versionCmd = &cobra.Command{
 	},
 }
 
+var infoCmd = &cobra.Command{
+	Use:   "info",
+	Short: "Prints information about the tool and log collection",
+	Long:  `Prints out information regarding the tool in general and it's logging feature`,
+	Run: func(cmd *cobra.Command, args []string) {
+		fmt.Println(
+			`
+cli-tutor is a simple command line tutor application that aims to introduce
+users to the basics of command line interaction. The tool is currently part of
+a Master's Thesis project and thus will part of a user study. To this end, the
+tool integrates a logging feature so that the developer may collect insights
+about the tools effectiveness. Logging is on by default and log files are
+saved at /tmp/tutor-log.txt on unix based systems. To opt out of sending your
+log file to the developer you may supply the -n or --no-upload-log flag when
+you start the program.
+
+example:
+cli-tutor -n or cli-tutor --no-upload-log
+
+For more information regarding commands use the --help/-h flag or help subcommand.
+example:
+cli-tutor --help or cli-tutor help
+
+The source code is available at https://gitlab.com/qasimwarraich/cli-tutor
+This link can also be printed to the terminal by issuing:
+'cli-tutor repo'`)
+	},
+}
+
+var repoCmd = &cobra.Command{
+	Use:   "repo",
+	Short: "Prints a url to the git repository for this tool",
+	Long:  `All software has a home. This is cli-tutor's`,
+	Run: func(cmd *cobra.Command, args []string) {
+		fmt.Println("https://gitlab.com/qasimwarraich/cli-tutor")
+	},
+}
+
 func init() {
 	rootCmd.Flags().BoolP("no-upload-log", "n", false, "Do not send a copy of the log to the developer")
 	rootCmd.AddCommand(versionCmd)
+	rootCmd.AddCommand(infoCmd)
+	rootCmd.AddCommand(repoCmd)
 }
 
 func Execute() {
