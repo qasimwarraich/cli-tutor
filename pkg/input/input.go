@@ -15,8 +15,21 @@ var previousCommand []string
 
 // Checks to see if given input string is in the vocabulary of the current lesson.
 func InputFilter(s string, vocabulary []string) []string {
-	split := strings.Fields(s)
+	input := strings.ReplaceAll(s, "|", " | ")
+	split := strings.Fields(input)
 	if len(split) > 0 && contains(split[0], vocabulary) {
+		// Ensure commands following a pipe are also in the vocabulary.
+		if contains("|", split) {
+			for i, v := range split {
+				if v == "|" {
+					if i+1 < len(split) && contains(split[i+1], vocabulary) {
+						continue
+					} else {
+						return []string{}
+					}
+				}
+			}
+		}
 		return split
 	}
 	return []string{}
@@ -43,6 +56,17 @@ func RunCommand(filtered_input []string) string {
 	// ignore it.
 	if filtered_input[0] == "!!" {
 		return RunCommand(previousCommand)
+	}
+	// Handle piped commands
+	if contains("|", filtered_input) {
+		command := filtered_input[:]
+		commandstring := strings.Join(command, " ")
+		out, err := exec.Command("bash", "-c", commandstring).CombinedOutput()
+		if err != nil {
+			printer.Print("Failed to execute command", "")
+			printer.Print(err.Error(), "")
+		}
+		return string(out)
 	}
 
 	// Checks if the command has arguments
