@@ -14,12 +14,12 @@ Type `n` or `next` and hit enter to continue.
 
 ## Prompt
 
-Before we begin, let's explain this funny looking line that has been following you where you type.
-It is called the `prompt`.
+Before we begin, let's explain this funny looking line that has been following
+you where you type. It is called the `prompt`.
 
 It displays information about the:
 
-current user = `{{GetUser}}`← You!
+current user = `{{GetUser}}` ← You!
 host machine = `{{GetHost}}` ← Your machine
 the current directory you are in = `{{GetWd}}` ← Where you are on your machine.
 
@@ -83,7 +83,8 @@ Try it out for yourself, Type `ls -a` and hit enter.
 Notice the two additional results on the top `.` and `..`, these are shorthand
 for **current directory** and **parent directory** (the directory above the current) respectively.
 
-This is not to be confused with when a `.` is the first character of a filename, this indicates a "hidden file".
+This is not to be confused with when a `.` is the first character of a
+filename, this indicates a "hidden file".
 **e.g.**: `.hiddenfile.txt`
 
 The `ls -a` command also displays these "dotfiles" because of the `-a` flag.
@@ -92,13 +93,17 @@ Type `n` or `next` and hit enter to continue.
 
 ## Changing Directory
 
-Now let's navigate around the file system a bit. To do this we will utilise the `cd` command.
+Now let's navigate around the file system a bit. To do this we will utilise the
+`cd` command.
 `change` `directory`
 `↓        ↓`
 `c        d`
 
-First use the `ls` command to list where you are and then use the `cd **NAME OF DIRECTORY**` command to change into the desired directory.
-The changing of your directory can be observed by the `pwd` command or by looking at the `path` displayed in your `prompt`.
+First use the `ls` command to list where you are and then use the `cd **NAME OF
+DIRECTORY**` command to change into the desired directory.
+
+The changing of your directory can be observed by the `pwd` command or by
+looking at the `path` displayed in your `prompt`.
 
 *Hint*: Use the command `cd ..` to move up to a directory (parent directory).
 
@@ -133,7 +138,6 @@ This will remove a directory named `NewDirectory` at the current working directo
 files in side them we must use the file deletion command `rm`. We will discuss
 this in the next section.
 
-
 Use ls to confirm that your directory has been deleted.
 Type `n` or `next` and hit enter to continue.
 
@@ -141,8 +145,8 @@ Type `n` or `next` and hit enter to continue.
 
 To remove directories with contents we can use the `rm` command.
 
-To remove a non-empty directory or regular file in your current working directory we must supply the
-`rm` command with a name like:
+To remove a non-empty directory or regular file in your current working
+directory we must supply the `rm` command with a name like:
 
 *Removing a file*
 `rm filename.txt`
@@ -205,10 +209,11 @@ When this all makes sense, type `n` or `next` and hit enter to continue.
 
 ## Great work!
 
-This is the end of the lesson, feel free to continue playing around with commands we have covered in this lesson:
+This is the end of the lesson, feel free to continue playing around with
+commands we have covered in this lesson:
 `ls`, `pwd` and `cd`, `rm`, `rmdir` and `touch`.
 
-When you are done press type `n`, `next` or `quit` to end this lesson.
+When you are done, type `n`, `next` or `quit` to end this lesson.
 
 ### Vocabulary
 

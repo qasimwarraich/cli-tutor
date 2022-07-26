@@ -1,4 +1,3 @@
-
 # Helping your self!
 
 In this lesson we will help you help yourself. #RTFM
@@ -53,13 +52,13 @@ Type `n` or `next` and hit enter to continue.
 
 ## Let's try it out
 
-Let's try reading the manual for a command we are already familiar with, this is a
-great way to learn about the extended capabilities of command line tools.
+Let's try reading the manual for a command we are already familiar with, this
+is a great way to learn about the extended capabilities of command line tools.
 
 Try:
 `man ls`
 
-**Remember!** press `q` to quit the pager and return to the tutor, happy reading!
+**Remember!** Press `q` to quit the pager and return to the tutor, happy reading!
 
 When you are hopefully back. Type `n` or `next` and hit enter to continue.
 
@@ -70,7 +69,7 @@ and learn about some more commands.
 
 *Hint:* There is even a man page for `man`. Try `man man`
 
-When you are done press type `n`, `next` or `quit` to end this lesson.
+When you are done, type `n`, `next` or `quit` to end this lesson.
 
 ### Vocabulary
 

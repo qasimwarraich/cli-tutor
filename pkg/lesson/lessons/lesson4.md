@@ -15,9 +15,14 @@ Type `n` or `next` and hit enter to continue.
 
 ## The Up Arrow ↑ and shell history.
 
-The up arrow `↑` is one of the most helpful shortcuts when using the command line. It allows you to quickly fill your input with the previous command. This means if you slightly mistyped a long command you don't have to rewrite the whole command, you can simply use the up arrow `↑` to go up in your command history and retrieve the command. 
+The up arrow `↑` is one of the most helpful shortcuts when using the command
+line. It allows you to quickly fill your input with the previous command. This
+means if you slightly mistyped a long command you don't have to rewrite the
+whole command, you can simply use the up arrow `↑` to go up in your command
+history and retrieve the command. 
 
-*Note*: You can hit the up arrow as many times as you want and keep going backwards in you command history.
+*Note*: You can hit the up arrow as many times as you want and keep going
+backwards in you command history.
 
 Type `n` or `next` and hit enter to continue.
 
@@ -27,11 +32,13 @@ The shell history is simply a hidden file that usually lives in the home folder
 of your system and is a record of every command you have issued in a particular
 shell. If you are using the `bash` shell this file is called `.bash_history`.
 
-The history file maintained by this tutor is called `.tutor_history` and resides in the folder you started this program in. 
+The history file maintained by this tutor is called `.tutor_history` and
+resides in the folder you started this program in. 
 
-`ls -a` should display it and to view its contents in the shell you can use the `cat` command like `cat .tutor_history`.
+`ls -a` should display it and to view its contents in the shell you can use the
+`cat` command like `cat .tutor_history`.
 
-Try this out!
+Try this out! Type the command `cat .tutor_history` and hit Enter.
 
 > !cat .tutor_history
 
@@ -95,10 +102,11 @@ When this all makes sense, type `n` or `next` and hit enter to continue.
 
 ## Great work!
 
-This is the end of the lesson, feel free to continue playing around with shortcuts we have covered in this lesson:
+This is the end of the lesson, feel free to continue playing around with
+shortcuts we have covered in this lesson:
 `↑`, `Ctrl + r`, `!!` and `<Tab>`
 
-When you are done press type `n`, `next` or `quit` to end this lesson.
+When you are done, type `n`, `next` or `quit` to end this lesson.
 
 ### Vocabulary
 

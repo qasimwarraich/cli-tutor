@@ -5,11 +5,11 @@ We will introduce you to the tutor program and how to formulate a command.
 
 ## Introduction
 
-Welcome to the command line, this may look intimidating but, this  
+Welcome to the command line. This may look intimidating, but this  
 tutorial will introduce you to the concepts you need to be familiar  
 with to thrive at the command line.
 
-When you are ready type `n` or `next` and hit enter to continue.
+When you are ready, type `n` or `next` and hit enter to continue.
 
 ## What is the Shell?
 
@@ -45,9 +45,10 @@ Commands can generally be supplied to the shell by using the following format:
 
 `command` `--flags` `arguments`
 
-e.g. `wc --lines file.txt `
+e.g. `wc --lines file.txt`
 
-A `command` is actually a program the shell can run. In the above example the program being called is `wc`, a word counting program.
+A `command` is actually a program the shell can run. In the above example the
+program being called is `wc`, a word counting program.
 
 `--flags` are additional cues that can be provided to the program to alter its
 behaviour. These can be optional, but almost all command line programs have
@@ -55,7 +56,8 @@ flags to help produce the output the user wants. In the above example we supply
 the `--lines` flag to let `wc` know we are only interested in the line count
 and not the rest of the information the program can produce.
 
-Finally, we have the `argument` which is the input to the program, in the case of our example, a file named `file.txt`.
+Finally, we have the `argument` which is the input to the program, in the case
+of our example, a file named `file.txt`.
 
 Type `n` or `next` and hit enter to continue.
 
@@ -66,6 +68,17 @@ Type the command `whoami`, hit Enter and look at the result.
 
 > !whoami
 
+## Let's try something more fun
+
+As mentioned before, the shell is just an intermediary between you and your
+operating system. This means you can perform essentially anything you want here
+in the shell, including accessing the internet for example.
+
+Let's try this out. Type the command `curl wttr.in` to instruct the `curl` tool
+to access the website `wttr.in`.
+
+When you are done, type `n` or `next` to continue.
+
 ## A note about getting overwhelmed
 
 If at any point the amount of text on the screen becomes overwhelming the shell
@@ -73,10 +86,11 @@ has an inbuilt command called `clear` that clears all the text on the screen.
 Helpfully, this tutor program will ensure to re-display the text for the step
 you are currently on. Give it a try!
 
-This is the end of the lesson, feel free to continue playing around with commands we have covered in this lesson:
+This is the end of the lesson, feel free to continue playing around with
+commands we have covered in this lesson:
 `whoami` and `clear`.
 
-When you are done press type `n`, `next` or `quit` to end this lesson.
+When you are done, type `n`, `next` or `quit` to end this lesson.
 
 ### Vocabulary
 

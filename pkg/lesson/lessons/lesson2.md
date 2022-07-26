@@ -107,10 +107,11 @@ Type the `wc -lw file.txt` command and hit enter.
 
 ## Awesome work!
 
-This is the end of the lesson, feel free to continue playing around with commands we have covered in this lesson:
+This is the end of the lesson, feel free to continue playing around with
+commands we have covered in this lesson:
 `wc` and `clear`.
 
-When you are done press type `n`, `next` or `quit` to end this lesson.
+When you are done, type `n`, `next` or `quit` to end this lesson.
 
 ### Vocabulary
 
