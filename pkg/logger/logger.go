@@ -2,6 +2,7 @@ package logger
 
 import (
 	"bytes"
+	"fmt"
 	"io"
 	"log"
 	"mime/multipart"
@@ -52,9 +53,14 @@ func UploadLog() {
 
 	r, err := http.NewRequest("POST", "https://tutor.chistole.ch/api/upload", body)
 	if err != nil {
-		log.Fatal(err)
+		fmt.Println(err)
 	}
 	r.Header.Add("Content-Type", writer.FormDataContentType())
 	client := &http.Client{}
-	client.Do(r)
+
+	res, err := client.Do(r)
+	if err != nil {
+		fmt.Println(err)
+		fmt.Println(res)
+	}
 }
