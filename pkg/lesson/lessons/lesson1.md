@@ -64,7 +64,7 @@ Type `n` or `next` and hit enter to continue.
 Try it out for yourself!
 Type the command `whoami`, hit Enter and look at the result.
 
-> {{GetUser}}
+> !whoami
 
 ## A note about getting overwhelmed
 

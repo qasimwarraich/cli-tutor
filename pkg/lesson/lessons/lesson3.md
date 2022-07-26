@@ -45,7 +45,7 @@ Notice how the command is named by its task:
 
 Try it out for yourself, Type `pwd` and hit enter.
 
-> {{GetWd}}
+> !pwd
 
 ## Path
 

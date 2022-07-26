@@ -77,25 +77,25 @@ character counts.
 
 Type the `wc file.txt` command and hit enter.
 
-> 4  26 147 file.txt
+> !wc file.txt
 
 ## Now let's use some flags
 
 Type the `wc -l file.txt` command and hit enter.
 
-> 4 file.txt
+> !wc -l file.txt
 
 ## Now let's use some flags
 
 Type the `wc -w file.txt` command and hit enter.
 
-> 26 file.txt
+> !wc -w file.txt
 
 ## Finally, let's stack some flags
 
 Type the `wc -wl file.txt` command and hit enter.
 
->  4  26 file.txt
+>  !wc -wl file.txt
 
 ## Change the order of the flags
 
@@ -103,7 +103,7 @@ Notice the order of the flags in this case does not influence the output.
 
 Type the `wc -lw file.txt` command and hit enter.
 
->  4  26 file.txt
+>  !wc -lw file.txt
 
 ## Awesome work!
 
