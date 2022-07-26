@@ -114,4 +114,4 @@ When you are done press type `n`, `next` or `quit` to end this lesson.
 
 ### Vocabulary
 
-wc, pwd, ls, cd, whoami, uname, echo, curl, man, clear, less,
+wc, pwd, ls, cd, whoami, uname, echo, curl, man, clear, less
