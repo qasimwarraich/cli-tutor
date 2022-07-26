@@ -10,7 +10,12 @@ log:
 build:
 	mkdir -p bin
 	${CC} build -o ./bin
+
+docker:
 	docker build -t qasimwarraich/cli-tutor .
+
+dockerrun:
+	docker run -it qasimwarraich/cli-tutor
 
 install:
 	mkdir -p bin
@@ -28,9 +33,6 @@ goinstall:
 
 gouninstall:
 	rm ~/go/bin/cli-tutor
-
-docker:
-	docker run -it qasimwarraich/cli-tutor
 
 test:
 	gotest -v ./pkg/...

@@ -19,11 +19,15 @@ Usage:
 Available Commands:
   completion  Generate the autocompletion script for the specified shell
   help        Help about any command
+  info        Prints information about the tool and log collection
+  repo        Prints a url to the git repository for this tool
   version     Print the version number of cli-tutor
 
 Flags:
   -h, --help            help for cli-tutor
   -n, --no-upload-log   Do not send a copy of the log to the developer
+
+Use "cli-tutor [command] --help" for more information about a command.
 ```
 
 ## What is this?
@@ -65,3 +69,139 @@ the tool accordingly. To validate the tool and answer our research questions, a
 user study will be conducted, most likely with bachelor students at the
 University of Zurich. A secondary goal is to embed the learning tool into a
 prototypical web application in order to make it more accessible and portable.
+
+### Getting started
+
+To simply try out the tool in a safe dockerized environment visit:
+
+[Link to Web Version](https://tutor.chistole.ch)
+
+### Installation
+
+Clone this repository using:
+`git clone https://gitlab.com/qasimwarraich/cli-tutor`
+
+Change directory into the freshly cloned repo.
+`cd https://gitlab.com/qasimwarraich/cli-tutor`
+
+ ---
+
+Once you have cloned and changed directories into the repository you have three
+methods to choose from:
+
+#### Method 1: Using Docker (Safest)*
+
+Prerequisites:
+
+- go v1.18 or higher
+- docker
+- make (optional)
+
+Instructions:
+
+Option 1: Without make
+
+`docker build -t qasimwarraich/cli-tutor .`
+
+Note: You can run the container using:
+`docker run -it qasimwarraich/cli-tutor`
+
+---
+
+Option 2: Without make
+
+`make docker`
+
+Note: You can run the container using:
+`make dockerrun`
+
+---
+
+\* Installation via the Docker method allows the tool to be tested in a safe
+containerised environment. This mitigates risk of accidentally modifying files
+on your personal machine like in the uncontainerised methods that follow.
+
+--- 
+
+#### Method 2: Using make
+
+Prerequisites:
+
+- go v1.18 or higher
+- make
+
+Instructions:
+
+Option 1: Simply run tool without installing:
+`make`
+
+---
+
+Option 2: Just build the binary:
+
+`make build`
+
+This creates a /bin folder in the root of the repository containing the binary.
+You can run it by entering:
+
+`./bin/cli-tutor`
+
+Note: In order to clean this up, you can use the `make clean` command.
+
+--- 
+
+Option 3: Actually install the binary:
+
+`sudo make install`
+
+Note: In order to uninstall this from your system use the `sudo make uninstall` command.
+
+
+####  Method 1: Using golang tooling
+
+Prerequisites:
+
+- go v1.18 or higher
+
+Instructions:
+
+Option 1: Simply run tool without installing:
+
+`go run main.go`
+___
+Option 2: Actually install the binary:
+
+`go install main.go`
+___
+Note: In order to uninstall the tool you will need to delete it from your `bin`
+folder located under the `$GOPATH`. This is usually located in your home
+directory at `~/go/bin/`
+
+e.g. `rm ~/go/bin/cli-tutor`
+___
+
+### Usage
+
+Once installed or inside the docker container the tool can be started using `cli-tutor`. 
+
+Note: Currently during the research phase of this tool, the tutor program sends
+a copy of a log file back to the developer by default. To opt out of this
+feature start the program using the `-n` or `--no-upload-log` flags like:
+`cli-tutor -n` or `cli-tutor --no-upload-log`
+
+For more information regarding logging and the tool check out the `cli-tutor
+info` and `cli-tutor help` sub-commands.
+
+Once you are in the tutor you are presented with a menu where you can select a
+lesson. This menu may be navigated using the arrow keys or j/k for up and down
+respectively. Once you pick a lesson you will be dropped into an interactive
+shell. Each lesson contains a series of prompts that aim to teach you about the
+topic at hand. Tasks can be navigated between using typing `next/prev` or `n/p`
+and hitting enter. Some task may require you to issue commands and the tutor
+will try to validate your inputs. These commands cannot be skipped using `next
+or n`. Additionally, each lesson has a certain list of available commands for
+the user to enter. A list of available commands is available by typing
+`commands` and hitting enter.
+
+
+Have Fun!
