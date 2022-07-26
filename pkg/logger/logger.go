@@ -20,7 +20,7 @@ var (
 
 func InitLogging() {
 	// Init Logging
-	logFile, err := os.OpenFile("/tmp/tutor-log.txt", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0o666)
+	logFile, err := os.OpenFile("/tmp/tutor-log.txt", os.O_TRUNC|os.O_CREATE|os.O_WRONLY, 0o666)
 	if err != nil {
 		log.Fatal(err)
 	}
