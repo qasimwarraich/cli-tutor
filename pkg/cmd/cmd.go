@@ -48,7 +48,7 @@ For more info type 'cli-tutor info' after exiting.
 				rl, _ := readline.New("Please enter a name or id to identify your log file or enter 'exit' > ")
 				line, _ := rl.Readline()
 				line = strings.TrimSpace(line)
-				if line == "exit" {
+				if line == "exit" || line == "quit" {
 					os.Exit(0)
 				}
 				logger.Identifier = line
