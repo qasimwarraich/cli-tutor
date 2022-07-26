@@ -35,9 +35,15 @@ func StylePrompt(s string, string_style string) string {
 	}
 }
 
-func BuildPrompt() string {
-	user, _ := user.Current()
-	username := StylePrompt(user.Username, "blue")
+func BuildPrompt(identifier string) string {
+	var username string
+
+	if identifier != "" {
+		username = StylePrompt(identifier, "blue")
+	} else {
+		user, _ := user.Current()
+		username = StylePrompt(user.Username, "blue")
+	}
 
 	host, _ := os.Hostname()
 	hostname := StylePrompt(host, "magenta")

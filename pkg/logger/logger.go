@@ -11,7 +11,11 @@ import (
 	"path/filepath"
 )
 
-var hostName string
+var (
+	Identify   bool
+	Identifier string = ""
+	hostName   string
+)
 
 func InitLogging() {
 	// Init Logging

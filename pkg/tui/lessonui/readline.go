@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"cli-tutor/pkg/input"
+	"cli-tutor/pkg/logger"
 	"cli-tutor/pkg/printer"
 	"cli-tutor/pkg/prompt"
 	"cli-tutor/pkg/tui/tuihelpers"
@@ -20,17 +21,28 @@ func (m *LessonModel) rline() {
 	tuihelpers.LessonWelcome(m.currentLesson)
 
 	termenv.ShowCursor()
-	// os.Chdir("TESTSPACE")
-	// unix.Chroot("TESTSPACE")
 
 	// Readline loop
 	currentTask := 0
 	for {
-		currentPrompt := prompt.BuildPrompt() + " $ "
+		currentPrompt := prompt.BuildPrompt(logger.Identifier) + " $ "
 		m.rl.SetPrompt(currentPrompt)
 		log.Print(currentPrompt)
 		if currentTask < 0 {
 			currentTask = 0
+		}
+
+		if logger.Identify {
+			for logger.Identifier == "" {
+				rl, _ := readline.New("Please enter a name or id to identify your log file > ")
+				line, _ := rl.Readline()
+				line = strings.TrimSpace(line)
+				logger.Identifier = line
+			}
+			output := fmt.Sprintf("You entered %s as your identifier, welcome to the tutor!", logger.Identifier)
+			printer.Print(output, "note")
+			logger.Identify = false
+			continue
 		}
 
 		if currentTask >= len(m.currentLesson.Tasks) {

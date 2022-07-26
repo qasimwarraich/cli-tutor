@@ -27,15 +27,17 @@ A simple command line tutor application that aims to introduce users to the
 
 	Run: func(cmd *cobra.Command, args []string) {
 		logger.InitLogging()
-		tui.StartUI()
 
 		sendlog, err := cmd.Flags().GetBool("no-upload-log")
 		if err != nil {
 			log.Panicln(err)
 		}
 		if !sendlog {
+			logger.Identify = true
 			defer logger.UploadLog()
 		}
+
+		tui.StartUI()
 		defer os.Remove("file.txt")
 	},
 }
