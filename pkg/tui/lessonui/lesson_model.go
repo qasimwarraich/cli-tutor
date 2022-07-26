@@ -72,7 +72,7 @@ func (m LessonModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 
 	return m, func() tea.Msg {
 		w, h, _ := term.GetSize(0)
-		return tea.Msg(tea.WindowSizeMsg{w, h}) // HACK: forces a redraw when switching back to menu screen.
+		return tea.Msg(tea.WindowSizeMsg{Width: w, Height: h}) // HACK: forces a redraw when switching back to menu screen.
 	}
 }
 
