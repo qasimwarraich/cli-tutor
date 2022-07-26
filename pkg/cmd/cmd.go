@@ -89,7 +89,15 @@ you start the program.
 example:
 cli-tutor -n or cli-tutor --no-upload-log
 
-For more information regarding commands use the --help/-h flag or help subcommand.
+The log file is essentially a copy of what you see and input during the lesson.
+
+The log file also contains the following information:
+- All text outputted and inputted during the lesson
+- Timestamps
+- The supplied identifier name or id
+- The hostname of the device or docker container running the program
+
+For more information regarding commands use the --help/-h flag or help sub-command.
 example:
 cli-tutor --help or cli-tutor help
 
