@@ -193,7 +193,7 @@ Note: In order to uninstall the tool you will need to delete it from your `bin`
 folder located under the `$GOPATH`. This is usually located in your home
 directory at `~/go/bin/`
 
-e.g. `rm ~/go/bin/cli-tutor` `make gouninstall`
+e.g. `rm ~/go/bin/cli-tutor` or `make gouninstall`
 ___
 
 ### Usage
