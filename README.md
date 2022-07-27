@@ -82,7 +82,7 @@ Clone this repository using:
 `git clone https://gitlab.com/qasimwarraich/cli-tutor`
 
 Change directory into the freshly cloned repo.
-`cd https://gitlab.com/qasimwarraich/cli-tutor`
+`cd cli-tutor`
 
  ---
 
@@ -135,6 +135,9 @@ Instructions:
 Option 1: Simply run tool without installing:
 `make`
 
+Note: This runs the tool in a mode that opts out of log sharing. To run the
+tool with log sharing use the `make log` command.
+
 ---
 
 Option 2: Just build the binary:
@@ -156,12 +159,14 @@ Option 3: Actually install the binary:
 
 Note: In order to uninstall this from your system use the `sudo make uninstall` command.
 
+---
 
 ####  Method 3: Using golang tooling
 
 Prerequisites:
 
 - go v1.18 or higher
+- make (optional)
 
 Instructions:
 
@@ -172,12 +177,23 @@ ___
 Option 2: Actually install the binary:
 
 `go install main.go`
+
+Option 3: Using make:
+
+To just run the tool without installing:
+`make`
+
+Note: This runs the tool in a mode that opts out of log sharing. To run the
+tool with log sharing use the `make log` command.
+
+To actually install the binary
+`make goinstall`
 ___
 Note: In order to uninstall the tool you will need to delete it from your `bin`
 folder located under the `$GOPATH`. This is usually located in your home
 directory at `~/go/bin/`
 
-e.g. `rm ~/go/bin/cli-tutor`
+e.g. `rm ~/go/bin/cli-tutor` `make gouninstall`
 ___
 
 ### Usage
