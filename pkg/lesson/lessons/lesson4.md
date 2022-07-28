@@ -33,10 +33,18 @@ of your system and is a record of every command you have issued in a particular
 shell. If you are using the `bash` shell this file is called `.bash_history`.
 
 The history file maintained by this tutor is called `.tutor_history` and
-resides in the folder you started this program in. 
+resides in the folder you started this program in.
 
-`ls -a` should display it and to view its contents in the shell you can use the
-`cat` command like `cat .tutor_history`.
+You can use the `ls -a` to list files including all the hidden ones.
+
+Give it a try! Type the command `ls -a` and hit Enter.
+
+> !ls -a
+
+## Let's view our shell history
+
+To view the contents of the history file you can use the `cat` command like:
+`cat .tutor_history`.
 
 Try this out! Type the command `cat .tutor_history` and hit Enter.
 
