@@ -50,6 +50,12 @@ var completer = readline.NewPrefixCompleter(
 	readline.PcItem("cat",
 		readline.PcItemDynamic(listFiles("./")),
 	),
+	readline.PcItem("rm",
+		readline.PcItemDynamic(listFiles("./")),
+	),
+	readline.PcItem("rmdir",
+		readline.PcItemDynamic(listFiles("./")),
+	),
 	// TODO: This breaks the rest of the completions above
 	// readline.PcItemDynamic(listVocabulary()),
 
