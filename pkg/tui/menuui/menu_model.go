@@ -72,20 +72,28 @@ func (m MenuModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		case tea.MouseWheelDown:
 			m.list.CursorDown()
 
+		case tea.MouseMotion:
+			for i, listItem := range m.list.Items() {
+				item, _ := listItem.(item)
+				if zone.Get(item.title).InBounds(msg) || zone.Get(item.description).InBounds(msg) {
+					m.list.Select(i)
+				}
+			}
+
 		case tea.MouseLeft:
 			for i, listItem := range m.list.Items() {
 				item, _ := listItem.(item)
-				if zone.Get(item.title).InBounds(msg) || zone.Get(item.description).InBounds(msg) && item == m.list.SelectedItem() {
-					m.choice = string(item.filename)
-					log.Printf("Selected lesson: %s", m.choice)
-					return m, func() tea.Msg {
-						return SelectMessage{SelectedLesson: m.choice}
-					}
-				}
-				// Check each item to see if it's in bounds.
+
 				if zone.Get(item.title).InBounds(msg) || zone.Get(item.description).InBounds(msg) {
-					m.list.Select(i)
-					break
+					if item == m.list.SelectedItem() {
+						m.choice = string(item.filename)
+						log.Printf("Selected lesson: %s", m.choice)
+						return m, func() tea.Msg {
+							return SelectMessage{SelectedLesson: m.choice}
+						}
+					} else {
+						m.list.Select(i)
+					}
 				}
 			}
 		}

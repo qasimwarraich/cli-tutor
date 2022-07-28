@@ -6,7 +6,6 @@ import (
 
 	"cli-tutor/pkg/tui/lessonui"
 	"cli-tutor/pkg/tui/menuui"
-	"cli-tutor/pkg/tui/tuihelpers"
 
 	tea "github.com/charmbracelet/bubbletea"
 	zone "github.com/lrstanley/bubblezone"
@@ -14,6 +13,7 @@ import (
 )
 
 type sessionState int
+
 var p *tea.Program
 
 const (
@@ -30,7 +30,7 @@ type MainModel struct {
 }
 
 func (m MainModel) Init() tea.Cmd {
-	tuihelpers.ProgramWelcome()
+	// tuihelpers.ProgramWelcome()
 	return nil
 }
 
@@ -41,11 +41,11 @@ func (m MainModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		m.windowsize = msg // pass this along to the entry view so it uses the full window size when it's initialized
 
 	case lessonui.BackMsg:
-		p.EnableMouseCellMotion()
+		p.EnableMouseAllMotion()
 		m.state = menuView
 
 	case menuui.SelectMessage:
-		p.DisableMouseCellMotion()
+		p.DisableMouseAllMotion()
 		m.state = lessonView
 		m.lesson = lessonui.New(msg.SelectedLesson)
 
@@ -96,14 +96,12 @@ func New() MainModel {
 	}
 }
 
-
 func StartUI() {
 	zone.NewGlobal()
 	m := New()
 	p = tea.NewProgram(
 		m,
-		// tea.WithAltScreen(),
-		tea.WithMouseCellMotion(),
+		tea.WithMouseAllMotion(),
 	)
 
 	if err := p.Start(); err != nil {
