@@ -12,6 +12,7 @@ import (
 	"cli-tutor/pkg/tui/tuihelpers"
 
 	"github.com/chzyer/readline"
+	"github.com/muesli/termenv"
 	"github.com/spf13/cobra"
 )
 
@@ -57,10 +58,23 @@ For more info type 'cli-tutor info' after exiting.
 			defer logger.UploadLog()
 		}
 
-		tuihelpers.ProgramWelcome()
+		nowelcomeflag, err := cmd.Flags().GetBool("no-welcome")
+
+		if !nowelcomeflag {
+			tuihelpers.ProgramWelcome()
+		} else {
+			termenv.ClearScreen()
+		}
+
+		if err != nil {
+			log.Panicln(err)
+		}
+
 		tui.StartUI()
+
 		defer os.Remove("file.txt")
 		defer os.Remove(".hiddenfile.txt")
+		defer termenv.ClearScreen()
 	},
 }
 
@@ -121,6 +135,7 @@ var repoCmd = &cobra.Command{
 
 func init() {
 	rootCmd.Flags().BoolP("no-upload-log", "n", false, "Do not send a copy of the log to the developer")
+	rootCmd.Flags().BoolP("no-welcome", "x", false, "Do not show welcome message when entering tutor")
 	rootCmd.AddCommand(versionCmd)
 	rootCmd.AddCommand(infoCmd)
 	rootCmd.AddCommand(repoCmd)

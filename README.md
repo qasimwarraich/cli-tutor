@@ -26,6 +26,7 @@ Available Commands:
 Flags:
   -h, --help            help for cli-tutor
   -n, --no-upload-log   Do not send a copy of the log to the developer
+  -x, --no-welcome      Do not show welcome message when entering tutor
 
 Use "cli-tutor [command] --help" for more information about a command.
 ```
