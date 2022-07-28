@@ -24,6 +24,7 @@ func LessonWelcome(currentLesson lesson.Lesson) {
 }
 
 func ProgramWelcome() {
+	termenv.ClearScreen()
 	s := `
           ___           ___                       ___           ___           ___           ___       ___     
          /\  \         /\__\          ___        /\  \         /\  \         /\  \         /\__\     /\  \    

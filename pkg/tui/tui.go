@@ -98,7 +98,6 @@ func New() MainModel {
 
 
 func StartUI() {
-	termenv.ClearScreen()
 	zone.NewGlobal()
 	m := New()
 	p = tea.NewProgram(
