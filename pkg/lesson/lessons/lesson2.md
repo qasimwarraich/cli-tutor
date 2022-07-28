@@ -31,18 +31,18 @@ Commands or programs may also have several sub-commands
 that perform different actions and may have their own `--flags` to further
 control those actions.
 
-*e.g.* `go test -v main_test.go` or `git clone REPO --bare`
+*e.g.* `apt install -y vim` or `git clone REPO --bare`
 
 We can still apply the same analogy of a sentence as discussed in the previous
 step, with a slight addition.
 `program` `verb` `--adjective/adverb` `     noun`
-`↓         ↓       ↓                    ↓  `
-`go       test    -v                 main_test.go`
+`↓         ↓           ↓               ↓  `
+`apt   install        -y              vim`
 
 *In English*:
 
 ```
-→ "Go compiler run the testing package with verbose output on file main_test.go"
+→ "APT package manager install vim and confirm any prompts y/n with the answer yes."
 ```
 
 If all this makes sense, type `n` or `next` and hit enter to continue or type
