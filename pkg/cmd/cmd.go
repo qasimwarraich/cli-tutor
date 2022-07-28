@@ -57,9 +57,10 @@ For more info type 'cli-tutor info' after exiting.
 			defer logger.UploadLog()
 		}
 
-        tuihelpers.ProgramWelcome()
+		tuihelpers.ProgramWelcome()
 		tui.StartUI()
 		defer os.Remove("file.txt")
+		defer os.Remove(".hiddenfile.txt")
 	},
 }
 
