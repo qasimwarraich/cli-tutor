@@ -67,6 +67,18 @@ Enter to execute it.
 
 > !cat .tutor_history
 
+## Ctrl + c
+
+`Ctrl + c` is one of the most important commands to have under your belt. It is
+a shortcut used for cancelling currently running actions. This could be a
+program you launch from the shell, or it could even be used to simply cancel a
+command you are typing or even things like the inbuilt history search you just
+learnt about.
+
+Give it a try! Launch the history search with `Ctrl + r` and cancel it with `Ctrl + c`.
+
+When you are comfortable, type `n` or `next` and hit enter to continue.
+
 ## The Double Bang!!
 
 Another very useful shell shortcut is the double bang `!!`. This shell shortcut
@@ -79,10 +91,10 @@ You forgot to supply a flag:
 
 ```
 ls
-**OUTPUT of ls**
+...output of ls
 
 !! -a
-**OUTPUT OF ls -a**
+...output of ls -a
 
 ```
 
