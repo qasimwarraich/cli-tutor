@@ -8,8 +8,10 @@ RUN apt -y install curl
 RUN useradd -ms /bin/bash cli-student
 ADD ./bin/cli-tutor /usr/bin
 
-WORKDIR /home/cli-student
 USER cli-student
+RUN mkdir /home/cli-student/tutor/
+WORKDIR /home/cli-student/tutor/
+
 ENV TERM xterm-256color
 
 # CMD ./cli-tutor
