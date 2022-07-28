@@ -11,6 +11,7 @@ import (
 	"cli-tutor/pkg/logger"
 	"cli-tutor/pkg/printer"
 	"cli-tutor/pkg/prompt"
+	"cli-tutor/pkg/tui/feedback"
 	"cli-tutor/pkg/tui/tuihelpers"
 
 	"github.com/chzyer/readline"
@@ -33,7 +34,7 @@ func (m *LessonModel) rline() {
 		}
 
 		if currentTask >= len(m.currentLesson.Tasks) {
-			printer.Print(completed, "note")
+			printer.Print(feedback.Completed, "note")
 			time.Sleep(2 * time.Second)
 			m.quitting = true
 			break
@@ -67,7 +68,7 @@ func (m *LessonModel) rline() {
 
 		if line == "next" || line == "n" {
 			if m.currentLesson.Tasks[currentTask].Expected != "" {
-				printer.Print(expected, "error")
+				printer.Print(feedback.Expected, "error")
 			} else {
 				currentTask++
 			}
@@ -86,14 +87,14 @@ func (m *LessonModel) rline() {
 		}
 
 		if line == "quit" || line == "exit" {
-			printer.Print(exiting, "note")
+			printer.Print(feedback.Exiting, "note")
 			m.quitting = true
 			break
 		}
 
 		filtered_input := input.InputFilter(line, m.currentLesson.Vocabulary)
 		if len(filtered_input) == 0 {
-			printer.Print(invalid_command, "error")
+			printer.Print(feedback.InvalidCommand, "error")
 			continue
 		}
 

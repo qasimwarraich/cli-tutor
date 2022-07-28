@@ -9,6 +9,7 @@ import (
 
 	"cli-tutor/pkg/lesson"
 	"cli-tutor/pkg/printer"
+	"cli-tutor/pkg/tui/feedback"
 )
 
 var previousCommand []string
@@ -63,7 +64,7 @@ func RunCommand(filtered_input []string) string {
 		commandstring := strings.Join(command, " ")
 		out, err := exec.Command("bash", "-c", commandstring).CombinedOutput()
 		if err != nil {
-			printer.Print("Failed to execute command", "")
+			printer.Print(feedback.CommandFailed, "")
 			printer.Print(err.Error(), "")
 		}
 		return string(out)
@@ -101,11 +102,11 @@ func ValidateCommand(commandOutput string, currentLesson lesson.Lesson, currentT
 		}
 		if strings.TrimSpace(commandOutput) == strings.TrimSpace(expected) {
 
-			printer.Print("Yay you did it!, Let's move to the next task.", "guide")
+			printer.Print(feedback.Correct, "guide")
 			time.Sleep(2 * time.Second)
 			*currentTask++
 		} else {
-			printer.Print("That isn't quite right", "error")
+			printer.Print(feedback.Incorrect, "error")
 		}
 	}
 }
