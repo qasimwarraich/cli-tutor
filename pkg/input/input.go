@@ -44,12 +44,19 @@ func RunCommand(filtered_input []string) string {
 	//  the go program.
 	if filtered_input[0] == "cd" {
 		if len(filtered_input) > 1 {
-			err := os.Chdir(filtered_input[1])
-			if err != nil {
-				printer.Print(err.Error(), "note")
+			if fakeJailWarden(filtered_input[1]) == true {
+				err := os.Chdir(filtered_input[1])
+				if err != nil {
+					printer.Print(err.Error(), "note")
+				}
+			} else {
+				printer.Print(feedback.DangerZone, "error")
 			}
 		} else {
-			os.Chdir(os.Getenv("$HOME"))
+			err := os.Chdir(os.Getenv("HOME"))
+			if err != nil {
+				log.Print(err.Error())
+			}
 		}
 	}
 
@@ -131,4 +138,28 @@ func runPager(input []byte) {
 	if err != nil {
 		log.Fatal(err)
 	}
+}
+
+func fakeJailWarden(s string) bool {
+	cwd, _ := os.Getwd()
+	restricted := []string{
+		"bin", "boot", "dev", "etc", "home", "lib", "lib32",
+		"lib64", "libx32", "media", "mnt", "opt", "proc", "root", "run", "sbin",
+		"srv", "sys", "tmp", "usr", "var",
+	}
+
+	if cwd == os.Getenv("HOME") && s == ".." {
+		log.Print("Tried to enter danger zone")
+		return false
+	}
+
+	if s == "/" || s == "/root" {
+		return false
+	}
+
+	if contains(s, restricted) {
+		return false
+	}
+
+	return true
 }
