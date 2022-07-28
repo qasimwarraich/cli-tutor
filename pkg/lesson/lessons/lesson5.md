@@ -40,13 +40,15 @@ getting stuck in the program. The most important being `q` which is how you
 quit.
 
 Other keybindings that will be important are:
-Moving up: `↑/k`
-Moving down: `↓/j`
+Moving up: `↑` or `k`
+Moving down: `↓` or `j`
 
-Moving one page up: `pageup/Ctrl+u`
-Moving one page down:`pagedown/Ctrl+d`
+Moving one page up: `pageup` or `Ctrl+u`
+Moving one page down:`pagedown` or `Ctrl+d`
 
 searching: `/`
+
+And remember, to exit the pager: `q`
 
 Type `n` or `next` and hit enter to continue.
 
@@ -56,7 +58,7 @@ Let's try reading the manual for a command we are already familiar with, this
 is a great way to learn about the extended capabilities of command line tools.
 
 Try:
-`man ls`
+`man wc`
 
 **Remember!** Press `q` to quit the pager and return to the tutor, happy reading!
 
