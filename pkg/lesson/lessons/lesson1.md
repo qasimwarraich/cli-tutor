@@ -5,22 +5,27 @@ We will introduce you to the tutor program and how to formulate a command.
 
 ## Introduction
 
-Welcome to the command line. This may look intimidating, but this  
-tutorial will introduce you to the concepts you need to be familiar  
-with to thrive at the command line.
+Welcome to the command line interface (or "CLI" for short). It may look
+intimidating for now, but this tutorial will familiarise you with the concepts
+you need to thrive on the command line.
 
-When you are ready, type `n` or `next` and hit enter to continue.
+Below, you can see the `command prompt`, where you can type commands. When you
+are ready, type `n` or `next` and hit enter to continue.
 
 ## What is the Shell?
 
-Textual interaction is a form of interacting with your computer's operating
-system using textual input. You, the user, can issue `commands` and the `shell`
-will interpret them and produce an output.
+Essentially, the `shell` is a command line interface that let's you "talk
+directly to your computer" using text messages. Instead of browsing a hierarchy
+of menus and dialogs like in a conventional, graphical user interface, the
+shell lets you access any setting or functionality of your computer directly
+through dedicated `commands`. The `shell` will interpret these commands and
+produce appropriate output.
 
-The `shell` is a program that wraps your operating system and acts as an
-intermediary between the user and the operating system. It manages the user's
-interaction by accepting input in the form of `commands` and relays output in the
-form of produced output, errors or special shell features like shortcuts.
+More formally, the `shell` is a program that wraps your operating system (hence
+its name) and acts as an intermediary between you, the user, and the operating
+system. It manages the user's interaction by accepting input in the form of
+`commands` and relays responses in the form of produced output, errors or
+special shell features like shortcuts.
 
 ```
                        shell───────────────────────┐
@@ -39,31 +44,42 @@ This graph is an illustration of the interaction cycle between the user and shel
 
 Type `n` or `next` and hit enter to continue.
 
-## Command Formulation
+## How to issue commands
 
-Commands can generally be supplied to the shell by using the following format:
+Commands supplied to the shell usually adhere to the following pattern:
 
 `command` `--flags` `arguments`
 
-e.g. `wc --lines file.txt`
+A `command` is the name of a program the shell can run, while `--flags` and
+`arguments` are ways to tell the program what to do specifically. Most programs
+accept multiple flags and/or arguments.
 
-A `command` is actually a program the shell can run. In the above example the
-program being called is `wc`, a word counting program.
+`--flags` are pre-defined cues that alter the programs behaviour. You can
+imagine these as "switches" that turn certain options on or off.
 
-`--flags` are additional cues that can be provided to the program to alter its
-behaviour. These can be optional, but almost all command line programs have
-flags to help produce the output the user wants. In the above example we supply
-the `--lines` flag to let `wc` know we are only interested in the line count
-and not the rest of the information the program can produce.
+`arguments` are additional pieces of information supplied as free text, which
+the program will have to interpret.
 
-Finally, we have the `argument` which is the input to the program, in the case
-of our example, a file named `file.txt`.
+Here's an example for a command called `wc` (short for "word count"):
 
-Type `n` or `next` and hit enter to continue.
+`wc --lines file.txt`
 
-## Try a Command
+Issuing this command will count the lines in a file called "file.txt". Feel
+free to try out this command right now by typing it into the command prompt and
+hitting enter. You will see the output of the command just below the prompt and
+above the current lesson text. You could also try different flags, like
+`--words` or `--chars`, or even all three at the same time. You should see that
+"file.txt" contains 4 lines, 26 words and 147 characters.
 
-Try it out for yourself!
+By the way, `--flags` sometimes have a shorthand version: `wc -l` is the same as
+`wc --lines`.
+
+Don't worry about making mistakes. You will always be led back to this lesson.
+
+When you're ready, type `n` or `next` and hit enter to continue.
+
+## Try another Command
+
 Type the command `whoami`, hit Enter and look at the result.
 
 > !whoami
@@ -71,11 +87,11 @@ Type the command `whoami`, hit Enter and look at the result.
 ## Let's try something more fun
 
 As mentioned before, the shell is just an intermediary between you and your
-operating system. This means you can perform essentially anything you want here
-in the shell, including accessing the internet for example.
+operating system. This means you can do essentially anything you want here in
+the shell, including accessing the internet, for example.
 
-Let's try this out. Type the command `curl wttr.in` to instruct the `curl` tool
-to access the website `wttr.in`.
+Let's try this out. Type the command `curl wttr.in/Bern` to instruct the `curl` tool
+to access the website `wttr.in/Bern`. You should receive a weather forecast.
 
 When you are done, type `n` or `next` to continue.
 
@@ -84,7 +100,7 @@ When you are done, type `n` or `next` to continue.
 If at any point the amount of text on the screen becomes overwhelming the shell
 has an inbuilt command called `clear` that clears all the text on the screen.
 Helpfully, this tutor program will ensure to re-display the text for the step
-you are currently on. Give it a try!
+you are currently on. Give it a try by typing `clear` and hitting enter!
 
 This is the end of the lesson, feel free to continue playing around with
 commands we have covered in this lesson:
@@ -94,4 +110,4 @@ When you are done, type `n`, `next` or `quit` to end this lesson.
 
 ### Vocabulary
 
-pwd, ls, cd, whoami, uname, echo, curl, man, clear, less
+whoami, curl, clear, wc

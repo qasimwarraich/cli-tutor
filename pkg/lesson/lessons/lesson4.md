@@ -84,19 +84,18 @@ Type `n` or `next` and hit enter to continue.
 
 By far the biggest efficiency booster is going to be `<Tab>` completion.
 `<Tab>` completion allows us to fill in completions to things like commands or
-paths to files on our system by using the `<Tab>` key on our computer to make
-the selections. There are innumerable use cases for tab completion but let's
-try to think of it in simple terms. Up until now if we wanted to change our
-directory we first used `ls` to show the contents of our current working
-directory, and then we used `cd` and typed the directory name in fully to
-navigate to that directory.
+paths to files on our system by using the `<Tab>` key on our keyboard. There
+are innumerable use cases for tab completion but let's try to think of it in
+simple terms. Up until now if we wanted to change our directory we first used
+`ls` to show the contents of our current working directory, and then we used
+`cd` and typed the directory name in fully to navigate to that directory.
 
 With `<Tab>` completion we can simply type `cd<Tab>` to open up the completion
 menu. You will see a list of candidate directories of which you can cycle
 through by using `<Tab>` again. You can even further filter the results down by
 continuing to type letters to narrow the list of candidates.
 
-Give it a try!
+Give it a try by typing `cd` and hitting the `<Tab>` key!
 
 When this all makes sense, type `n` or `next` and hit enter to continue.
 

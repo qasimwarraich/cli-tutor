@@ -14,14 +14,14 @@ Type `n` or `next` and hit enter to continue.
 
 ## Prompt
 
-Before we begin, let's explain this funny looking line that has been following
-you where you type. It is called the `prompt`.
+Before we begin, let's talk a bit more about the `command prompt` where you've
+been entering commands.
 
 It displays information about the:
 
 current user = `{{GetUser}}` ← You!
 host machine = `{{GetHost}}` ← Your machine
-the current directory you are in = `{{GetWd}}` ← Where you are on your machine.
+current directory you are in = `{{GetWd}}` ← Where you are on your machine.
 
 The `prompt` is there to give you some additional context about the state of
 your system. Importantly for us, it conveniently tells us where we are on our
@@ -32,8 +32,8 @@ Type `n` or `next` and hit enter to continue.
 ## Present Working Directory
 
 Where you are at any moment on your computer's file system is known as the
-"current working directory". As discussed before it is also often displayed in
-the prompt.
+"current working directory" (CWD). As discussed before it is also often
+displayed in the prompt.
 
 *Note*: The term "directory" is interchangeable with the term "folder".
 
@@ -52,15 +52,15 @@ Try it out for yourself, Type `pwd` and hit enter.
 What the `pwd` command actually outputted to you is known as the `path` to your
 current working directory. The `path` in this case describes the location of
 something on the file system or in other words the path one must take from the
-`root` (beginning of the file system) to the location in question (in this case
+`root` (top level) of the file system to the location in question (in this case
 our current working directory).
 
 Type `n` or `next` and hit enter to continue.
 
 ## Listing files
 
-Now that we know where we are a natural follow-up question would be, "What else do
-we have here?"
+Now that we know which folder we're in, a natural follow-up question would be
+"What does this folder contain?"
 
 To list to contents of a directory we use the `ls` command to list files in a directory.
 
@@ -80,14 +80,16 @@ Try it out for yourself, Type `ls -a` and hit enter.
 
 ## More interesting stuff about paths
 
-Notice the two additional results on the top `.` and `..`, these are shorthand
-for **current directory** and **parent directory** (the directory above the current) respectively.
+Notice the two additional results at the top: `.` and `..`. These are shorthand
+for **current directory** and **parent directory** (the directory containing
+the current) respectively.
 
 This is not to be confused with when a `.` is the first character of a
-filename, this indicates a "hidden file".
-**e.g.**: `.hiddenfile.txt`
+filename, **e.g.**: `.hiddenfile.txt`. By convention, files starting with a `.`
+are "hidden files". These will be hidden by default, both when typing `ls` on
+the command line or when using a graphical file browser.
 
-The `ls -a` command also displays these "dotfiles" because of the `-a` flag.
+The `ls -a` command displays these hidden "dotfiles" because of the `-a` flag.
 
 Type `n` or `next` and hit enter to continue.
 
