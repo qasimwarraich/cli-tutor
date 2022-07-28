@@ -70,10 +70,12 @@ For more info type 'cli-tutor info' after exiting.
 			log.Panicln(err)
 		}
 
+		initial_wd, _ := os.Getwd()
+
 		tui.StartUI()
 
-		defer os.Remove("file.txt")
-		defer os.Remove(".hiddenfile.txt")
+		defer os.Remove(initial_wd + "/file.txt")
+		defer os.Remove(initial_wd + "/.hiddenfile.txt")
 		defer termenv.ClearScreen()
 	},
 }
