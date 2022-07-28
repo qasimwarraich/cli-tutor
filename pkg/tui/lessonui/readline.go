@@ -53,7 +53,7 @@ func (m *LessonModel) rline() {
 				continue
 			}
 		} else if err == io.EOF {
-			break
+			continue // essentially captures ^D
 		}
 
 		log.Print(line)

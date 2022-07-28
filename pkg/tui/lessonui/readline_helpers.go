@@ -58,3 +58,12 @@ var completer = readline.NewPrefixCompleter(
 	readline.PcItem("exit"),
 	readline.PcItem("quit"),
 )
+
+func filterInput(r rune) (rune, bool) {
+	switch r {
+	// block CtrlZ feature
+	case readline.CharCtrlZ:
+		return r, false
+	}
+	return r, true
+}

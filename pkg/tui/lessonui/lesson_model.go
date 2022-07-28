@@ -34,7 +34,7 @@ func New(choice string) LessonModel {
 		HistoryLimit:    999,
 		InterruptPrompt: "^C",
 		AutoComplete:    completer,
-		// FuncFilterInputRune: filterInput,
+		FuncFilterInputRune: filterInput,
 	})
 	if err != nil {
 		panic(err)
