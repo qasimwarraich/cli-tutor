@@ -9,10 +9,12 @@ import (
 	"cli-tutor/pkg/tui/tuihelpers"
 
 	tea "github.com/charmbracelet/bubbletea"
+	zone "github.com/lrstanley/bubblezone"
 	"github.com/muesli/termenv"
 )
 
 type sessionState int
+var p *tea.Program
 
 const (
 	menuView sessionState = iota
@@ -39,9 +41,11 @@ func (m MainModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		m.windowsize = msg // pass this along to the entry view so it uses the full window size when it's initialized
 
 	case lessonui.BackMsg:
+		p.EnableMouseCellMotion()
 		m.state = menuView
 
 	case menuui.SelectMessage:
+		p.DisableMouseCellMotion()
 		m.state = lessonView
 		m.lesson = lessonui.New(msg.SelectedLesson)
 
@@ -92,9 +96,17 @@ func New() MainModel {
 	}
 }
 
+
 func StartUI() {
+	termenv.ClearScreen()
+	zone.NewGlobal()
 	m := New()
-	p := tea.NewProgram(m, tea.WithAltScreen())
+	p = tea.NewProgram(
+		m,
+		// tea.WithAltScreen(),
+		tea.WithMouseCellMotion(),
+	)
+
 	if err := p.Start(); err != nil {
 		fmt.Println("Error running program:", err)
 		os.Exit(1)
