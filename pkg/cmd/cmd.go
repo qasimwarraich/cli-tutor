@@ -9,6 +9,7 @@ import (
 	"cli-tutor/pkg/logger"
 	"cli-tutor/pkg/printer"
 	"cli-tutor/pkg/tui"
+	"cli-tutor/pkg/tui/tuihelpers"
 
 	"github.com/chzyer/readline"
 	"github.com/spf13/cobra"
@@ -56,6 +57,7 @@ For more info type 'cli-tutor info' after exiting.
 			defer logger.UploadLog()
 		}
 
+        tuihelpers.ProgramWelcome()
 		tui.StartUI()
 		defer os.Remove("file.txt")
 	},
