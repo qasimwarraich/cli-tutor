@@ -79,10 +79,10 @@ var infoCmd = &cobra.Command{
 			`
 cli-tutor is a simple command line tutor application that aims to introduce
 users to the basics of command line interaction. The tool is currently part of
-a Master's Thesis project and thus will part of a user study. To this end, the
+a Master's Thesis project and thus will be part of a user study. To this end, the
 tool integrates a logging feature so that the developer may collect insights
-about the tools effectiveness. Logging is on by default and log files are
-saved at /tmp/tutor-log.txt on unix based systems. To opt out of sending your
+about the tool's effectiveness. Logging is on by default and log files are
+saved at /tmp/tutor-log.txt on unix based systems. To opt-out of sending your
 log file to the developer you may supply the -n or --no-upload-log flag when
 you start the program.
 
@@ -97,7 +97,7 @@ The log file also contains the following information:
 - The supplied identifier name or id
 - The hostname of the device or docker container running the program
 
-For more information regarding commands use the --help/-h flag or help sub-command.
+For more information regarding commands, use the --help/-h flag or help sub-command.
 example:
 cli-tutor --help or cli-tutor help
 
