@@ -1,7 +1,7 @@
 package feedback
 
 const (
-    InvalidCommand string = "The command you entered is invalid for this lesson. You can type 'commands' to print available commands."
+	InvalidCommand string = "The command you entered is invalid for this lesson. You can type 'commands' to print available commands."
 	Exiting        string = "Exiting tutor, Good bye!"
 	Expected       string = "This task is interactive, try to practice the command before proceeding."
 	Completed      string = "Congratulations! All Task Completed!, Exiting Lesson!"

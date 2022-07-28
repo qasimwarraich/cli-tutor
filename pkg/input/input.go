@@ -44,7 +44,7 @@ func RunCommand(filtered_input []string) string {
 	//  the go program.
 	if filtered_input[0] == "cd" {
 		if len(filtered_input) > 1 {
-			if fakeJailWarden(filtered_input[1]) == true {
+			if fakeJailWarden(filtered_input[1]) {
 				err := os.Chdir(filtered_input[1])
 				if err != nil {
 					printer.Print(err.Error(), "note")
