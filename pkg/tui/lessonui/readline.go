@@ -18,6 +18,8 @@ import (
 	"github.com/muesli/termenv"
 )
 
+var ZenMode bool
+
 func (m *LessonModel) rline() {
 	tuihelpers.LessonWelcome(m.currentLesson)
 
@@ -40,11 +42,7 @@ func (m *LessonModel) rline() {
 			break
 		}
 
-		tracker := fmt.Sprintf("\n\n%s : %s [%d/%d]:", m.currentLesson.Name, m.currentLesson.Tasks[currentTask].Title, currentTask, len(m.currentLesson.Tasks)-1)
-		printer.Print(tracker, "guide")
-
-		out, _ := m.r.Render(m.currentLesson.Tasks[currentTask].Description)
-		printer.Print(out, "")
+		m.printTracker(currentTask)
 
 		line, err := m.rl.Readline()
 		line = strings.TrimSpace(line)
@@ -57,12 +55,16 @@ func (m *LessonModel) rline() {
 			continue // essentially captures ^D
 		}
 
-		log.Print(line)
+		log.Print("USERINPUT= " + line)
 		if err != nil { // io.EOF
 			break
 		}
 
 		if line == "" {
+			if ZenMode {
+				zenPrint(line, "", currentPrompt)
+			}
+
 			continue
 		}
 
@@ -72,11 +74,17 @@ func (m *LessonModel) rline() {
 			} else {
 				currentTask++
 			}
+			if ZenMode {
+				zenPrint(line, "", currentPrompt)
+			}
 			continue
 		}
 
 		if line == "prev" || line == "p" {
 			currentTask--
+			if ZenMode {
+				zenPrint(line, "", currentPrompt)
+			}
 			continue
 		}
 
@@ -102,8 +110,26 @@ func (m *LessonModel) rline() {
 		 * it as a system call, display it's output and validate it against the
 		 * expected value on the lesson if it exists. */
 		output := input.RunCommand(filtered_input)
-		printer.Print(string(output), "")
+		if ZenMode {
+			zenPrint(line, output, currentPrompt)
+		} else {
+			printer.Print(string(output), "")
+		}
 		input.ValidateCommand(output, m.currentLesson, &currentTask)
 
 	}
+}
+
+func (m *LessonModel) printTracker(currentTask int) {
+	tracker := fmt.Sprintf("\n%s : %s [%d/%d]:", m.currentLesson.Name, m.currentLesson.Tasks[currentTask].Title, currentTask, len(m.currentLesson.Tasks)-1)
+	printer.Print(tracker, "guide")
+
+	out, _ := m.r.Render(m.currentLesson.Tasks[currentTask].Description)
+	printer.Print(out, "")
+}
+
+func zenPrint(input, output, prompt string) {
+	termenv.ClearScreen()
+	fmt.Print(prompt+input, "")
+	printer.Print(output, "")
 }

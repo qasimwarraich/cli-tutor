@@ -9,6 +9,7 @@ import (
 	"cli-tutor/pkg/logger"
 	"cli-tutor/pkg/printer"
 	"cli-tutor/pkg/tui"
+	"cli-tutor/pkg/tui/lessonui"
 	"cli-tutor/pkg/tui/tuihelpers"
 
 	"github.com/chzyer/readline"
@@ -66,9 +67,8 @@ For more info type 'cli-tutor info' after exiting.
 			termenv.ClearScreen()
 		}
 
-		if err != nil {
-			log.Panicln(err)
-		}
+		ZenPrint, _ := cmd.Flags().GetBool("zen-print")
+		lessonui.ZenMode = ZenPrint
 
 		initial_wd, _ := os.Getwd()
 
@@ -138,6 +138,7 @@ var repoCmd = &cobra.Command{
 func init() {
 	rootCmd.Flags().BoolP("no-upload-log", "n", false, "Do not send a copy of the log to the developer")
 	rootCmd.Flags().BoolP("no-welcome", "x", false, "Do not show welcome message when entering tutor")
+	rootCmd.Flags().BoolP("zen-print", "z", false, "Use zen mode for reduced clutter in tutor")
 	rootCmd.AddCommand(versionCmd)
 	rootCmd.AddCommand(infoCmd)
 	rootCmd.AddCommand(repoCmd)
