@@ -77,6 +77,17 @@ func RunCommand(filtered_input []string) string {
 		return string(out)
 	}
 
+	if contains("&&", filtered_input) || contains("||", filtered_input) {
+		command := filtered_input[:]
+		commandstring := strings.Join(command, " ")
+		out, err := exec.Command("bash", "-c", commandstring).CombinedOutput()
+		if err != nil {
+			printer.Print(feedback.CommandFailed, "")
+			printer.Print(err.Error(), "")
+		}
+		return string(out)
+	}
+
 	// Checks if the command has arguments
 	if len(filtered_input) > 1 {
 		args := filtered_input[1:]
