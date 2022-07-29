@@ -154,9 +154,9 @@ func runPager(input []byte) {
 func fakeJailWarden(s string) bool {
 	cwd, _ := os.Getwd()
 	restricted := []string{
-		"bin", "boot", "dev", "etc", "home", "lib", "lib32",
-		"lib64", "libx32", "media", "mnt", "opt", "proc", "root", "run", "sbin",
-		"srv", "sys", "tmp", "usr", "var",
+		"/bin", "/boot", "/dev", "/etc", "/home", "/lib", "/lib32",
+		"/lib64", "/libx32", "/media", "/mnt", "/opt", "/proc", "/root", "/run", "/sbin",
+		"/srv", "/sys", "/tmp", "/usr", "/var",
 	}
 
 	if cwd == os.Getenv("HOME") && s == ".." {
