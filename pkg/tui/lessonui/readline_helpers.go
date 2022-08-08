@@ -1,9 +1,15 @@
 package lessonui
 
 import (
+	"fmt"
 	"io/ioutil"
+	"regexp"
+	"strconv"
+
+	"cli-tutor/pkg/printer"
 
 	"github.com/chzyer/readline"
+	"github.com/muesli/termenv"
 )
 
 func listFiles(path string) func(string) []string {
@@ -72,4 +78,28 @@ func filterInput(r rune) (rune, bool) {
 		return r, false
 	}
 	return r, true
+}
+
+func ToggleZen() {
+	if ZenMode == false {
+		termenv.ClearScreen()
+		printer.Print("zen mode toggeled on", "note")
+	} else {
+		printer.Print("zen mode toggeled off", "note")
+	}
+
+	ZenMode = !ZenMode
+}
+
+func ZenPrint(input, output, prompt string, style string) {
+	termenv.ClearScreen()
+	fmt.Println(prompt+input, "")
+	printer.Print(output, style)
+}
+
+func GetLessonNumber(s string) (int, error) {
+	r := regexp.MustCompile("[0-9]+")
+	nums := r.FindAllString(s, -1)
+
+	return strconv.Atoi(nums[0])
 }

@@ -18,7 +18,7 @@ import (
 	"github.com/muesli/termenv"
 )
 
-var ZenMode bool
+var ZenMode bool = true
 
 func (m *LessonModel) rline() {
 	tuihelpers.LessonWelcome(m.currentLesson)
@@ -62,20 +62,20 @@ func (m *LessonModel) rline() {
 
 		if line == "" {
 			if ZenMode {
-				zenPrint(line, "", currentPrompt)
+				ZenPrint(line, "", currentPrompt, "")
 			}
 
 			continue
 		}
 
 		if line == "next" || line == "n" {
+			if ZenMode {
+				ZenPrint(line, "", currentPrompt, "")
+			}
 			if m.currentLesson.Tasks[currentTask].Expected != "" {
 				printer.Print(feedback.Expected, "error")
 			} else {
 				currentTask++
-			}
-			if ZenMode {
-				zenPrint(line, "", currentPrompt)
 			}
 			continue
 		}
@@ -83,14 +83,24 @@ func (m *LessonModel) rline() {
 		if line == "prev" || line == "p" {
 			currentTask--
 			if ZenMode {
-				zenPrint(line, "", currentPrompt)
+				ZenPrint(line, "", currentPrompt, "")
 			}
 			continue
 		}
 
 		if line == "commands" {
 			vocabulary := fmt.Sprintln(m.currentLesson.Vocabulary)
-			printer.Print("Available commands: "+vocabulary, "")
+
+			if ZenMode {
+				ZenPrint(line, "Available commands: "+vocabulary, currentPrompt, "")
+			} else {
+				printer.Print("Available commands: "+vocabulary, "")
+			}
+			continue
+		}
+
+		if line == "zen" {
+			ToggleZen()
 			continue
 		}
 
@@ -102,7 +112,11 @@ func (m *LessonModel) rline() {
 
 		filtered_input := input.InputFilter(line, m.currentLesson.Vocabulary)
 		if len(filtered_input) == 0 {
-			printer.Print(feedback.InvalidCommand, "error")
+			if ZenMode {
+				ZenPrint(line, feedback.InvalidCommand, currentPrompt, "error")
+			} else {
+				printer.Print(feedback.InvalidCommand, "error")
+			}
 			continue
 		}
 
@@ -111,7 +125,7 @@ func (m *LessonModel) rline() {
 		 * expected value on the lesson if it exists. */
 		output := input.RunCommand(filtered_input)
 		if ZenMode {
-			zenPrint(line, output, currentPrompt)
+			ZenPrint(line, output, currentPrompt, "")
 		} else {
 			printer.Print(string(output), "")
 		}
@@ -126,10 +140,4 @@ func (m *LessonModel) printTracker(currentTask int) {
 
 	out, _ := m.r.Render(m.currentLesson.Tasks[currentTask].Description)
 	printer.Print(out, "")
-}
-
-func zenPrint(input, output, prompt string) {
-	termenv.ClearScreen()
-	fmt.Println(prompt+input, "")
-	printer.Print(output, "")
 }

@@ -97,10 +97,23 @@ When you are done, type `n` or `next` to continue.
 
 ## A note about getting overwhelmed
 
-If at any point the amount of text on the screen becomes overwhelming the shell
+If at any point the amount of text on the screen becomes overwhelming. The shell
 has an inbuilt command called `clear` that clears all the text on the screen.
 Helpfully, this tutor program will ensure to re-display the text for the step
 you are currently on. Give it a try by typing `clear` and hitting enter!
+
+Type `n` or `next` to continue.
+
+## Zenmode
+
+Till now this tutor has been running in `zenmode`. It has been helpfully
+clearing the screen for you after every command. This is not how it works in a
+normal shell environment. From now on we will switch `zenmode` off unless you
+explicitly want it, which you can toggle by entering the command `zen`.
+
+Type `n` or `next` to continue.
+
+## Congrats! You've made it this far!
 
 This is the end of the lesson, feel free to continue playing around with
 commands we have covered in this lesson:
