@@ -18,12 +18,13 @@ func LessonWelcome(currentLesson lesson.Lesson) {
 	b := make([]byte, 1) // Any Key
 	os.Stdin.Read(b)
 	termenv.ClearScreen()
-	printer.Print("Welcome to the shell", "tip")
-	printer.Print("Type 'commands' to view a list of available commands or type 'exit'/'quit' to quit the shell", "note")
+	printer.Print("Welcome to the shell!", "tip")
+	printer.Print("Type 'commands' to view a list of available commands or type 'exit' or 'quit' to quit the shell", "note")
 	time.Sleep(1 * time.Second)
 }
 
 func ProgramWelcome() {
+	termenv.ClearScreen()
 	s := `
           ___           ___                       ___           ___           ___           ___       ___     
          /\  \         /\__\          ___        /\  \         /\  \         /\  \         /\__\     /\  \    

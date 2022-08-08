@@ -2,7 +2,7 @@ CC = go
 MAIN = main.go
 
 all:
-	${CC} run ${MAIN} --no-upload-log
+	${CC} run ${MAIN} --no-upload-log --no-welcome
 
 log:
 	${CC} run ${MAIN}

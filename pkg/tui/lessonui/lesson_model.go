@@ -1,6 +1,8 @@
 package lessonui
 
 import (
+	"log"
+
 	"cli-tutor/pkg/lesson"
 	"cli-tutor/pkg/tui/tuihelpers"
 
@@ -26,15 +28,23 @@ var CurrentLesson *lesson.Lesson
 
 func New(choice string) LessonModel {
 	renderer := tuihelpers.GetRenderer()
+	lessonNumber, err := GetLessonNumber(choice)
+	if err != nil {
+		log.Println(err)
+	}
+
+	if lessonNumber > 1 {
+		ZenMode = false
+	}
 
 	// Init Readline
 	rl, err := readline.NewEx(&readline.Config{
-		Prompt:          ">",
-		HistoryFile:     "./.tutor_history",
-		HistoryLimit:    999,
-		InterruptPrompt: "^C",
-		AutoComplete:    completer,
-		// FuncFilterInputRune: filterInput,
+		Prompt:              ">",
+		HistoryFile:         "./.tutor_history",
+		HistoryLimit:        999,
+		InterruptPrompt:     "^C",
+		AutoComplete:        completer,
+		FuncFilterInputRune: filterInput,
 	})
 	if err != nil {
 		panic(err)

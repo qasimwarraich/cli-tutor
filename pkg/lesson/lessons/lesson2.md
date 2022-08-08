@@ -5,21 +5,23 @@ interacting with the shell.
 
 ## A refresher from the last lesson
 
-Let's recall that we mentioned commands are typically formulated using this format:
+Let's recall that commands are typically formulated using this format:
+
 `command` `--flags` `arguments`
 
-On a higher level we can see this specification of commands as a sentence like:
+On a higher level we can see this as a sentence like:
+
 `verb` `--adjective/adverb` `noun`
 
-*e.g.* `wc -l file.txt` from the last lesson. The word count program `wc` can be
-seen as a verb or action. It's `-l or --lines` flag can be considered an adjective
-in this context. Finally, the noun would be the file (`file.txt`) to operate on.
+Consider `wc -l file.txt` from the last lesson: the word count program `wc` can
+be seen as a verb or action, it's `-l` or `--lines` flag can be considered an
+adjective, and, finally, the noun would be the file (`file.txt`) to operate on.
 
 Read all together, `wc --lines files.txt`, can be read as 'count all the lines
 in file.txt' in English.
 
-It's worth mentioning that the `--flags` can also in some cases be specified
-after the `arguments`.
+It's worth mentioning that some programs allow `--flags` to be specified after
+the `arguments`.
 
 Type `n` or `next` and hit enter to continue.
 
@@ -29,20 +31,20 @@ Commands or programs may also have several sub-commands
 that perform different actions and may have their own `--flags` to further
 control those actions.
 
-*e.g.* `go test -v main_test.go` or `git clone REPO --bare`
+*e.g.* `apt install -y vim` or `git clone REPO --bare`
 
 We can still apply the same analogy of a sentence as discussed in the previous
 step, with a slight addition.
 `program` `verb` `--adjective/adverb` `     noun`
-`↓         ↓       ↓                    ↓  `
-`go       test    -v                 main_test.go`
+`↓         ↓           ↓               ↓  `
+`apt   install        -y              vim`
 
 *In English*:
 
 ```
-→ "Go compiler run the testing package with verbose output on file main_test.go"
-
+→ "APT package manager install vim and confirm any prompts y/n with the answer yes."
 ```
+
 If all this makes sense, type `n` or `next` and hit enter to continue or type
 `p` or `prev` to return to the previous step of the lesson.
 
@@ -51,29 +53,33 @@ If all this makes sense, type `n` or `next` and hit enter to continue or type
 As previously mentioned, `--flags` are ways we can modify or specify the
 behaviour of a program or one of it's sub-commands.
 
-As you may have noticed in the examples sometimes flags are specified in a long
-or short form.
-
-*e.g.* `-l` vs `--lines` which both specify the `wc` program to count the lines
-in a file.
+Remember that flags can be specified in a long or short form, *e.g.* `-l` vs
+`--lines` which both specify the `wc` program to count the lines in a file.
 
 Commonly used flags in programs often have this pair of long and short forms to
 specify the command. The important thing to see here is that there are
 different amounts of dashes (`-`) in both commands. Another cool functionality
 of short form flags is that they may be stacked together to combine the
-behaviours of multiple flags the program may accept.
+behaviours of multiple flags the program may accept, for example:
 
-*e.g.* `wc -wl files.txt` in this example we stack the two short form flags
-`-w` and `-l` together as `-wl` This specifies to the `wc` program to output
-both the word count (`-w`) and the line count (`-l`).
+`wc -wl file.txt`
+
+Here, we stack the two short form flags `-w` and `-l` together as `-wl` This
+specifies to the `wc` program to output both the word count (`-w`) and the line
+count (`-l`). This is equivalent to running:
+
+`wc --words --lines file.txt`
 
 Flags can also be optional, for example when `wc` is run without flags like:
-`wc file.txt`.
 
-`wc` would then perform its default behaviour and print out the word, line and
+`wc file.txt`
+
+It would perform its default behaviour and print out the word, line and
 character counts.
 
-## Let's try this out
+Let's practice this a little bit. Type `n` or `next` to begin.
+
+## Let's practice
 
 Type the `wc file.txt` command and hit enter.
 
@@ -115,4 +121,4 @@ When you are done, type `n`, `next` or `quit` to end this lesson.
 
 ### Vocabulary
 
-wc, pwd, ls, cd, whoami, uname, echo, curl, man, clear, less
+wc, whoami, curl, clear

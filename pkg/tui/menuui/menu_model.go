@@ -5,6 +5,7 @@ import (
 
 	"github.com/charmbracelet/bubbles/list"
 	tea "github.com/charmbracelet/bubbletea"
+	zone "github.com/lrstanley/bubblezone"
 )
 
 type item struct {
@@ -17,8 +18,8 @@ type SelectMessage struct {
 	SelectedLesson string
 }
 
-func (i item) Title() string       { return i.title }
-func (i item) Description() string { return i.description }
+func (i item) Title() string       { return zone.Mark(i.title, i.title) }
+func (i item) Description() string { return zone.Mark(i.description, i.description) }
 func (i item) FilterValue() string { return i.title }
 
 type MenuModel struct {
@@ -60,6 +61,42 @@ func (m MenuModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 				}
 			}
 		}
+
+	case tea.MouseMsg:
+		switch msg.Type {
+
+		case tea.MouseWheelUp:
+			m.list.CursorUp()
+			return m, nil
+
+		case tea.MouseWheelDown:
+			m.list.CursorDown()
+
+		case tea.MouseMotion:
+			for i, listItem := range m.list.Items() {
+				item, _ := listItem.(item)
+				if zone.Get(item.title).InBounds(msg) || zone.Get(item.description).InBounds(msg) {
+					m.list.Select(i)
+				}
+			}
+
+		case tea.MouseLeft:
+			for i, listItem := range m.list.Items() {
+				item, _ := listItem.(item)
+
+				if zone.Get(item.title).InBounds(msg) || zone.Get(item.description).InBounds(msg) {
+					if item == m.list.SelectedItem() {
+						m.choice = string(item.filename)
+						log.Printf("Selected lesson: %s", m.choice)
+						return m, func() tea.Msg {
+							return SelectMessage{SelectedLesson: m.choice}
+						}
+					} else {
+						m.list.Select(i)
+					}
+				}
+			}
+		}
 	}
 
 	var cmd tea.Cmd
@@ -68,7 +105,7 @@ func (m MenuModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 }
 
 func (m MenuModel) View() string {
-	return "\n" + m.list.View()
+	return zone.Scan(m.list.View())
 }
 
 func New() MenuModel {

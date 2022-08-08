@@ -9,8 +9,10 @@ import (
 	"cli-tutor/pkg/logger"
 	"cli-tutor/pkg/printer"
 	"cli-tutor/pkg/tui"
+	"cli-tutor/pkg/tui/tuihelpers"
 
 	"github.com/chzyer/readline"
+	"github.com/muesli/termenv"
 	"github.com/spf13/cobra"
 )
 
@@ -33,7 +35,7 @@ A simple command line tutor application that aims to introduce users to the
 
 		nouploadflag, err := cmd.Flags().GetBool("no-upload-log")
 		if err != nil {
-			log.Panicln(err)
+			log.Println(err)
 		}
 		if !nouploadflag {
 
@@ -56,8 +58,24 @@ For more info type 'cli-tutor info' after exiting.
 			defer logger.UploadLog()
 		}
 
+		nowelcomeflag, err := cmd.Flags().GetBool("no-welcome")
+		if err != nil {
+			log.Println(err)
+		}
+
+		if !nowelcomeflag {
+			tuihelpers.ProgramWelcome()
+		} else {
+			termenv.ClearScreen()
+		}
+
+		initial_wd, _ := os.Getwd()
+
 		tui.StartUI()
-		defer os.Remove("file.txt")
+
+		defer os.Remove(initial_wd + "/file.txt")
+		defer os.Remove(initial_wd + "/.hiddenfile.txt")
+		defer termenv.ClearScreen()
 	},
 }
 
@@ -79,10 +97,10 @@ var infoCmd = &cobra.Command{
 			`
 cli-tutor is a simple command line tutor application that aims to introduce
 users to the basics of command line interaction. The tool is currently part of
-a Master's Thesis project and thus will part of a user study. To this end, the
+a Master's Thesis project and thus will be part of a user study. To this end, the
 tool integrates a logging feature so that the developer may collect insights
-about the tools effectiveness. Logging is on by default and log files are
-saved at /tmp/tutor-log.txt on unix based systems. To opt out of sending your
+about the tool's effectiveness. Logging is on by default and log files are
+saved at /tmp/tutor-log.txt on unix based systems. To opt-out of sending your
 log file to the developer you may supply the -n or --no-upload-log flag when
 you start the program.
 
@@ -97,7 +115,7 @@ The log file also contains the following information:
 - The supplied identifier name or id
 - The hostname of the device or docker container running the program
 
-For more information regarding commands use the --help/-h flag or help sub-command.
+For more information regarding commands, use the --help/-h flag or help sub-command.
 example:
 cli-tutor --help or cli-tutor help
 
@@ -118,6 +136,7 @@ var repoCmd = &cobra.Command{
 
 func init() {
 	rootCmd.Flags().BoolP("no-upload-log", "n", false, "Do not send a copy of the log to the developer")
+	rootCmd.Flags().BoolP("no-welcome", "x", false, "Do not show welcome message when entering tutor")
 	rootCmd.AddCommand(versionCmd)
 	rootCmd.AddCommand(infoCmd)
 	rootCmd.AddCommand(repoCmd)

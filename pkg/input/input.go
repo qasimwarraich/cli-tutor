@@ -9,6 +9,7 @@ import (
 
 	"cli-tutor/pkg/lesson"
 	"cli-tutor/pkg/printer"
+	"cli-tutor/pkg/tui/feedback"
 )
 
 var previousCommand []string
@@ -43,12 +44,19 @@ func RunCommand(filtered_input []string) string {
 	//  the go program.
 	if filtered_input[0] == "cd" {
 		if len(filtered_input) > 1 {
-			err := os.Chdir(filtered_input[1])
-			if err != nil {
-				printer.Print(err.Error(), "note")
+			if fakeJailWarden(filtered_input[1]) {
+				err := os.Chdir(filtered_input[1])
+				if err != nil {
+					printer.Print(err.Error(), "note")
+				}
+			} else {
+				printer.Print(feedback.DangerZone, "error")
 			}
 		} else {
-			os.Chdir(os.Getenv("$HOME"))
+			err := os.Chdir(os.Getenv("HOME"))
+			if err != nil {
+				log.Print(err.Error())
+			}
 		}
 	}
 
@@ -63,7 +71,18 @@ func RunCommand(filtered_input []string) string {
 		commandstring := strings.Join(command, " ")
 		out, err := exec.Command("bash", "-c", commandstring).CombinedOutput()
 		if err != nil {
-			printer.Print("Failed to execute command", "")
+			printer.Print(feedback.CommandFailed, "")
+			printer.Print(err.Error(), "")
+		}
+		return string(out)
+	}
+
+	if contains("&&", filtered_input) || contains("||", filtered_input) {
+		command := filtered_input[:]
+		commandstring := strings.Join(command, " ")
+		out, err := exec.Command("bash", "-c", commandstring).CombinedOutput()
+		if err != nil {
+			printer.Print(feedback.CommandFailed, "")
 			printer.Print(err.Error(), "")
 		}
 		return string(out)
@@ -101,11 +120,11 @@ func ValidateCommand(commandOutput string, currentLesson lesson.Lesson, currentT
 		}
 		if strings.TrimSpace(commandOutput) == strings.TrimSpace(expected) {
 
-			printer.Print("Yay you did it!, Let's move to the next task.", "guide")
+			printer.Print(feedback.Correct, "guide")
 			time.Sleep(2 * time.Second)
 			*currentTask++
 		} else {
-			printer.Print("That isn't quite right", "error")
+			printer.Print(feedback.Incorrect, "error")
 		}
 	}
 }
@@ -130,4 +149,28 @@ func runPager(input []byte) {
 	if err != nil {
 		log.Fatal(err)
 	}
+}
+
+func fakeJailWarden(s string) bool {
+	cwd, _ := os.Getwd()
+	restricted := []string{
+		"/bin", "/boot", "/dev", "/etc", "/home", "/lib", "/lib32",
+		"/lib64", "/libx32", "/media", "/mnt", "/opt", "/proc", "/root", "/run", "/sbin",
+		"/srv", "/sys", "/tmp", "/usr", "/var",
+	}
+
+	if cwd == os.Getenv("HOME") && s == ".." {
+		log.Print("Tried to enter danger zone")
+		return false
+	}
+
+	if s == "/" || s == "/root" {
+		return false
+	}
+
+	if contains(s, restricted) {
+		return false
+	}
+
+	return true
 }

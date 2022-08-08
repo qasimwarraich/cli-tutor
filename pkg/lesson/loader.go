@@ -34,5 +34,12 @@ func createExampleFile() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	hiddenfileContent, err := fs.ReadFile(EmbeddedFS, "lessons/lesson-workspace/hiddenfile.txt")
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	ioutil.WriteFile("file.txt", testfileContent, 0o644)
+	ioutil.WriteFile(".hiddenfile.txt", hiddenfileContent, 0o644)
 }
