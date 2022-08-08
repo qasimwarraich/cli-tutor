@@ -130,6 +130,6 @@ func (m *LessonModel) printTracker(currentTask int) {
 
 func zenPrint(input, output, prompt string) {
 	termenv.ClearScreen()
-	fmt.Print(prompt+input, "")
+	fmt.Println(prompt+input, "")
 	printer.Print(output, "")
 }
