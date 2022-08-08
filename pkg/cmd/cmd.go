@@ -35,7 +35,7 @@ A simple command line tutor application that aims to introduce users to the
 
 		nouploadflag, err := cmd.Flags().GetBool("no-upload-log")
 		if err != nil {
-			log.Panicln(err)
+			log.Println(err)
 		}
 		if !nouploadflag {
 
@@ -59,6 +59,9 @@ For more info type 'cli-tutor info' after exiting.
 		}
 
 		nowelcomeflag, err := cmd.Flags().GetBool("no-welcome")
+		if err != nil {
+			log.Println(err)
+		}
 
 		if !nowelcomeflag {
 			tuihelpers.ProgramWelcome()
