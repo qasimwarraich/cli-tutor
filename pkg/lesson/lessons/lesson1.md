@@ -111,6 +111,8 @@ clearing the screen for you after every command. This is not how it works in a
 normal shell environment. From now on we will switch `zenmode` off unless you
 explicitly want it, which you can toggle by entering the command `zen`.
 
+Feel free to give it a try by typing `zen` and hitting enter.
+
 Type `n` or `next` to continue.
 
 ## Congrats! You've made it this far!
