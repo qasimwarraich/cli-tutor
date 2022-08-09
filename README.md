@@ -31,6 +31,8 @@ Flags:
 Use "cli-tutor [command] --help" for more information about a command.
 ```
 
+[![Docker Image Version (tag latest semver)](https://img.shields.io/docker/v/qasimwarraich/cli-tutor/latest?label=docker)](https://hub.docker.com/r/qasimwarraich/cli-tutor)
+
 ## What is this?
 
 Despite the arguably dated appearance, difficult learning curve and practical
