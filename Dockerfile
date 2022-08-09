@@ -14,4 +14,4 @@ WORKDIR /home/cli-student/tutor/
 
 ENV TERM xterm-256color
 
-# CMD ./cli-tutor
+CMD cli-tutor
