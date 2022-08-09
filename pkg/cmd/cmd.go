@@ -7,7 +7,6 @@ import (
 	"strings"
 
 	"cli-tutor/pkg/logger"
-	"cli-tutor/pkg/printer"
 	"cli-tutor/pkg/tui"
 	"cli-tutor/pkg/tui/tuihelpers"
 
@@ -37,23 +36,20 @@ A simple command line tutor application that aims to introduce users to the
 		if err != nil {
 			log.Println(err)
 		}
+
 		if !nouploadflag {
-
-			printer.Print(`
-You have started the tutor with the option of sending a log of your tutor
-session to the developer. To opt-out of this mode supply the name 'exit', hit
-enter and restart the tool providing the -n or --no-upload-log file. 
-
-For more info type 'cli-tutor info' after exiting.
-            `, "tip")
 			for logger.Identifier == "" {
-				rl, _ := readline.New("Please enter a name or id to identify your log file or enter 'exit' > ")
+				p := termenv.ColorProfile()
+				styled := termenv.String("Please enter a name to identify yourself or enter 'exit' > ")
+				prompt := fmt.Sprint(styled.Foreground(p.Color("#01FFF0")))
+				rl, _ := readline.New(prompt)
 				line, _ := rl.Readline()
 				line = strings.TrimSpace(line)
 				if line == "exit" || line == "quit" {
 					os.Exit(0)
 				}
 				logger.Identifier = line
+                log.Printf("Identifier: %s", logger.Identifier)
 			}
 			defer logger.UploadLog()
 		}
