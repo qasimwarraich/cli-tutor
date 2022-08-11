@@ -69,7 +69,7 @@ alongside the popular terminal based text editor Vim. The proposed tool shall
 allow for opt-in analytics that are sent back to a data collection service for
 the purpose of learning which mistakes are most commonly made, and to improve
 the tool accordingly. To validate the tool and answer our research questions, a
-user study will be conducted, most likely with bachelor students at the
+user study will be conducted, most likely with bachelor students at The
 University of Zurich. A secondary goal is to embed the learning tool into a
 prototypical web application in order to make it more accessible and portable.
 
