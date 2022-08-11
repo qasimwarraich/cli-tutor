@@ -14,7 +14,7 @@ are ready, type `n` or `next` and hit enter to continue.
 
 ## What is the Shell?
 
-Essentially, the `shell` is a command line interface that let's you "talk
+Essentially, the `shell` is a command line interface that lets you "talk
 directly to your computer" using text messages. Instead of browsing a hierarchy
 of menus and dialogs like in a conventional, graphical user interface, the
 shell lets you access any setting or functionality of your computer directly
@@ -54,7 +54,7 @@ A `command` is the name of a program the shell can run, while `--flags` and
 `arguments` are ways to tell the program what to do specifically. Most programs
 accept multiple flags and/or arguments.
 
-`--flags` are pre-defined cues that alter the programs behaviour. You can
+`--flags` are pre-defined cues that alter the program's behaviour. You can
 imagine these as "switches" that turn certain options on or off.
 
 `arguments` are additional pieces of information supplied as free text, which

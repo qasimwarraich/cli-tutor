@@ -1,6 +1,6 @@
 # Getting more familiar with the shell
 
-In this lesson we will practice formulating commands and get more comfortable
+In this lesson, we will practice formulating commands and get more comfortable
 interacting with the shell.
 
 ## A refresher from the last lesson
@@ -9,7 +9,7 @@ Let's recall that commands are typically formulated using this format:
 
 `command` `--flags` `arguments`
 
-On a higher level we can see this as a sentence like:
+On a higher level, we can see this as a sentence like:
 
 `verb` `--adjective/adverb` `noun`
 
@@ -51,7 +51,7 @@ If all this makes sense, type `n` or `next` and hit enter to continue or type
 ## Flags
 
 As previously mentioned, `--flags` are ways we can modify or specify the
-behaviour of a program or one of it's sub-commands.
+behaviour of a program or one of its sub-commands.
 
 Remember that flags can be specified in a long or short form, *e.g.* `-l` vs
 `--lines` which both specify the `wc` program to count the lines in a file.

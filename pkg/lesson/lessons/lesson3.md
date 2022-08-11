@@ -1,11 +1,11 @@
 # Basics of the file system and practicing commands
 
-In this lesson we will apply what you have learnt so far to help you navigate
+In this lesson, we will apply what you have learnt so far to help you navigate
 your computer using the command line.
 
 ## A refresher from the last lesson
 
-In the last lesson we looked at how to formulate commands.
+In the last lesson, we looked at how to formulate commands.
 `command` `--flags` `arguments`
 
 Now we will practice using some commands to help us navigate around the file system.
@@ -25,20 +25,20 @@ current directory you are in = `{{GetWd}}` ← Where you are on your machine.
 
 The `prompt` is there to give you some additional context about the state of
 your system. Importantly for us, it conveniently tells us where we are on our
-computer. This will be very helpful as we proceed.
+computers. This will be very helpful as we proceed.
 
 Type `n` or `next` and hit enter to continue.
 
 ## Present Working Directory
 
 Where you are at any moment on your computer's file system is known as the
-"current working directory" (CWD). As discussed before it is also often
+"current working directory" (CWD). As discussed earlier, it is also often
 displayed in the prompt.
 
 *Note*: The term "directory" is interchangeable with the term "folder".
 
 However, we can also use a shell command to **print** our **working** **directory** to the screen.
-Notice how the command is named by its task:
+Notice how the command is named by its function:
 `print` `working` `directory`
 `↓       ↓         ↓`
 `p       w         d`
@@ -62,7 +62,7 @@ Type `n` or `next` and hit enter to continue.
 Now that we know which folder we're in, a natural follow-up question would be
 "What does this folder contain?"
 
-To list to contents of a directory we use the `ls` command to list files in a directory.
+To list to contents of a directory, we use the `ls` command to list files in a directory.
 
 Try it out for yourself, Type `ls` and hit enter.
 
@@ -95,7 +95,7 @@ Type `n` or `next` and hit enter to continue.
 
 ## Changing Directory
 
-Now let's navigate around the file system a bit. To do this we will utilise the
+Now let's navigate around the file system a bit. To do this, we will utilise the
 `cd` command.
 `change` `directory`
 `↓        ↓`
@@ -122,7 +122,7 @@ To create a directory in your current working directory we must supply the
 
 This will create a new directory named `NewDirectory` at the current working directory.
 
-Use ls to confirm that your new directory is created.
+Use ls to confirm that your new directory was created.
 Type `n` or `next` and hit enter to continue.
 
 ## Removing Directories
@@ -137,7 +137,7 @@ To remove a directory in your current working directory we must supply the
 This will remove a directory named `NewDirectory` at the current working directory.
 
 *Note*: This will only work with empty directories, to delete directories with
-files in side them we must use the file deletion command `rm`. We will discuss
+files inside them, we must use the file deletion command `rm`. We will discuss
 this in the next section.
 
 Use ls to confirm that your directory has been deleted.
@@ -148,7 +148,7 @@ Type `n` or `next` and hit enter to continue.
 To remove directories with contents we can use the `rm` command.
 
 To remove a non-empty directory or regular file in your current working
-directory we must supply the `rm` command with a name like:
+directory, we must supply the `rm` command with a name like:
 
 *Removing a file*
 `rm filename.txt`
@@ -160,7 +160,7 @@ The `-r` flag instructs the `rm` command to apply the procedure recursively,
 which is to say it should delete the directory and everything inside it.
 
 *Warning*: The `rm` command can be dangerous, and its deletions are not
-reversible. Be careful to ensure you supply the correct command otherwise you
+reversible. Be careful to ensure you supply the correct command; otherwise you
 may lose data or cause harm to your system.
 
 The command line gives you a lot of power over your computer. However, with
@@ -172,15 +172,15 @@ Type `n` or `next` and hit enter to continue.
 
 Creating empty files can be done simply by using the `touch` command.
 
-To create a file in your current working directory we must supply the
+To create a file in your current working directory, we must supply the
 `touch` command with a file name like:
 `touch NewFile.txt`
 
-This will create a new file named `NewFile.txt` at the current working directory.
+This will create a new file named `NewFile.txt` in the current working directory.
 
 You can use `ls` to confirm this.
 
-To remove this file simply use the `rm` command like: `rm NewFile.txt`.
+To remove this file, simply use the `rm` command like: `rm NewFile.txt`.
 
 When this makes sense, type `n` or `next` and hit enter to continue.
 

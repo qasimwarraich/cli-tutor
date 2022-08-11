@@ -1,6 +1,6 @@
 # Shell shortcuts and tricks
 
-In this lesson we will learn about some shell shortcuts and tricks to make you
+In this lesson, we will learn about some shell shortcuts and tricks to make you
 more productive at the command line.
 
 ## Woof, that's a lot of typing!
@@ -8,7 +8,7 @@ more productive at the command line.
 You may have the feeling that issuing commands is very tedious, time-consuming
 and hard to get right. This requirement for commands to be stated perfectly is
 one of the biggest obstacles to new command line users. Let's overcome this
-hardship and look into some cool in built shell features designed to
+hardship and look into some cool in-built shell features designed to
 make your life a little easier.
 
 Type `n` or `next` and hit enter to continue.
@@ -22,7 +22,7 @@ whole command, you can simply use the up arrow `↑` to go up in your command
 history and retrieve the command. 
 
 *Note*: You can hit the up arrow as many times as you want and keep going
-backwards in you command history.
+backwards in your command history.
 
 Type `n` or `next` and hit enter to continue.
 
@@ -58,7 +58,7 @@ ago.
 
 To help us with this the shell has an inbuilt reverse history search that you
 can trigger by pressing `Ctrl + r`. This will open up a text input prompt where
-you can type letters and the command that matches best will be shown in the input
+you can type letters and the command that matches best will be filled in the input
 area.
 
 Try it out! Type `Ctrl + r` and search for that `cat .tutor_history` by typing
@@ -105,13 +105,13 @@ Type `n` or `next` and hit enter to continue.
 By far the biggest efficiency booster is going to be `<Tab>` completion.
 `<Tab>` completion allows us to fill in completions to things like commands or
 paths to files on our system by using the `<Tab>` key on our keyboard. There
-are innumerable use cases for tab completion but let's try to think of it in
+are countless use cases for tab completion but let's try to think of it in
 simple terms. Up until now if we wanted to change our directory we first used
 `ls` to show the contents of our current working directory, and then we used
 `cd` and typed the directory name in fully to navigate to that directory.
 
 With `<Tab>` completion we can simply type `cd<Tab>` to open up the completion
-menu. You will see a list of candidate directories of which you can cycle
+menu. You will see a list of candidate directories which you can cycle
 through by using `<Tab>` again. You can even further filter the results down by
 continuing to type letters to narrow the list of candidates.
 

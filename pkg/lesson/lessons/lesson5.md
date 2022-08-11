@@ -1,10 +1,10 @@
 # Helping your self!
 
-In this lesson we will help you help yourself. #RTFM
+In this lesson, we will help you help yourself. #RTFM
 
 ## Man, man's best friend
 
-The most helpful in built shell assistant you have at the command line (other
+The most helpful in-built shell assistant you have at the command line (other
 than this tutorial software) is the utility `man`. `man` is short for
 **manual** and is the shell utility that displays the documentation for
 commands you may have access to.
@@ -18,7 +18,7 @@ Type `n` or `next` and hit enter to continue.
 
 Before we take a look at the `man` command let's briefly discuss what a pager
 is and how to use one. This is important because when you issue the man command
-you will be dropped into a very minimal looking tool known as a pager.
+you will be dropped into a very minimal-looking tool known as a pager.
 
 A pager is a tool that "paginates" output from other programs. That is to say,
 it divides it into a series of pages or a scrollable window. This is important
@@ -36,7 +36,7 @@ really. For instance, you can use it with regular files like:
 `less reallylongtextfile.txt`
 
 There are some important keybindings to know when it comes to `less` to avoid
-getting stuck in the program. The most important being `q` which is how you
+getting stuck in the program. The most important being `q`, which is how you
 quit.
 
 Other keybindings that will be important are:
@@ -54,7 +54,7 @@ Type `n` or `next` and hit enter to continue.
 
 ## Let's try it out
 
-Let's try reading the manual for a command we are already familiar with, this
+Let's try reading the manual for a command we are already familiar with. This
 is a great way to learn about the extended capabilities of command line tools.
 
 Try:
