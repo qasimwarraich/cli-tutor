@@ -106,7 +106,7 @@ Type `n` or `next` to continue.
 
 ## Zenmode
 
-Till now this tutor has been running in `zenmode`. It has been helpfully
+Till now, this tutor has been running in `zenmode`. It has been helpfully
 clearing the screen for you after every command. This is not how it works in a
 normal shell environment. From now on we will switch `zenmode` off unless you
 explicitly want it, which you can toggle by entering the command `zen`.
