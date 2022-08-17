@@ -29,7 +29,7 @@ computers. This will be very helpful as we proceed.
 
 Type `n` or `next` and hit enter to continue.
 
-## Present Working Directory
+## Current Working Directory
 
 Where you are at any moment on your computer's file system is known as the
 "current working directory" (CWD). As discussed earlier, it is also often
@@ -55,7 +55,37 @@ something on the file system or in other words the path one must take from the
 `root` (top level) of the file system to the location in question (in this case
 our current working directory).
 
+The file system is a tree structure where you can take different paths from the
+root. The root is typically depicted with a `/`. The tree below shows a section
+of the file system stemming from the home folder which resides in the root
+directory. `/` + `home` = `/home`. There are a lot more paths one can take from
+the root but for the sake of clarity let's stay in the user's home directory
+for now.
+
+```
+/home
+`-- cli-student
+    `-- tutor  <--- This is your current working directory.
+```
+
 Type `n` or `next` and hit enter to continue.
+
+## Important to know!
+
+When you open a terminal the shell program will always be pointing to some
+directory, this is what we previously introduced as the "current working
+directory". On most systems this defaults to the user's home directory which is
+also sometimes represented with the shorthand `~`.
+
+The prompt look something like this: `user@host:~`.
+If you were to use the `pwd` command the output would look something like: `/home/user/`.
+
+The file system tree is something that can be navigated up and down, but first
+one must know where to go. We need to be able to list the files and
+directories in our current working directory in order to choose a path to
+navigate down.  
+
+We will discuss this in the next step. Type `n` or `next` and hit enter to continue.
 
 ## Listing files
 
