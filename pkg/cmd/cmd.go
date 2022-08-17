@@ -71,7 +71,6 @@ A simple command line tutor application that aims to introduce users to the
 
 		defer os.Remove(initialWd + "/file.txt")
 		defer os.Remove(initialWd + "/.hiddenfile.txt")
-		defer termenv.ClearScreen()
 	},
 }
 

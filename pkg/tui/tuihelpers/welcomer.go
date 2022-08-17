@@ -55,3 +55,10 @@ func ProgramWelcome() {
 	time.Sleep(2 * time.Second)
 	termenv.ClearScreen()
 }
+
+func ProgramExitMessage() {
+	termenv.ClearScreen()
+	s := "Tutor Exited. Thank you, and have fun out there!"
+
+	printer.Print(s, "tip")
+}

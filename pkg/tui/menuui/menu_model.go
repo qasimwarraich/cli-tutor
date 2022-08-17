@@ -3,9 +3,12 @@ package menuui
 import (
 	"log"
 
+	"cli-tutor/pkg/tui/tuihelpers"
+
 	"github.com/charmbracelet/bubbles/list"
 	tea "github.com/charmbracelet/bubbletea"
 	zone "github.com/lrstanley/bubblezone"
+	"github.com/muesli/termenv"
 )
 
 type item struct {
@@ -45,10 +48,14 @@ func (m MenuModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		switch msg.String() {
 		case "ctrl+c":
 			m.quitting = true
+			termenv.ClearScreen()
+			tuihelpers.ProgramExitMessage()
 			return m, tea.Quit
 
 		case "q":
 			m.quitting = true
+			termenv.ClearScreen()
+			tuihelpers.ProgramExitMessage()
 			return m, tea.Quit
 
 		case "enter":
