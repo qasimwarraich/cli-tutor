@@ -49,7 +49,7 @@ A simple command line tutor application that aims to introduce users to the
 					os.Exit(0)
 				}
 				logger.Identifier = line
-                log.Printf("Identifier: %s", logger.Identifier)
+				log.Printf("Identifier: %s", logger.Identifier)
 			}
 			defer logger.UploadLog()
 		}
@@ -65,12 +65,12 @@ A simple command line tutor application that aims to introduce users to the
 			termenv.ClearScreen()
 		}
 
-		initial_wd, _ := os.Getwd()
+		initialWd, _ := os.Getwd()
 
 		tui.StartUI()
 
-		defer os.Remove(initial_wd + "/file.txt")
-		defer os.Remove(initial_wd + "/.hiddenfile.txt")
+		defer os.Remove(initialWd + "/file.txt")
+		defer os.Remove(initialWd + "/.hiddenfile.txt")
 		defer termenv.ClearScreen()
 	},
 }
