@@ -74,10 +74,10 @@ Type `n` or `next` and hit enter to continue.
 
 When you open a terminal the shell program will always be pointing to some
 directory, this is what we previously introduced as the "current working
-directory". On most systems this defaults to the user's home directory which is
+directory". On most systems, this defaults to the user's home directory which is
 also sometimes represented with the shorthand `~`.
 
-The prompt look something like this: `user@host:~`.
+The prompt looks something like this: `user@host:~`.
 If you were to use the `pwd` command the output would look something like: `/home/user/`.
 
 The file system tree is something that can be navigated up and down, but first

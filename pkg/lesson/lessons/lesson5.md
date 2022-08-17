@@ -62,7 +62,18 @@ Try:
 
 **Remember!** Press `q` to quit the pager and return to the tutor, happy reading!
 
-When you are hopefully back. Type `n` or `next` and hit enter to continue.
+When you hopefully make it back here, Type `n` or `next` and hit enter to continue.
+
+## Another way of getting help
+
+Often programs will have a special flag that prints out usage information or
+directly opens up a `man` page for you. This flag is typically a variation of
+`-h, --help` or `-?`. 
+
+Occasionally, they are also available as a sub-command that can be used like:
+`cli-tutor help`
+
+Type `n` or `next` and hit enter to continue.
 
 ## Great work!
 
