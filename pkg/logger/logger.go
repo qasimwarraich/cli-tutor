@@ -50,7 +50,7 @@ func UploadLog() {
 	io.Copy(part, file)
 	writer.Close()
 
-	r, err := http.NewRequest("POST", "https://tutor.chistole.ch/api/upload", body)
+	r, err := http.NewRequest("POST", "https://clitutor.chistole.ch/api/upload", body)
 	if err != nil {
 		fmt.Println(err)
 	}

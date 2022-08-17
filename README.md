@@ -10,7 +10,7 @@
 
 A simple command line tutor application that aims to introduce users to the
     basics of command line interaction.
-    Web version is available at https://tutor.chistole.ch
+    Web version is available at https://clitutor.chistole.ch
 
 Usage:
   cli-tutor [flags]

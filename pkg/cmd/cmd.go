@@ -27,7 +27,7 @@ var rootCmd = &cobra.Command{
                                         
 A simple command line tutor application that aims to introduce users to the 
     basics of command line interaction.
-    Web version is available at https://tutor.chistole.ch`,
+    Web version is available at https://clitutor.chistole.ch`,
 
 	Run: func(cmd *cobra.Command, args []string) {
 		logger.InitLogging()
