@@ -63,6 +63,14 @@ func RunCommand(filtered_input []string) string {
 	// The double bang needs special treatment as the readline library seems to
 	// ignore it.
 	if filtered_input[0] == "!!" {
+		if len(filtered_input) > 1 {
+			rest := filtered_input[1:]
+			command := append(previousCommand, rest...)
+			printer.Print(strings.Join(command, " "), "")
+			return RunCommand(command)
+		}
+
+		printer.Print(strings.Join(previousCommand, ""), "")
 		return RunCommand(previousCommand)
 	}
 	// Handle piped commands
