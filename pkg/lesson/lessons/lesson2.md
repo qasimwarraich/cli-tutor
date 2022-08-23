@@ -17,7 +17,7 @@ Consider `wc -l file.txt` from the last lesson: the word count program `wc` can
 be seen as a verb or action, it's `-l` or `--lines` flag can be considered an
 adjective, and, finally, the noun would be the file (`file.txt`) to operate on.
 
-Read all together, `wc --lines files.txt`, can be read as 'count all the lines
+Read all together, `wc --lines file.txt`, can be read as 'count all the lines
 in file.txt' in English.
 
 It's worth mentioning that some programs allow `--flags` to be specified after
