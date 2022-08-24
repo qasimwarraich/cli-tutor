@@ -33,6 +33,7 @@ Use "cli-tutor [command] --help" for more information about a command.
 
 [![Docker Image Version (tag latest semver)](https://img.shields.io/docker/v/qasimwarraich/cli-tutor/latest?label=docker)](https://hub.docker.com/r/qasimwarraich/cli-tutor)
 [![Website](https://img.shields.io/website?label=web%20version&up_color=light%20green&up_message=live&url=https%3A%2F%2Fclitutor.chistole.ch)](https://clitutor.chistole.ch)
+
 ## What is this?
 
 Despite the arguably dated appearance, difficult learning curve and practical
@@ -89,10 +90,12 @@ Change directory into the freshly cloned repo.
 
  ---
 
-Once you have cloned and changed directories into the repository you have three
-methods to choose from:
+Once you have cloned and changed directories into the freshly cloned repository
+you have three methods to choose from:
 
 #### Method 1: Using Docker (Safest)*
+
+[![Docker Image Version (tag latest semver)](https://img.shields.io/docker/v/qasimwarraich/cli-tutor/latest?label=docker)](https://hub.docker.com/r/qasimwarraich/cli-tutor)
 
 Prerequisites:
 
@@ -102,7 +105,16 @@ Prerequisites:
 
 Instructions:
 
-Option 1: Without make
+Option 1: Pull down the image from [Docker Hub](https://hub.docker.com/r/qasimwarraich/cli-tutor)
+
+`docker pull qasimwarraich/cli-tutor`
+
+Note: You can run the container using:
+`docker run -it qasimwarraich/cli-tutor`
+
+---
+
+Option 2: Building image without make
 
 `docker build -t qasimwarraich/cli-tutor .`
 
@@ -111,7 +123,7 @@ Note: You can run the container using:
 
 ---
 
-Option 2: With make
+Option 3: Building image with make
 
 `make docker`
 
@@ -124,7 +136,7 @@ Note: You can run the container using:
 containerised environment. This mitigates risk of accidentally modifying files
 on your personal machine like in the uncontainerised methods that follow.
 
---- 
+---
 
 #### Method 2: Using make
 
@@ -154,7 +166,7 @@ You can run it by entering:
 
 Note: In order to clean this up, you can use the `make clean` command.
 
---- 
+---
 
 Option 3: Actually install the binary:
 
@@ -164,7 +176,7 @@ Note: In order to uninstall this from your system use the `sudo make uninstall` 
 
 ---
 
-####  Method 3: Using golang tooling
+#### Method 3: Using golang tooling
 
 Prerequisites:
 
@@ -176,7 +188,9 @@ Instructions:
 Option 1: Simply run tool without installing:
 
 `go run main.go`
-___
+
+---
+
 Option 2: Actually install the binary:
 
 `go install main.go`
@@ -191,22 +205,29 @@ tool with log sharing use the `make log` command.
 
 To actually install the binary
 `make goinstall`
-___
+
+---
+
 Note: In order to uninstall the tool you will need to delete it from your `bin`
 folder located under the `$GOPATH`. This is usually located in your home
 directory at `~/go/bin/`
 
 e.g. `rm ~/go/bin/cli-tutor` or `make gouninstall`
-___
+
+---
 
 ### Usage
 
-Once installed or inside the docker container the tool can be started using `cli-tutor`. 
+Once installed or inside the docker container the tool can be started using
+`cli-tutor`.
 
 Note: Currently during the research phase of this tool, the tutor program sends
 a copy of a log file back to the developer by default. To opt out of this
 feature start the program using the `-n` or `--no-upload-log` flags like:
-`cli-tutor -n` or `cli-tutor --no-upload-log`
+`cli-tutor -n` or `cli-tutor --no-upload-log`. Additionally, the docker
+container starts the program on launch rather than having to be manually
+started. The tutor is started with logging on in the docker container, but this
+behaviour can be easily modified using the provided Dockerfile.
 
 For more information regarding logging and the tool check out the `cli-tutor
 info` and `cli-tutor help` sub-commands.
@@ -221,6 +242,5 @@ will try to validate your inputs. These commands cannot be skipped using `next
 or n`. Additionally, each lesson has a certain list of available commands for
 the user to enter. A list of available commands is available by typing
 `commands` and hitting enter.
-
 
 Have Fun!
