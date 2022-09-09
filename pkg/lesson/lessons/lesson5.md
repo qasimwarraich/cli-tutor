@@ -1,4 +1,4 @@
-# Helping your self!
+# Helping yourself!
 
 In this lesson, we will help you help yourself. #RTFM
 
