@@ -19,13 +19,12 @@ Usage:
 Available Commands:
   completion  Generate the autocompletion script for the specified shell
   help        Help about any command
-  info        Prints information about the tool and log collection
+  info        Prints information about the tool
   repo        Prints a url to the git repository for this tool
   version     Print the version number of cli-tutor
 
 Flags:
   -h, --help            help for cli-tutor
-  -n, --no-upload-log   Do not send a copy of the log to the developer
   -x, --no-welcome      Do not show welcome message when entering tutor
 
 Use "cli-tutor [command] --help" for more information about a command.
@@ -150,9 +149,6 @@ Instructions:
 Option 1: Simply run tool without installing:
 `make`
 
-Note: This runs the tool in a mode that opts out of log sharing. To run the
-tool with log sharing use the `make log` command.
-
 ---
 
 Option 2: Just build the binary:
@@ -200,9 +196,6 @@ Option 3: Using make:
 To just run the tool without installing:
 `make`
 
-Note: This runs the tool in a mode that opts out of log sharing. To run the
-tool with log sharing use the `make log` command.
-
 To actually install the binary
 `make goinstall`
 
@@ -220,17 +213,6 @@ e.g. `rm ~/go/bin/cli-tutor` or `make gouninstall`
 
 Once installed or inside the docker container the tool can be started using
 `cli-tutor`.
-
-Note: Currently during the research phase of this tool, the tutor program sends
-a copy of a log file back to the developer by default. To opt out of this
-feature start the program using the `-n` or `--no-upload-log` flags like:
-`cli-tutor -n` or `cli-tutor --no-upload-log`. Additionally, the docker
-container starts the program on launch rather than having to be manually
-started. The tutor is started with logging on in the docker container, but this
-behaviour can be easily modified using the provided Dockerfile.
-
-For more information regarding logging and the tool check out the `cli-tutor
-info` and `cli-tutor help` sub-commands.
 
 Once you are in the tutor you are presented with a menu where you can select a
 lesson. This menu may be navigated using the arrow keys or j/k for up and down
