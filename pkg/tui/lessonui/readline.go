@@ -8,7 +8,6 @@ import (
 	"time"
 
 	"cli-tutor/pkg/input"
-	"cli-tutor/pkg/logger"
 	"cli-tutor/pkg/printer"
 	"cli-tutor/pkg/prompt"
 	"cli-tutor/pkg/tui/feedback"
@@ -28,7 +27,7 @@ func (m *LessonModel) rline() {
 	// Readline loop
 	currentTask := 0
 	for {
-		currentPrompt := prompt.BuildPrompt(logger.Identifier) + " $ "
+		currentPrompt := prompt.BuildPrompt() + " $ "
 		m.rl.SetPrompt(currentPrompt)
 		log.Print(currentPrompt)
 		if currentTask < 0 {

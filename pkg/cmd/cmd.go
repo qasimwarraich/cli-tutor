@@ -4,13 +4,11 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"strings"
 
 	"cli-tutor/pkg/logger"
 	"cli-tutor/pkg/tui"
 	"cli-tutor/pkg/tui/tuihelpers"
 
-	"github.com/chzyer/readline"
 	"github.com/muesli/termenv"
 	"github.com/spf13/cobra"
 )
@@ -31,28 +29,6 @@ A simple command line tutor application that aims to introduce users to the
 
 	Run: func(cmd *cobra.Command, args []string) {
 		logger.InitLogging()
-
-		nouploadflag, err := cmd.Flags().GetBool("no-upload-log")
-		if err != nil {
-			log.Println(err)
-		}
-
-		if !nouploadflag {
-			for logger.Identifier == "" {
-				p := termenv.ColorProfile()
-				styled := termenv.String("Please enter a name to identify yourself or enter 'exit' > ")
-				prompt := fmt.Sprint(styled.Foreground(p.Color("#01FFF0")))
-				rl, _ := readline.New(prompt)
-				line, _ := rl.Readline()
-				line = strings.TrimSpace(line)
-				if line == "exit" || line == "quit" {
-					os.Exit(0)
-				}
-				logger.Identifier = line
-				log.Printf("Identifier: %s", logger.Identifier)
-			}
-			defer logger.UploadLog()
-		}
 
 		nowelcomeflag, err := cmd.Flags().GetBool("no-welcome")
 		if err != nil {
@@ -85,30 +61,14 @@ var versionCmd = &cobra.Command{
 
 var infoCmd = &cobra.Command{
 	Use:   "info",
-	Short: "Prints information about the tool and log collection",
-	Long:  `Prints out information regarding the tool in general and it's logging feature`,
+	Short: "Prints information about the tool",
+	Long:  `Prints out information regarding cli-tutor`,
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println(
 			`
 cli-tutor is a simple command line tutor application that aims to introduce
-users to the basics of command line interaction. The tool is currently part of
-a Master's Thesis project and thus will be part of a user study. To this end, the
-tool integrates a logging feature so that the developer may collect insights
-about the tool's effectiveness. Logging is on by default and log files are
-saved at /tmp/tutor-log.txt on unix based systems. To opt-out of sending your
-log file to the developer you may supply the -n or --no-upload-log flag when
-you start the program.
-
-example:
-cli-tutor -n or cli-tutor --no-upload-log
-
-The log file is essentially a copy of what you see and input during the lesson.
-
-The log file also contains the following information:
-- All text outputted and inputted during the lesson
-- Timestamps
-- The supplied identifier name or id
-- The hostname of the device or docker container running the program
+users to the basics of command line interaction. A local log file is maintained
+at /tmp/tutor-log.txt on unix based systems. 
 
 For more information regarding commands, use the --help/-h flag or help sub-command.
 example:

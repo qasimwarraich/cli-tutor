@@ -2,10 +2,7 @@ CC = go
 MAIN = main.go
 
 all:
-	${CC} run ${MAIN} --no-upload-log --no-welcome
-
-log:
-	${CC} run ${MAIN}
+	${CC} run ${MAIN} --no-welcome
 
 build:
 	mkdir -p bin

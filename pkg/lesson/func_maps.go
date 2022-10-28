@@ -4,8 +4,6 @@ import (
 	"os"
 	"os/user"
 	"text/template"
-
-	"cli-tutor/pkg/logger"
 )
 
 func testFunc() string {
@@ -13,12 +11,8 @@ func testFunc() string {
 }
 
 func getUser() string {
-	if logger.Identifier != "" {
-		return logger.Identifier
-	} else {
-		current_user, _ := user.Current()
-		return current_user.Username
-	}
+	currentUser, _ := user.Current()
+	return currentUser.Username
 }
 
 func getHost() string {

@@ -5,7 +5,7 @@ import (
 	"os/user"
 )
 
-func StylePrompt(s string, string_style string) string {
+func StylePrompt(s string, stringStyle string) string {
 	const (
 		colorReset   = "\033[0m"
 		colorRed     = "\033[31m"
@@ -16,7 +16,7 @@ func StylePrompt(s string, string_style string) string {
 		colorCyan    = "\033[36m"
 		colorWhite   = "\033[37m"
 	)
-	switch string_style {
+	switch stringStyle {
 
 	case "magenta":
 		return colorMagenta + s + colorReset
@@ -35,21 +35,17 @@ func StylePrompt(s string, string_style string) string {
 	}
 }
 
-func BuildPrompt(identifier string) string {
+func BuildPrompt() string {
 	var username string
 
-	if identifier != "" {
-		username = StylePrompt(identifier, "blue")
-	} else {
-		user, _ := user.Current()
-		username = StylePrompt(user.Username, "blue")
-	}
+	user, _ := user.Current()
+	username = StylePrompt(user.Username, "blue")
 
 	host, _ := os.Hostname()
 	hostname := StylePrompt(host, "magenta")
 
 	cwd, _ := os.Getwd()
-	styled_cwd := StylePrompt(cwd, "green")
+	styledCwd := StylePrompt(cwd, "green")
 
-	return username + " @ " + hostname + " in " + styled_cwd
+	return username + " @ " + hostname + " in " + styledCwd
 }
