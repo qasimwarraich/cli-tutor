@@ -1,0 +1,34 @@
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+env:
+  REGISTRY_USER: ${{ github.actor }}
+  REGISTRY_PASSWORD: ${{ github.token }}
+  IMAGE_REGISTRY: ghcr.io/${{ github.repository_owner }}
+  IMAGE_NAME: cli-tutor
+
+jobs:
+  login:
+    name: Build and push image
+    runs-on: ubuntu-20.04
+    steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+
+      - name: Build cli-tutor
+        run: make build
+
+      - name: Build image
+        run: podman build . -t ${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_NAME }}
+
+      - name: Login with Podman
+        run: podman login -u ${{ env.REGISTRY_USER }} -p ${{ env.REGISTRY_PASSWORD }} ghcr.io
+
+      - name: Push image to GHCR
+        run: podman push ${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_NAME }}
