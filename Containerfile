@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM docker.io/library/ubuntu
 
 RUN yes | unminimize
 RUN apt -y install less
