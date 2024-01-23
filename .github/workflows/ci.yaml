@@ -1,6 +1,9 @@
+name: CI
+
 on:
   workflow_dispatch:
   push:
+  pull_request:
     branches:
       - main
 env:
@@ -10,11 +13,10 @@ env:
   IMAGE_NAME: cli-tutor
 
 jobs:
-  login:
+  build_and_push_image:
     name: Build and push image
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     steps:
-
       - name: Checkout Repository
         uses: actions/checkout@v4
 
@@ -28,9 +30,12 @@ jobs:
 
       - name: Build image
         run: podman build . -t ${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_NAME }}
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
       - name: Login with Podman
         run: podman login -u ${{ env.REGISTRY_USER }} -p ${{ env.REGISTRY_PASSWORD }} ghcr.io
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
 
       - name: Push image to GHCR
         run: podman push ${{ env.IMAGE_REGISTRY }}/${{ env.IMAGE_NAME }}
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
