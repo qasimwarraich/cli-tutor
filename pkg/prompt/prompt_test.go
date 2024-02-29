@@ -9,7 +9,7 @@ import (
 func TestStylePrompt(t *testing.T) {
 	type args struct {
 		s            string
-		string_style string
+		stringStyle string
 	}
 	tests := []struct {
 		name string
@@ -24,7 +24,7 @@ func TestStylePrompt(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := StylePrompt(tt.args.s, tt.args.string_style); got != tt.want {
+			if got := StylePrompt(tt.args.s, tt.args.stringStyle); got != tt.want {
 				t.Errorf("StylePrompt() = %v, want %v", got, tt.want)
 			}
 		})
@@ -39,7 +39,7 @@ func TestBuildPrompt(t *testing.T) {
 	hostname := StylePrompt(host, "magenta")
 
 	cwd, _ := os.Getwd()
-	styled_cwd := StylePrompt(cwd, "green")
+	styledCWD := StylePrompt(cwd, "green")
 
 	tests := []struct {
 		name string
@@ -47,7 +47,7 @@ func TestBuildPrompt(t *testing.T) {
 	}{
 		{
 			"Test Prompt Building",
-			username + " @ " + hostname + " in " + styled_cwd,
+			username + " @ " + hostname + " in " + styledCWD,
 		},
 	}
 	for _, tt := range tests {
