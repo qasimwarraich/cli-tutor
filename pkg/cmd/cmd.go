@@ -9,7 +9,6 @@ import (
 	"cli-tutor/pkg/tui"
 	"cli-tutor/pkg/tui/tuihelpers"
 
-	"github.com/muesli/termenv"
 	"github.com/spf13/cobra"
 )
 
@@ -38,7 +37,7 @@ A simple command line tutor application that aims to introduce users to the
 		if !nowelcomeflag {
 			tuihelpers.ProgramWelcome()
 		} else {
-			termenv.ClearScreen()
+			tuihelpers.ClearScreen()
 		}
 
 		initialWd, _ := os.Getwd()

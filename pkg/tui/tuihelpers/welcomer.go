@@ -6,8 +6,6 @@ import (
 
 	"cli-tutor/pkg/lesson"
 	"cli-tutor/pkg/printer"
-
-	"github.com/muesli/termenv"
 )
 
 func LessonWelcome(currentLesson lesson.Lesson) {
@@ -17,14 +15,14 @@ func LessonWelcome(currentLesson lesson.Lesson) {
 	printer.Print("\n\nWhen you are ready press any key to begin", "note")
 	b := make([]byte, 1) // Any Key
 	os.Stdin.Read(b)
-	termenv.ClearScreen()
+	ClearScreen()
 	printer.Print("Welcome to the shell!", "tip")
 	printer.Print("Type 'commands' to view a list of available commands or type 'exit' or 'quit' to quit the shell", "note")
 	time.Sleep(1 * time.Second)
 }
 
 func ProgramWelcome() {
-	termenv.ClearScreen()
+	ClearScreen()
 	s := `
           ___           ___                       ___           ___           ___           ___       ___     
          /\  \         /\__\          ___        /\  \         /\  \         /\  \         /\__\     /\  \    
@@ -53,11 +51,11 @@ func ProgramWelcome() {
 
 	printer.Print(s, "welcome")
 	time.Sleep(2 * time.Second)
-	termenv.ClearScreen()
+	ClearScreen()
 }
 
 func ProgramExitMessage() {
-	termenv.ClearScreen()
+	ClearScreen()
 	s := "Tutor Exited. Thank you, and have fun out there!"
 
 	printer.Print(s, "tip")

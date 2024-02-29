@@ -7,9 +7,9 @@ import (
 	"strconv"
 
 	"cli-tutor/pkg/printer"
+	"cli-tutor/pkg/tui/tuihelpers"
 
 	"github.com/chzyer/readline"
-	"github.com/muesli/termenv"
 )
 
 func listFiles(path string) func(string) []string {
@@ -82,7 +82,7 @@ func filterInput(r rune) (rune, bool) {
 
 func ToggleZen() {
 	if ZenMode == false {
-		termenv.ClearScreen()
+		tuihelpers.ClearScreen()
 		printer.Print("zen mode toggeled on", "note")
 	} else {
 		printer.Print("zen mode toggeled off", "note")
@@ -92,7 +92,7 @@ func ToggleZen() {
 }
 
 func ZenPrint(input, output, prompt string, style string) {
-	termenv.ClearScreen()
+	tuihelpers.ClearScreen()
 	fmt.Println(prompt+input, "")
 	printer.Print(output, style)
 }
