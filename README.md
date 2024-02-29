@@ -30,7 +30,7 @@ Flags:
 Use "cli-tutor [command] --help" for more information about a command.
 ```
 
-[![Docker Image Version (tag latest semver)](https://img.shields.io/docker/v/qasimwarraich/cli-tutor/latest?label=docker)](https://hub.docker.com/r/qasimwarraich/cli-tutor)
+[![Github Container Registry Image Version (tag latest semver)](https://img.shields.io/docker/v/qasimwarraich/cli-tutor/latest?label=ghcr)](https://ghcr.io/qasimwarraich/cli-tutor:latest)
 [![Website](https://img.shields.io/website?label=web%20version&up_color=light%20green&up_message=live&url=https%3A%2F%2Fclitutor.chistole.ch)](https://clitutor.chistole.ch)
 
 ## What is this?
@@ -75,7 +75,7 @@ prototypical web application in order to make it more accessible and portable.
 
 ### Getting started
 
-To simply try out the tool in a safe dockerized environment visit:
+To simply try out the tool in a safe containerised environment visit:
 
 [Link to Web Version](https://clitutor.chistole.ch)
 
@@ -92,33 +92,35 @@ Change directory into the freshly cloned repo.
 Once you have cloned and changed directories into the freshly cloned repository
 you have three methods to choose from:
 
-#### Method 1: Using Docker (Safest)*
+#### Method 1: Using Podman (Safest)*
 
-[![Docker Image Version (tag latest semver)](https://img.shields.io/docker/v/qasimwarraich/cli-tutor/latest?label=docker)](https://hub.docker.com/r/qasimwarraich/cli-tutor)
+[![Github Container Registry Image Version (tag latest semver)](https://img.shields.io/docker/v/qasimwarraich/cli-tutor/latest?label=ghcr)](https://ghcr.io/qasimwarraich/cli-tutor:latest)
 
 Prerequisites:
 
 - go v1.18 or higher
-- docker
+- [Podman](https://podman.io/)
 - make (optional)
 
 Instructions:
 
-Option 1: Pull down the image from [Docker Hub](https://hub.docker.com/r/qasimwarraich/cli-tutor)
+Option 1: Pull down the image from [Github Container Registry](https://ghcr.io/qasimwarraich/cli-tutor:latest)
 
-`docker pull qasimwarraich/cli-tutor`
+`podman pull qasimwarraich/cli-tutor`
 
 Note: You can run the container using:
-`docker run -it qasimwarraich/cli-tutor`
+
+`podman run -it qasimwarraich/cli-tutor`
 
 ---
 
 Option 2: Building image without make
 
-`docker build -t qasimwarraich/cli-tutor .`
+`podman build -t qasimwarraich/cli-tutor .`
 
 Note: You can run the container using:
-`docker run -it qasimwarraich/cli-tutor`
+
+`podman run -it qasimwarraich/cli-tutor`
 
 ---
 
@@ -131,7 +133,7 @@ Note: You can run the container using:
 
 ---
 
-\* Installation via the Docker method allows the tool to be tested in a safe
+\* Installation via the Podman method allows the tool to be tested in a safe
 containerised environment. This mitigates risk of accidentally modifying files
 on your personal machine like in the uncontainerised methods that follow.
 
@@ -211,18 +213,18 @@ e.g. `rm ~/go/bin/cli-tutor` or `make gouninstall`
 
 ### Usage
 
-Once installed or inside the docker container the tool can be started using
+Once installed or inside the container the tool can be started using
 `cli-tutor`.
 
 Once you are in the tutor you are presented with a menu where you can select a
-lesson. This menu may be navigated using the arrow keys or j/k for up and down
-respectively. Once you pick a lesson you will be dropped into an interactive
-shell. Each lesson contains a series of prompts that aim to teach you about the
-topic at hand. Tasks can be navigated between using typing `next/prev` or `n/p`
-and hitting enter. Some task may require you to issue commands and the tutor
-will try to validate your inputs. These commands cannot be skipped using `next
-or n`. Additionally, each lesson has a certain list of available commands for
-the user to enter. A list of available commands is available by typing
-`commands` and hitting enter.
+lesson using the `enter` key. This menu may be navigated using the `arrow keys`
+or `j/k` for up and down respectively. To list available actions enter the `?` key.
+Once you pick a lesson you will be dropped into an interactive shell. Each lesson
+contains a series of prompts that aim to teach you about the topic at hand. Tasks
+can be navigated between using typing `next/prev` or `n/p` and hitting enter.
+Some task may require you to issue commands and the tutor will try to validate your
+inputs. These commands cannot be skipped using `next or n`. Additionally, each
+lesson has a certain list of available commands for the user to enter. A list of
+available commands is available by typing `commands` and hitting enter.
 
 Have Fun!
