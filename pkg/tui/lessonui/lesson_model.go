@@ -9,7 +9,6 @@ import (
 	tea "github.com/charmbracelet/bubbletea"
 	"github.com/charmbracelet/glamour"
 	"github.com/chzyer/readline"
-	"github.com/muesli/termenv"
 	"golang.org/x/term"
 )
 
@@ -67,16 +66,9 @@ func (m LessonModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		m.rline()
 	} else {
 		m.rl.Close()
-		termenv.ClearScreen()
+		tuihelpers.ClearScreen()
 		return m, func() tea.Msg {
 			return BackMsg(true)
-		}
-	}
-	switch msg := msg.(type) {
-	case tea.KeyMsg:
-		switch msg.String() {
-		// case "ctrl+c":
-		// return m, tea.Quit
 		}
 	}
 

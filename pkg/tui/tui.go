@@ -6,10 +6,10 @@ import (
 
 	"cli-tutor/pkg/tui/lessonui"
 	"cli-tutor/pkg/tui/menuui"
+	"cli-tutor/pkg/tui/tuihelpers"
 
 	tea "github.com/charmbracelet/bubbletea"
 	zone "github.com/lrstanley/bubblezone"
-	"github.com/muesli/termenv"
 )
 
 type sessionState int
@@ -49,7 +49,7 @@ func (m MainModel) Update(msg tea.Msg) (tea.Model, tea.Cmd) {
 		m.state = lessonView
 		m.lesson = lessonui.New(msg.SelectedLesson)
 
-		termenv.ClearScreen()
+		tuihelpers.ClearScreen()
 	}
 
 	switch m.state {

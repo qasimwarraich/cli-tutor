@@ -10,5 +10,4 @@ var output = termenv.NewOutput(os.Stdout)
 
 func ClearScreen() {
 	output.ClearScreen()
-
 }
