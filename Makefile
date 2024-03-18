@@ -8,11 +8,11 @@ build:
 	mkdir -p bin
 	${CC} build -o ./bin
 
-docker:
-	docker build -t qasimwarraich/cli-tutor .
+podman:
+	podman build -t qasimwarraich/cli-tutor .
 
-dockerrun:
-	docker run -it qasimwarraich/cli-tutor
+podmanrun:
+	podman run -it qasimwarraich/cli-tutor
 
 install:
 	mkdir -p bin
