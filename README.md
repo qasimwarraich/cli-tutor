@@ -106,7 +106,7 @@ Instructions:
 
 Option 1: Pull down the image from [Github Container Registry](https://ghcr.io/qasimwarraich/cli-tutor:latest)
 
-`podman pull qasimwarraich/cli-tutor`
+`podman pull ghcr.io/qasimwarraich/cli-tutor:latest`
 
 Note: You can run the container using:
 
