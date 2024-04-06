@@ -29,6 +29,10 @@ A simple command line tutor application that aims to introduce users to the
 
 	Run: func(cmd *cobra.Command, args []string) {
 		logger.InitLogging()
+		log.Println(args)
+		log.Println(cmd.Flags().GetBool("theme"))
+		log.Println(cmd.Flags().GetString("theme"))
+        
 
 		nowelcomeflag, err := cmd.Flags().GetBool("no-welcome")
 		if err != nil {
@@ -89,12 +93,25 @@ var repoCmd = &cobra.Command{
 	},
 }
 
+var themeCmd = &cobra.Command{
+	Use:   "theme",
+	Short: "Set theme",
+	Long:  `Set the theme for cli-tutor`,
+	Run: func(cmd *cobra.Command, args []string) {
+		fmt.Println("inside themeCmdTheme")
+		fmt.Printf("Args in themeCmd=%s",args)
+
+	},
+}
+
 func init() {
 	rootCmd.Flags().BoolP("no-upload-log", "n", false, "Do not send a copy of the log to the developer")
 	rootCmd.Flags().BoolP("no-welcome", "x", false, "Do not show welcome message when entering tutor")
 	rootCmd.AddCommand(versionCmd)
 	rootCmd.AddCommand(infoCmd)
 	rootCmd.AddCommand(repoCmd)
+	rootCmd.AddCommand(themeCmd)
+	themeCmd.Flags().String("theme", "", "Set theme to use with cli-tutor")
 }
 
 func Execute() {
